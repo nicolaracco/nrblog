@@ -1,0 +1,2 @@
+rand_id = Math.random().toString().split('.')[1];
+$('#add_attachment').before('<input type="file" name="content[attachments_toadd[' + rand_id + ']]" />');

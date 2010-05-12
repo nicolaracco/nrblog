@@ -1,0 +1,125 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+en:
+  this_file_language: "English"
+
+  sitename: "Nicola Racco's Blog"
+  slogan: "I looked under a Python and I caught a Ruby"
+  
+  language_it: "Italiano"
+  language_en: "English"
+
+  tags: "Listing tags"
+  blocks: "Listing blocks"  
+  images: "Listing images"
+  categories: "Listing categories"
+  contents: "Listing contents"
+  menu_items: "Listing menu items"
+  section_general: "General"
+  section_admin: "Admin"
+  
+  link_edit: "Edit"
+  link_show: "Show"
+  link_destroy: "Destroy"
+  
+  tag_mgr: "Tags"  
+  image_mgr: "Images"
+  menuitem_mgr: "Menu items"
+  category_mgr: "Categories"
+  content_mgr: "Contents"
+  block_mgr: "Blocks"
+  attachment_mgr: "Attachments"
+
+  category_empty: "This category is empty"
+  tag_empty: "This tag is empty"
+
+  tag_new: "New tag"
+  block_new: "New block"
+  image_new: "New image"
+  menu_item_new: "New menu item"
+  category_new: "New category"
+  content_new: "New content"
+  block_edit: "Edit block"
+
+  tag_edit: "Edit tag"
+  image_edit: "Edit image"
+  category_edit: "Edit category"
+  content_edit: "Edit content"
+  menu_item_edit: "Edit menu item"
+ 
+  tag_created: "Tag was successfully created"
+  block_created: "Block was successfully created"
+  image_created: "Image was successfully created"
+  category_created: "Category was successfully created"
+  content_created: "Content was successfully created"
+  menu_item_created: "Menu item was successfully created"
+  
+  tag_updated: "Tag was successfully updated"
+  block_updated: "Block was successfully updated"
+  image_updated: "Image was successfully updated"
+  category_updated: "Category was successfully updated"
+  content_updated: "Content was successfully updated"
+  menu_item_updated: "Menu item was successfully updated"
+  back: "Back"
+  search: "Search"
+  logout: "Logout"
+  attachments: "Attachments"
+  attachment_add: "Add attachment"
+  
+  field_name: "Name"
+  field_label: "Label"
+  field_author: "Author"
+  field_title: "Title"
+  field_category: "Category"
+  field_published: "Published"
+  field_in_home: "Home visible"
+  field_created_at: "on"
+  field_updated_at: "updated on"
+  field_in_tags: "in"
+  field_type: "Type"
+  field_url: "URL"
+  field_order: "Position"
+  field_content: "Content"
+    
+  confirm_sure: "Are you sure ?"
+
+  contactme: "Contact me"
+  contactme_name: "Name"
+  contactme_email: "Email"
+  contactme_subject: "Subject"
+  contactme_body: "Message Body"
+  contactme_submit: "Send"
+  contactme_wrote: "wrote you an email"
+  contactme_sent: "Email was successfully sent"
+  contactme_needed: "Field with (*) are needed!"
+  comment_notify_wrote_on: "commented"
+  
+  helpers:
+    submit:
+      create: "Create a {{model}}"
+      update: "Confirm changes to {{model}}"
+  
+  time:
+    formats:
+      medium: "%a %m/%d/%Y %H:%M"
+  
+  attributes:
+    name: "Name"
+    label_it: "Label"
+    label_en: "Label"
+    url_alias: "Url alias"
+    content_it: "Content"
+    content_en: "Content"
+    summary_it: "Summary"
+    summary_en: "Summary"
+    title_it: "Title"
+    title_en: "Title"
+    tags: "Tags"
+    menu_type: "Type"
+    url: "Url"
+    content: "Content"
+    published: "Published"
+    has_comments: "Has comments"
+    in_home: "In home"
+    icon: "Icon"

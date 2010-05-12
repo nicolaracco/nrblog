@@ -1,0 +1,9 @@
+.bundle
+db/*.sqlite3
+log/*.log
+tmp/**/*
+config/database.yml
+config/initializers/devise.rb
+config/initializers/mail_setup.rb
+public/system/
+public/system/**/*

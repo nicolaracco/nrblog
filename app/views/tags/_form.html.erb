@@ -1,0 +1,49 @@
+<% content_for :head do -%>
+  <%= javascript_include_tag :jquery_ui %>
+  <%= stylesheet_link_tag :jquery_ui %>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $("#tabs").tabs();
+    });
+  </script>
+<% end -%>
+
+<%= form_for(@tag) do |f| %>
+  <% if @tag.errors.any? %>
+  <div id="errorExplanation">
+    <h2><%= pluralize(@tag.errors.count, "error") %> prohibited this tag from being saved:</h2>
+    <ul>
+    <% @tag.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+  <% end %>
+
+  <div class="field">
+    <p><%= f.label :url_alias %><br/>
+    <%= f.text_field :url_alias %></p>
+  </div>
+
+  <div id="tabs">
+    <ul>
+      <li class="tab"><a href="#it"><span><%= t :language_it %></span></a></li>
+      <li class="tab"><a href="#en"><span><%= t :language_en %></span></a></li>
+    </ul>
+    <div id="it">
+      <div class="field">
+        <%= f.label :label_it %><br />
+        <%= f.text_field :label_it %>
+      </div>
+    </div>
+    <div id="en">
+      <div class="field">
+        <%= f.label :label_en %><br />
+        <%= f.text_field :label_en %>
+      </div>
+    </div>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

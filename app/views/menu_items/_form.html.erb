@@ -1,0 +1,54 @@
+<% content_for :head do -%>
+  <%= javascript_include_tag :jquery_ui %>
+  <%= stylesheet_link_tag :jquery_ui %>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $("#tabs").tabs();
+    });
+  </script>
+<% end -%>
+
+<%= form_for(@menu_item) do |f| %>
+  <% if @menu_item.errors.any? %>
+  <div id="errorExplanation">
+    <h2><%= pluralize(@menu_item.errors.count, "error") %> prohibited this menu_item from being saved:</h2>
+    <ul>
+    <% @menu_item.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :menu_type %><br />
+    <%= f.select :menu_type, options_for_select(available_menu_types) %>
+  </div>
+  <div class="field">
+    <%= f.label :url %><br />
+    <%= f.text_field :url %>
+  </div>
+
+  <div id="tabs">
+    <ul>
+      <li class="tab"><a href="#it"><span><%= t :language_it %></span></a></li>
+      <li class="tab"><a href="#en"><span><%= t :language_en %></span></a></li>
+    </ul>
+    <div id="it">
+      <div class="field">
+        <%= f.label :title_it %><br />
+        <%= f.text_field :title_it %>
+      </div>
+    </div>
+    <div id="en">
+      <div class="field">
+        <%= f.label :title_en %><br />
+        <%= f.text_field :title_en %>
+      </div>
+    </div>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,23 @@
+<% title t(:contactme) %>
+
+<% form_tag :action => :send_mail do %>
+  <p>
+  <%= label :email, :name, t(:contactme_name) + '*'%><br />
+  <%= text_field :email, :name %>
+  </p>
+  <p>
+  <%= label :email, :address, t(:contactme_email) + '*'%><br/>
+  <%= text_field :email, :address %>
+  </p>
+  <p>
+  <%= label :email, :subject, t(:contactme_subject) %><br/>
+  <%= text_field :email, :subject %>
+  <p/>
+  <p>
+  <%= label :email, :body, t(:contactme_body) + '*'%><br/>
+  <%= text_area :email, :body, :cols => 80, :rows => 8 %>
+  </p>
+  <p>
+  <%= submit_tag t(:contactme_submit) %>
+  </p>
+<% end -%>

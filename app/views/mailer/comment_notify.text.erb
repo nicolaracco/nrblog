@@ -1,0 +1,5 @@
+<%= @sender_name %> <<%= @sender_email %>> <%= t(:comment_notify_wrote_on) %> <%= @content.title %> ( <%= show_content_path(@content.category.url_alias, @content.url_alias) %> ):
+
+---
+<%= @message %>
+---

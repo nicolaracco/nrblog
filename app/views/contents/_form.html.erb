@@ -1,0 +1,114 @@
+<% content_for :head do -%>
+  <%= javascript_include_tag :jquery_ui %>
+  <%= javascript_include_tag :mark_it_up %>
+  <%= javascript_include_tag :multifile %>
+  <%= stylesheet_link_tag :jquery_ui %>
+  <%= stylesheet_link_tag :mark_it_up %>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $("#tabs").tabs();
+      $("#content_content_it").markItUp(mySettings);
+      $("#content_content_en").markItUp(mySettings);
+      $("#iconselector").msDropDown();
+    });
+  </script>
+<% end -%>
+
+<%= form_for(@content, :html => { :multipart => true }) do |f| %>
+  <% if @content.errors.any? %>
+  <div id="errorExplanation">
+    <h2><%= pluralize(@content.errors.count, "error") %> prohibited this content from being saved:</h2>
+    <ul>
+    <% @content.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+  <% end %>
+
+  <fieldset>
+    <legend><%= t(:section_general) %></legend>
+    <div class="field">
+      <%= f.label :author %><br />
+      <%= @content.author.nil? ? current_author : @content.author %>
+    </div>
+    <div class="field">
+      <%= f.label :category %><br />
+      <%= f.collection_select :category_id, @categories, :id, :label %>
+    </div>
+    <div class="field">
+      <%= f.label :url_alias %><br />
+      <%= f.text_field :url_alias %>
+    </div>
+    <div class="flaglist">
+      <div class="field">
+        <%= f.label :published %><br />
+        <%= f.check_box :published %>
+      </div>
+      <div class="field">
+        <%= f.label :has_comments %><br />
+        <%= f.check_box :has_comments %>
+      </div>
+      <div class="field">
+        <%= f.label :in_home %><br />
+        <%= f.check_box :in_home %>
+      </div>
+    </div>
+    <div class="field" style="clear: both;">
+      <%= f.label :image %><br/>
+      <%= f.collection_select :image_id, @images, :id, :url_alias %>
+      <%= image_tag(@content.image.url :thumb) unless @content.image.nil? %>
+    </div>
+    <div class="field">
+      <%= f.label :tags %><br />
+      <%= f.text_field :tags_list %>
+    </div>
+  </fieldset>
+
+  <div id="tabs">
+    <ul>
+      <li class="tab"><a href="#it"><span><%= t :language_it %></span></a></li>
+      <li class="tab"><a href="#en"><span><%= t :language_en %></span></a></li>
+    </ul>
+    <div id="it">
+      <div class="field">
+        <%= f.label :title_it %><br />
+        <%= f.text_field :title_it %>
+      </div>
+      <div class="field">
+        <%= f.label :summary_it %><br />
+        <%= f.text_area :summary_it, :cols => 80, :rows => 2 %>
+      </div>
+      <div class="field">
+        <%= f.label :content_it %><br />
+        <%= f.text_area :content_it %>
+      </div>
+    </div>
+    <div id="en">
+      <div class="field">
+        <%= f.label :title_en %><br />
+        <%= f.text_field :title_en %>
+      </div>
+      <div class="field">
+        <%= f.label :summary_en %><br />
+        <%= f.text_area :summary_en, :cols => 80, :rows => 2 %>
+      </div>
+      <div class="field">
+        <%= f.label :content_en %><br />
+        <%= f.text_area :content_en %>
+      </div>
+    </div>
+  </div>
+  <fieldset id="attachments">
+    <legend><%= t(:attachment_mgr) %></legend>
+    <ul>
+      <% @content.attachments.each do |a| %>
+        <li id="attachment_<%= a.id %>"><%= a.file_file_name %> (<%= link_to t(:link_destroy), content_destroy_attachment_path(@content.id, a.id), :method => :delete, :remote => true %>)</li>
+      <% end -%>
+    </ul>
+    <%= link_to t(:attachment_add), contents_add_attachment_path, :remote => true, :id => 'add_attachment' %>
+  </fieldset>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

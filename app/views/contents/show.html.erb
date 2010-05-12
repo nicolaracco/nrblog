@@ -1,0 +1,68 @@
+<% if @content.image.nil? %>
+  <% title @content.title %>
+<% else %>
+  <% title @content.title, false %>
+  <h1><%= image_tag(@content.image.url(:thumb), :id => 'icontitle', :class => 'contenticon') %> <%= @content.title %></h1>
+<% end -%>
+
+<div class="post_show <%='unpublished' if !@content.published -%>">
+  <div class="meta">
+    <p class="submitted">
+      <%= t :field_created_at %> <%= l @content.created_at, :format => :medium %>
+      <% unless @content.created_at == @content.updated_at -%>
+        - <%= t :field_updated_at %> <%= l @content.updated_at, :format => :medium %>
+      <% end -%>
+    </p>
+    <%= render :partial => 'tags/list', :locals => { :tags => @content.tags } %>
+  </div>
+  <% unless @content.summary.nil? || @content.summary.empty? %>
+    <div class="summary"><%= raw @content.summary %></div>
+  <% end -%>
+  <div class="content"><%= raw content_to_html(@content.content) %></div>
+  <% unless @content.attachments.empty? %>
+    <div class="attachments">
+      <ul>
+      <% @content.attachments.each do |a| %>
+        <li><%= link_to a.file_file_name, a.file.url %></li>
+      <% end -%>
+      </ul>
+    </div>
+  <% end -%>
+  <% if @content.has_comments %>
+    <div class="comments">
+      <h3><%= t(:comment_mgr) %></h3>
+      <div class="comments-view">
+        <% @content.comments.each do |comment| %>
+          <div class="comment-item">
+            <h4 class="comment-owner">
+              <% if author_signed_in? %>
+                <%= link_to comment.user_name, 'mailto:' + comment.user_email %>
+                (<%= link_to t(:link_destroy), content_destroy_comment_path(@content.category.url_alias, @content.url_alias, comment.id), :method => :delete %>)
+              <% else %>
+                <%= comment.user_name %>
+              <% end -%>
+            </h4>
+            <p class="comment-when"><%= l comment.created_at, :format => :medium %></p>
+            <p class="comment-text"><%= comment.body %></p>
+          </div>
+        <% end -%>
+      </div>
+      <%= form_for :comment, Comment.new, :url => :content_add_comment do |f| %>
+        <fieldset>
+          <legend><%= t :comment_add %></legend>
+          <p><%= f.label :user_name %><br/>
+          <%= f.text_field :user_name %></p>
+          <p><%= f.label :user_email %><br/>
+          <%= f.text_field :user_email %></p>
+          <p><%= f.label :body %><br/>
+          <%= f.text_area :body, :cols => 60, :rows => 3 %></p>
+          <%= f.submit %>
+      <% end -%>
+    </div>
+  <% end -%>
+</div>
+
+<% if author_signed_in? %>
+  <%= link_to t(:link_edit), edit_content_path(@content) %> 
+  <%= link_to t(:back), contents_path %>
+<% end -%>

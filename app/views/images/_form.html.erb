@@ -1,0 +1,59 @@
+<% content_for :head do %>
+  <%= javascript_include_tag :jquery_ui %>
+  <%= stylesheet_link_tag :jquery_ui %>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $("#tabs").tabs();
+    });
+  </script>
+<% end -%>
+
+<%= form_for(@image, :html => { :multipart => true }) do |f| %>
+  <% if @image.errors.any? %>
+  <div id="errorExplanation">
+    <h2><%= pluralize(@image.errors.count, "error") %> prohibited this image from being saved:</h2>
+    <ul>
+    <% @image.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+  <% end %>
+
+  <% unless @image.content.nil? || @image.title.nil? %>
+    <div class="image preview">
+      <p>URL: <span class="url"><%= @image.url %></span></p>
+      <%= image_tag @image.url, :alt => @image.title %>
+    </div>
+  <% end -%>
+  <div class="field">
+    <%= f.label :content %><br/>
+    <%= f.file_field :content %>
+  </div>
+  <div class="field">
+    <%= f.label :url_alias %><br />
+    <%= f.text_field :url_alias %>
+  </div>
+
+  <div id="tabs">
+    <ul>
+      <li class="tab"><a href="#it"><span><%= t :language_it %></span></a></li>
+      <li class="tab"><a href="#en"><span><%= t :language_en %></span></a></li>
+    </ul>
+    <div id="it">
+      <div class="field">
+        <%= f.label :title_it %><br />
+        <%= f.text_field :title_it %>
+      </div>
+    </div>
+    <div id="en">
+      <div class="field">
+        <%= f.label :title_en %><br />
+        <%= f.text_field :title_en %>
+      </div>
+    </div>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

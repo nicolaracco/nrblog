@@ -1,0 +1,36 @@
+it:
+  errors:
+    messages:
+      not_found: "non trovato"
+      already_confirmed: "gi&agrave; confermato"
+      not_locked: "non era bloccato"
+
+  devise:
+    failure:
+      unauthenticated: 'Devi loggarti prima di continuare.'
+      unconfirmed: "Devi confermare l'account prima di continuare."
+      locked: 'Il tuo account &egrave; bloccato.'
+      invalid: 'Email o password invalidi.'
+      invalid_token: 'Token di autenticazione non valido.'
+      timeout: 'La tua sessione &egrave; scaduta, esegui il login prima di continuare.'
+      inactive: 'Il tuo account non &egrave; ancora stato attivato.'
+    sessions:
+      signed_in: 'Loggato con successo.'
+      signed_out: 'Sloggato con successo.'
+    passwords:
+      send_instructions: 'Riceverai una mail con le istruzioni per resettare la password in pochi minuti.'
+      updated: 'Password cambiata con successo. Ora sei loggato.'
+    confirmations:
+      send_instructions: "Riceverai una mail con le istruzioni su come confermare l'account in pochi minuti."
+      confirmed: 'Account confermato con successo. Ora sei loggato.'
+    registrations:
+      signed_up: 'Ti sei registrato con successo. Se abilitato, riceverai una mail di conferma.'
+      updated: 'Account aggiornato con successo.'
+      destroyed: 'Ciao! il tuo account &egrave; stato cancellato con successo. Speriamo di rivederti presto.'
+    unlocks:
+      send_instructions: "Riceverai una mail con le istruzioni riguardo lo sblocco dell'account in pochi minuti."
+      unlocked: 'Account sbloccato con successo. Ora sei loggato.'
+    mailer:
+      confirmation_instructions: 'Istruzioni di conferma'
+      reset_password_instructions: 'Istruzioni per il reset della password'
+      unlock_instructions: 'Istruzioni di sblocco'

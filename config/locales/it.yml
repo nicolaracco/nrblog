@@ -1,0 +1,126 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+it:
+  this_file_language: "Italiano"
+
+  sitename: "Nicola Racco's Blog"
+  slogan: "I looked under a Python and I caught a Ruby"
+  
+  language_it: "Italiano"
+  language_en: "English"
+ 
+  tags: "Elenco tag"
+  blocks: "Elenco blocchi" 
+  images: "Elenco immagini"
+  categories: "Elenco categorie"
+  contents: "Elenco contenuti"
+  menu_items: "Elenco voci di men&ugrave;"
+  section_general: "Generale"
+  section_admin: "Amministra"
+  
+  link_edit: "Modifica"
+  link_show: "Mostra"
+  link_destroy: "Elimina"
+    
+  tag_mgr: "Tags"
+  block_mgr: "Blocchi"
+  image_mgr: "Immagini"
+  menuitem_mgr: "Voci di menu"
+  content_mgr: "Contenuti"
+  category_mgr: "Categorie"
+  attachment_mgr: "Allegati"
+  comment_mgr: "Commenti"
+
+  category_empty: "Questa categoria &egrave; vuota"
+  tag_empty: "Questo tag &egrave; vuoto"
+
+  tag_new: "Nuovo tag"
+  block_new: "Nuovo blocco"
+  image_new: "Nuova immagine"
+  menu_item_new: "Nuova voce di men&ugrave;"
+  category_new: "Nuova categoria"
+  content_new: "Nuovo contenuto"
+
+  tag_edit: "Modifica tag"
+  block_edit: "Modifica blocco"
+  image_edit: "Modifica immagine"
+  category_edit: "Modifica categoria"
+  content_edit: "Modifica contenuto"
+  menu_item_edit: "Modifica voce di men&ugrave;"
+
+  tag_created: "Tag creato."
+  block_created: "Blocco creato."
+  image_created: "Immagine creata."
+  category_created: "Categoria creata."
+  content_created: "Contenuto creato."
+  menu_item_created: "Voce di men&ugrave; creata."
+
+  tag_updated: "Tag aggiornato."
+  block_updated: "Blocco aggiornato."
+  image_updated: "Immagine aggiornata."
+  category_updated: "Categoria aggiornata."
+  content_updated: "Contenuto aggiornato."
+  menu_item_updated: "Voce di men&ugrave; aggiornata."
+  back: "Indietro"
+  search: "Cerca"
+  logout: "Logout"
+  attachments: "Allegati"
+  attachment_add: "Aggiungi allegato"
+  
+  field_name: "Nome"
+  field_label: "Etichetta"
+  field_author: "Autore"
+  field_title: "Titolo"
+  field_category: "Categoria"
+  field_published: "Pubblicato"
+  field_in_home: "Visibile in home"
+  field_created_at: "il"
+  field_updated_at: "aggiornato il"
+  field_in_tags: "in"
+  field_type: "Tipo"
+  field_url: "URL"
+  field_order: "Posizione"
+  field_content: "Contenuto"
+  
+  confirm_sure: "Sei sicuro ?"
+
+  contactme: "Contattami"
+  contactme_name: "Nome"
+  contactme_email: "Email"
+  contactme_subject: "Soggetto"
+  contactme_body: "Corpo del Messaggio"
+  contactme_submit: "Invia"
+  contactme_wrote: "ti ha scritto un'email"
+  contactme_sent: "L'email &egrave; stata inviata."
+  contactme_needed: "I campi con (*) sono obbligatori!"
+  comment_notify_wrote_on: "ha commentato"
+  
+  helpers:
+    submit:
+      create: "Crea un {{model}}"
+      update: "Conferma modifica a {{model}}"
+  
+  time:
+    formats:
+      medium: "%d/%m/%Y %H:%M"
+  
+  attributes:
+    name: "Nome"
+    label_it: "Etichetta"
+    label_en: "Etichetta"
+    url_alias: "Alias url"
+    content_it: "Contenuto"
+    content_en: "Contenuto"
+    summary_it: "Sommario"
+    summary_en: "Sommario"
+    title_it: "Titolo"
+    title_en: "Titolo"
+    tags: "Tags"
+    menu_type: "Tipo"
+    url: "Url"
+    content: "Contenuto"
+    published: "Pubblicato"
+    has_comments: "Commenti abilitati"
+    in_home: "Visibile in home"
+    icon: "Icona"

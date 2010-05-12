@@ -1,0 +1,23 @@
+<% title t(:categories) %>
+
+<table>
+  <tr>
+    <th><%= t(:field_label) %></th>
+    <th><%= t(:field_url) %></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @categories.each do |category| %>
+  <tr>
+    <td><%= category.label %></td>
+    <td><%= link_to category.url, category.url %>/</td>
+    <td><%= link_to t(:link_edit), edit_category_path(category) %></td>
+    <td><%= link_to t(:link_destroy), category, :confirm => t(:confirm_sure), :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to t(:category_new), new_category_path %>

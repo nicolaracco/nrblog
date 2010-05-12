@@ -1,0 +1,5 @@
+<% title @category.label %>
+
+<% unless @category.contents.empty? %>
+  <%= render :partial => 'contents/list', :locals => { :posts => @posts } %>
+<% end -%>

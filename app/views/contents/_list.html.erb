@@ -1,0 +1,19 @@
+<div id="post-list">
+  <% posts.each do |p| %>
+    <div class="post_item">
+      <%= image_tag(p.image.url(:thumb), :class => 'contenticon') unless p.image.nil? %>
+      <div class="title-box"><h2 class="title"><%= link_to p.title, show_content_path(p.category.url_alias, p.url_alias) %></h2></div>
+      <div class="meta">
+        <p class="submitted">
+          <%= t :field_created_at %> <%= l p.created_at, :format => :medium %>
+          <% unless p.created_at == p.updated_at %>
+            - <%= t :field_updated_at %> <%= l p.updated_at, :format => :medium %>
+          <% end -%>
+        </p>
+        <%= render :partial => 'tags/list', :locals => {:tags => p.tags} %>
+      </div>
+      <div class="summary"><%= raw p.summary %></div>
+    </div>
+  <% end -%>
+  <%= will_paginate posts %>
+</div>

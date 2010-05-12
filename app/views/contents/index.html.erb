@@ -1,0 +1,31 @@
+<% title t(:contents) %>
+
+<table>
+  <tr>
+    <th><%= t(:field_title) %></th>
+    <th><%= t(:field_author) %></th>
+    <th><%= t(:field_category) %></th>
+    <th><%= t(:field_published) %></th>
+    <th><%= t(:field_in_home) %></th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @contents.each do |content| %>
+  <tr>
+    <td><%= content.title %></td>
+    <td><%= content.author %></td>
+    <td><%= content.category %></td>
+    <td><%= content.published %></td>
+    <td><%= content.in_home %></td>
+    <td><%= link_to t(:link_show), show_content_path(content.category.url_alias, content.url_alias) %></td>
+    <td><%= link_to t(:link_edit), edit_content_path(content) %></td>
+    <td><%= link_to t(:link_destroy), content, :confirm => t(:confirm_sure), :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to t(:content_new), new_content_path %>

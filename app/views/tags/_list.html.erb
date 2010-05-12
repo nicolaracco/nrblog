@@ -1,0 +1,10 @@
+<% unless tags.empty? %>
+  <div class="taglist">
+    <%= t :field_in_tags %>
+    <ul class="links inline">
+      <% tags.each do |t| %>
+        <li class="tag"><%= link_to t.label, show_tag_path(t.url_alias) %></li>
+      <% end -%>
+    </ul>
+  </div>
+<% end -%>

@@ -1,0 +1,13 @@
+.right {
+  float: right;
+  margin-right: 1em;
+}
+
+.bio img.thumb {
+  width: 64px;
+  height: 69px;
+}
+
+.bio {
+  font-size: x-small;
+}

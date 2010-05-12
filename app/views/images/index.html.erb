@@ -1,0 +1,25 @@
+<% title t(:images) %>
+
+<table>
+  <tr>
+    <th><%= t(:field_title) %></th>
+    <th><%= t(:field_url) %></th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @images.each do |image| %>
+  <tr>
+    <td><%= image.title %></td>
+    <td><%= link_to image.url, image.url %></td>
+    <td><%= link_to t(:link_show), image %></td>
+    <td><%= link_to t(:link_edit), edit_image_path(image) %></td>
+    <td><%= link_to t(:link_destroy), image, :confirm => t(:confirm_sure), :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to t(:image_new), new_image_path %>
