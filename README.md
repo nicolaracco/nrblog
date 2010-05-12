@@ -11,7 +11,7 @@ This blog is, at the moment, a work made in the last weekend. In fact I tried to
 #To install
 
 Admin user:
-Edit the 'db/seeds.rb' and change the author fields. So, for example, the line:
+Copy 'dist/seeds.rb' to 'db/seeds.rb' and edit it to change the author fields. So, for example, the line:
         Author.create(:username => 'admin', :email => 'admin@mysite.com', :password => 'adminPass').save
 will become:
         Author.create(:username => 'Nicola', :email => 'nicola@nicolaracco.com', :password => 'myPassword').save
