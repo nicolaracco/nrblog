@@ -1,12 +1,4 @@
-<% content_for :head do -%>
-  <%= javascript_include_tag :jquery_ui %>
-  <%= stylesheet_link_tag :jquery_ui %>
-  <script type="text/javascript">
-    $(document).ready(function() {
-      $("#tabs").tabs();
-    });
-  </script>
-<% end -%>
+<%# JS: $("#category-tabs").tabs() should be added to the invoking view to show tabs %>
 
 <%= form_for(@category) do |f| %>
   <% if @category.errors.any? %>
@@ -25,18 +17,18 @@
     <%= f.text_field :url_alias %>
   </div>
 
-  <div id="tabs">
+  <div id="category-tabs">
     <ul>
-      <li class="tab"><a href="#it"><span><%= t :language_it %></span></a></li>
-      <li class="tab"><a href="#en"><span><%= t :language_en %></span></a></li>
+      <li class="tab"><a href="#category-it"><span><%= t :language_it %></span></a></li>
+      <li class="tab"><a href="#category-en"><span><%= t :language_en %></span></a></li>
     </ul>
-    <div id="it">
+    <div id="category-it">
       <div class="field">
         <%= f.label :label_it %><br />
         <%= f.text_field :label_it %>
       </div>
     </div>
-    <div id="en">
+    <div id="category-en">
       <div class="field">
         <%= f.label :label_en %><br />
         <%= f.text_field :label_en %>

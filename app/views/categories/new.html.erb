@@ -1,5 +1,15 @@
 <% title t(:category_new) %>
 
+<% content_for :head do -%>
+  <%= javascript_include_tag :jquery_ui %>
+  <%= stylesheet_link_tag :jquery_ui %>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $("#category-tabs").tabs();
+    });
+  </script>
+<% end -%>
+
 <%= render 'form' %>
 
 <%= link_to t(:back), categories_path %>

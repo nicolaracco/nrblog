@@ -1,5 +1,7 @@
 Nrblog::Application.routes.draw do |map|
   root :to => 'home#index'
+
+  devise_for :authors, :path_names => { :sign_in => 'login', :sign_out => 'logout' }
   
   scope '/admin' do
     resources :categories, :except => :show
@@ -11,8 +13,6 @@ Nrblog::Application.routes.draw do |map|
       delete '/:aid' => :destroy_attachment, :as => :destroy_attachment, :on => :member
       get '/add_attachment' => :add_attachment, :as => :add_attachment, :on => :collection
     end
-
-    devise_for :authors, :path_names => { :sign_in => 'login', :sign_out => 'logout' }
   end
 
   controller :categories do

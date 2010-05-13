@@ -24,6 +24,4 @@ Mail Setup: Copy 'dist/mail_setup.rb' to 'config/initializers/mail_setup.rb' and
 
 Finally, setup the environment with:
         bundle install
-        rake db:create
-        rake db:migrate
-        rake db:seed
+        rake db:setup

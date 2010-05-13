@@ -1,7 +1,6 @@
 <% content_for :head do -%>
   <%= javascript_include_tag :jquery_ui %>
   <%= javascript_include_tag :mark_it_up %>
-  <%= javascript_include_tag :multifile %>
   <%= stylesheet_link_tag :jquery_ui %>
   <%= stylesheet_link_tag :mark_it_up %>
   <script type="text/javascript">
@@ -10,6 +9,10 @@
       $("#content_content_it").markItUp(mySettings);
       $("#content_content_en").markItUp(mySettings);
       $("#iconselector").msDropDown();
+      $('#add-attach').click(function() {
+        rand_id = Math.random().toString().split('.')[1];
+        $('#add-attach').before('<input id="attachment_toadd_' + rand_id + '" name="content[attachments_toadd[file]]" type="file" />');
+      });
     });
   </script>
 <% end -%>
@@ -35,6 +38,7 @@
     <div class="field">
       <%= f.label :category %><br />
       <%= f.collection_select :category_id, @categories, :id, :label %>
+      <%= link_to t(:category_new), new_category_path, :remote => true %>
     </div>
     <div class="field">
       <%= f.label :url_alias %><br />
@@ -112,3 +116,10 @@
     <%= f.submit %>
   </div>
 <% end %>
+<div style="display: none">
+  <div id="add-category" title="<%= t(:category_new) %>">
+    <% @category = Category.new %>
+    <div id="category-errors"></div>
+    <%= render :partial => 'categories/form' %>
+  </div>
+</div>

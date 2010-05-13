@@ -2,7 +2,7 @@ class CategoriesController < ApplicationController
   before_filter :authenticate_author!, :except => :view
   before_filter :get_category, :only => [:edit, :update, :delete]
 
-  respond_to :html
+  respond_to :html, :js
 
   # GET /categories
   # GET /categories.xml
@@ -40,11 +40,14 @@ class CategoriesController < ApplicationController
   def create
     @category = Category.new(params[:category])
 
-    if @category.save
-      flash[:notice] = t(:category_created) 
-      redirect_to :action => :index
-    else
-      render :action => :new
+    respond_to do |format|
+      if @category.save
+        format.html { flash[:notice] = t(:category_created); redirect_to :action => :index; }
+        format.js { render 'created' }
+      else
+        format.html { render :action => :new }
+        format.js { render 'showerrors' }
+      end
     end
   end
 
