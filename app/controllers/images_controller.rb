@@ -6,7 +6,7 @@ class ImagesController < ApplicationController
   # GET /images
   # GET /images.xml
   def index
-    respond_with @images = Image.all
+    respond_with @images = Image.paginate(:per_page => 20, :page => params[:page])
   end
 
   def view

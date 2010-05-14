@@ -276,13 +276,46 @@ td {
   margin: 5px;
   padding: 5px;
   border: thin #ccc solid;
-  width: 133px;
-  height: 133px;
+  width: 128px;
+  height: 160px;
 }
 
-.gallery-item a.item-title {
+.gallery-item:hover {
+  background-color: #ccc;
+}
+
+.gallery-item .thumbnail {
+  height: 128px;
+  width: 128px;
+  background: white;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.gallery-item p.item-title a {
   text-transform: capitalize;
   font-weight: bold;
   text-decoration: none;
   display: inline;
+}
+
+#gallery .list {
+  min-height: 300px;
+}
+
+#gallery .nav {
+  padding-top: 20px;
+  clear: both;
+  text-align: center;
+}
+
+.gallery-item p {
+  padding-top: 1px;
+  padding-bottom: 1px;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.gallery-item p.item-title {
+  background-color: white;
 }

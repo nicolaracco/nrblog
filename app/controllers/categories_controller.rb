@@ -16,7 +16,7 @@ class CategoriesController < ApplicationController
     @category = Category.find :first, :conditions => ['url_alias = ?', params[:url_alias]]
     unless @category.nil?
       unless check_empty_category
-        @posts = Content.paginate :per_page => 5, :page => params[:page], :conditions => ['published = 1 AND category_id = ?', @category.id], :order => 'created_at DESC'
+        @posts = Content.paginate :page => params[:page], :conditions => ['published = 1 AND category_id = ?', @category.id], :order => 'created_at DESC'
       end
       render :show
     else

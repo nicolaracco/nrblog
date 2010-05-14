@@ -13,6 +13,9 @@ class Content < ActiveRecord::Base
 
   translatable_columns :title, :content, :summary
 
+  cattr_reader :per_page
+  @@per_page = 5
+
   def attachments_toadd=(attachment_attributes)
     attachment_attributes.each do |attributes|
       attachments.build({ 'file' => attributes[1]})

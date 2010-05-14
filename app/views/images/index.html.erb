@@ -1,14 +1,20 @@
 <% title t(:images) %>
 
 <div id="gallery">
-  <% @images.each do |image| %>
-    <div class="gallery-item">
-      <%= link_to image_tag(image.url(:small)), image %>
-      <%= link_to image.title, image, :class => 'item-title' %>
-      <p class="actions"><%= link_to t(:link_edit), edit_image_path(image) %> <%= link_to t(:link_destroy), image, :confirm => t(:confirm_sure), :method => :delete %></p>
-    </div>
-  <% end -%>
+  <div class="list">
+    <% @images.each do |image| %>
+      <div class="gallery-item">
+        <div class="thumbnail">
+          <%= link_to image_tag(image.url(:small)), image %>
+        </div>
+        <p class="item-title"><%= link_to image.title, image %></p>
+        <p class="actions"><%= link_to t(:link_edit), edit_image_path(image) %> <%= link_to t(:link_destroy), image, :confirm => t(:confirm_sure), :method => :delete %></p>
+      </div>
+    <% end -%>
+  </div>
+  <div class="nav">
+    <%= will_paginate @posts %>
+  </div>
 </div>
 <br />
-
 <%= link_to t(:image_new), new_image_path %>
