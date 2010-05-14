@@ -1,0 +1,4 @@
+$("#image-errors").empty();
+<% @image.errors.each do |field, msg| %>
+  $("#image-errors").append("<p class='alert'><%= t("attributes.#{field}") %>: <%= raw(msg) %></p>");
+<% end -%>

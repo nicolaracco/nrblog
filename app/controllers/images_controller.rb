@@ -28,13 +28,7 @@ class ImagesController < ApplicationController
   # GET /images/new
   # GET /images/new.xml
   def new
-    @image = Image.new
-    puts @image.content
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @image }
-    end
+    respond_with @image = Image.new
   end
 
   # GET /images/1/edit
@@ -50,10 +44,10 @@ class ImagesController < ApplicationController
     respond_to do |format|
       if @image.save
         format.html { redirect_to(@image, :notice => t(:image_created)) }
-        format.xml  { render :xml => @image, :status => :created, :location => @image }
+        format.js { render 'create' }
       else
         format.html { render :action => "new" }
-        format.xml  { render :xml => @image.errors, :status => :unprocessable_entity }
+        format.js { render 'showerrors' }
       end
     end
   end

@@ -43,7 +43,7 @@ class CategoriesController < ApplicationController
     respond_to do |format|
       if @category.save
         format.html { flash[:notice] = t(:category_created); redirect_to :action => :index; }
-        format.js { render 'created' }
+        format.js { render 'create' }
       else
         format.html { render :action => :new }
         format.js { render 'showerrors' }

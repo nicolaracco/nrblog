@@ -1,4 +1,4 @@
 $("#category-errors").empty();
 <% @category.errors.each do |field, msg| %>
-  $("#category-errors").append("<p class='alert'><%= t("attributes.#{field}") %>: <%= raw(msg) %>");
+  $("#category-errors").append("<p class='alert'><%= t("attributes.#{field}") %>: <%= raw(msg) %></p>");
 <% end -%>

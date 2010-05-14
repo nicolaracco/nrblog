@@ -123,4 +123,5 @@ en:
     published: "Published"
     has_comments: "Has comments"
     in_home: "In home"
-    icon: "Icon"
+    content_file_name: "Content"
+    content_content_type: "Content Type"

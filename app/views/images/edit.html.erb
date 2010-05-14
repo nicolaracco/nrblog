@@ -1,5 +1,15 @@
 <% title t(:image_edit) %>
 
+<% content_for :head do %>
+  <%= javascript_include_tag :jquery_ui %>
+  <%= stylesheet_link_tag :jquery_ui %>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $("#image-tabs").tabs();
+    });
+  </script>
+<% end -%>
+
 <%= render 'form' %>
 
 <%= link_to t(:link_show), @image %> |

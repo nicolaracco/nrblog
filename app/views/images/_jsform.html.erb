@@ -5,4 +5,9 @@
     <div class="nav">
     </div>
   </div>
+  <div id="add-image" title="<%= t(:image_new) %>">
+    <div id="image-errors"></div>
+    <% @image = Image.new %>
+    <%= render :partial => 'images/form' %>
+  </div>
 </div>

@@ -1,6 +1,8 @@
 $("#new_category").clearForm();
 $("#category-errors").empty();
 $("#add-category").dialog({
+  width: 360,
+  modal: true,
   buttons: {
     '<%= t(:category_new) %>': function() {
       $("#new_category").submit();
@@ -10,7 +12,7 @@ $("#add-category").dialog({
     }
   },
   close: function() { }
-  });
+});
 $("#new_category").attr("data-remote", "true");
 $("#category_submit").attr("style", "display: none");
 $("#category-tabs").tabs();

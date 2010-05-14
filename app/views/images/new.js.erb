@@ -1,0 +1,24 @@
+$("#new_image").clearForm();
+$("#image-errors").empty();
+$("#add-image").dialog({
+  modal: true,
+  width: 400,
+  buttons: {
+    '<%= t(:image_new) %>': function() {
+      $("#new_image").ajaxSubmit({ 
+        success: function(data) { 
+          eval($('<div/>').html(data).text()); 
+        }
+      });
+    },
+    '<%= t(:back) %>': function() {
+      $(this).dialog('close');
+    }
+  },
+  close: function() { 
+  }
+});
+$("#new_image").attr("action", "<%= images_path %>.js");
+$("#new_image").attr("data-remote", "true");
+$("#image_submit").attr("style", "display: none");
+$("#image-tabs").tabs();

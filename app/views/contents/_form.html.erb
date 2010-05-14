@@ -22,6 +22,8 @@
     }
 
     function setImage(id, name, url_thumb, url_small) {
+      if ($("#gallery").parents(".ui-dialog").is(":visible"))
+        $("#gallery").dialog('close');
       if (gallerySender.attr("rel") == "icon") {
         $("content_image_id").val(id);
         if ($("#icon-preview").length > 0) {

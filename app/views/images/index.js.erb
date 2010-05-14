@@ -11,6 +11,13 @@ $("#gallery .nav .pagination a.next_page").attr("data-remote", "true");
 
 if (!$("#gallery").parents(".ui-dialog").is(":visible"))
   $("#gallery").dialog({
+    modal: true,
     width: Math.min(820, 0.8 * $(window).width()),
-    height: Math.min(600, 0.8 * $(window).height())
+    height: Math.min(600, 0.8 * $(window).height()),
+    buttons: {
+      '<%= t(:image_new) %>': function() {
+        //$(this).dialog('close');
+        $.ajax({ type: 'GET', url: '<%= new_image_path %>', dataType: 'script' });
+      }
+    }
   });

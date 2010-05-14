@@ -124,4 +124,5 @@ it:
     published: "Pubblicato"
     has_comments: "Commenti abilitati"
     in_home: "Visibile in home"
-    icon: "Icona"
+    content_file_name: "Contenuto"
+    content_content_type: "Tipo Contenuto"
