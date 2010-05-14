@@ -1,2 +1,2 @@
-$("#content_category_id").append("<option value='<%= @category.id %>'><%= @category.label %></option>");
+addCategory('<%= @category.id %>', '<%= @category.label %>', '<%= show_category_path(@category.url_alias) %>');
 $("#add-category").dialog('close');

@@ -267,3 +267,22 @@ td {
   margin-top: 40px;
   text-align: center;
 }
+
+/* IMAGE GALLERY */
+
+.gallery-item {
+  float: left;
+  text-align: center;
+  margin: 5px;
+  padding: 5px;
+  border: thin #ccc solid;
+  width: 133px;
+  height: 133px;
+}
+
+.gallery-item a.item-title {
+  text-transform: capitalize;
+  font-weight: bold;
+  text-decoration: none;
+  display: inline;
+}

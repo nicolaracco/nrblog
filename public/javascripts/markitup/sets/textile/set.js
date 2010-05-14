@@ -11,7 +11,9 @@
 // Feel free to add more tags
 // -------------------------------------------------------------------
 mySettings = {
-	previewParserPath:	'', // path to your Textile parser
+	previewParserPath:	'/admin/contents/preview', // path to your Textile parser
+        previewTemplatePath:    '/_markitup_/templates/preview.html',
+        previewAutoRefresh:     true,
 	onShiftEnter:		{keepDefault:false, replaceWith:'\n\n'},
 	markupSet: [
 		{name:'Heading 1', key:'1', openWith:'h1(!(([![Class]!]))!). ', placeHolder:'Your title here...' },
@@ -33,7 +35,8 @@ mySettings = {
 		{name:'Link', openWith:'"', closeWith:'([![Title]!])":[![Link:!:http://]!]', placeHolder:'Your text to link here...' },
 		{separator:'---------------' },
 		{name:'Quotes', openWith:'bq(!(([![Class]!]))!). '},
-		{name:'Code', openWith:'@', closeWith:'@'},
+		//{name:'Code', openWith:'@', closeWith:'@'},
+                {name:'Code', openWith:'[code:LANG]', closeWith:'[/code]', placeHolder:'Your code here...' },
 		{separator:'---------------' },
 		{name:'Preview', call:'preview', className:'preview'}
 	]

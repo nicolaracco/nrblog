@@ -1,6 +1,6 @@
 <% title t(:categories) %>
 
-<table>
+<table id="categories-list">
   <tr>
     <th><%= t(:field_label) %></th>
     <th><%= t(:field_url) %></th>
@@ -11,7 +11,7 @@
 <% @categories.each do |category| %>
   <tr>
     <td><%= category.label %></td>
-    <td><%= link_to category.url, category.url %>/</td>
+    <td><%= link_to show_category_path(category.url_alias), show_category_path(category.url_alias) %>/</td>
     <td><%= link_to t(:link_edit), edit_category_path(category) %></td>
     <td><%= link_to t(:link_destroy), category, :confirm => t(:confirm_sure), :method => :delete %></td>
   </tr>

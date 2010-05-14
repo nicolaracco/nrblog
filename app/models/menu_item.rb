@@ -1,7 +1,7 @@
 class MenuItem < ActiveRecord::Base
   translatable_columns :title
   validates_presence_of :title_it, :title_en, :menu_type, :url
-  before_validate :fill_empty_i18n, :strip_fields
+  before_validation :fill_empty_i18n, :strip_fields
 
   private
   def strip_fields

@@ -12,6 +12,7 @@ Nrblog::Application.routes.draw do |map|
     resources :contents, :except => :show do
       delete '/:aid' => :destroy_attachment, :as => :destroy_attachment, :on => :member
       get '/add_attachment' => :add_attachment, :as => :add_attachment, :on => :collection
+      post '/preview' => :preview_content, :as => :preview_content, :on => :collection
     end
   end
 

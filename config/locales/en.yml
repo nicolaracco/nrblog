@@ -63,6 +63,7 @@ en:
   menu_item_updated: "Menu item was successfully updated"
   back: "Back"
   search: "Search"
+  browse: "Browse ..."
   logout: "Logout"
   attachments: "Attachments"
   attachment_add: "Add attachment"

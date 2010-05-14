@@ -1,6 +1,6 @@
 class CategoriesController < ApplicationController
   before_filter :authenticate_author!, :except => :view
-  before_filter :get_category, :only => [:edit, :update, :delete]
+  before_filter :get_category, :only => [:edit, :update, :destroy]
 
   respond_to :html, :js
 

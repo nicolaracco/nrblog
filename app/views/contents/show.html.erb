@@ -18,7 +18,7 @@
   <% unless @content.summary.nil? || @content.summary.empty? %>
     <div class="summary"><%= raw @content.summary %></div>
   <% end -%>
-  <div class="content"><%= raw content_to_html(@content.content) %></div>
+  <div class="content"><%= raw TextileUtil.to_html(@content.content) %></div>
   <% unless @content.attachments.empty? %>
     <div class="attachments">
       <ul>

@@ -1,25 +1,14 @@
 <% title t(:images) %>
 
-<table>
-  <tr>
-    <th><%= t(:field_title) %></th>
-    <th><%= t(:field_url) %></th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @images.each do |image| %>
-  <tr>
-    <td><%= image.title %></td>
-    <td><%= link_to image.url, image.url %></td>
-    <td><%= link_to t(:link_show), image %></td>
-    <td><%= link_to t(:link_edit), edit_image_path(image) %></td>
-    <td><%= link_to t(:link_destroy), image, :confirm => t(:confirm_sure), :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
-
+<div id="gallery">
+  <% @images.each do |image| %>
+    <div class="gallery-item">
+      <%= link_to image_tag(image.url(:small)), image %>
+      <%= link_to image.title, image, :class => 'item-title' %>
+      <p class="actions"><%= link_to t(:link_edit), edit_image_path(image) %> <%= link_to t(:link_destroy), image, :confirm => t(:confirm_sure), :method => :delete %></p>
+    </div>
+  <% end -%>
+</div>
 <br />
 
 <%= link_to t(:image_new), new_image_path %>

@@ -1,15 +1,12 @@
 class ImagesController < ApplicationController
   before_filter :authenticate_author!, :except => :view
 
+  respond_to :html, :js
+
   # GET /images
   # GET /images.xml
   def index
-    @images = Image.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @images }
-    end
+    respond_with @images = Image.all
   end
 
   def view

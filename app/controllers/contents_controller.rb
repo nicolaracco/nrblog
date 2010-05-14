@@ -1,4 +1,7 @@
 class ContentsController < ApplicationController
+  helper :contents
+  helper_method :content_to_html
+
   before_filter :authenticate_author!, :except => :show
   before_filter :get_content_by_id, :only => [:update, :destroy, :edit, :destroy_attachment]
 
@@ -135,6 +138,10 @@ class ContentsController < ApplicationController
       end
     end
     error 404
+  end
+
+  def preview_content
+    render :text => TextileUtil.to_html(params[:data])
   end
 
   private

@@ -4,16 +4,34 @@
   <%= stylesheet_link_tag :jquery_ui %>
   <%= stylesheet_link_tag :mark_it_up %>
   <script type="text/javascript">
+    var gallerySender;
+
     $(document).ready(function() {
       $("#tabs").tabs();
       $("#content_content_it").markItUp(mySettings);
       $("#content_content_en").markItUp(mySettings);
-      $("#iconselector").msDropDown();
       $('#add-attach').click(function() {
         rand_id = Math.random().toString().split('.')[1];
         $('#add-attach').before('<input id="attachment_toadd_' + rand_id + '" name="content[attachments_toadd[file]]" type="file" />');
       });
+      $("#icon-browse-link").click(function() { gallerySender = $(this); });
     });
+
+    function addCategory(id, name, alias) {
+      $("#content_category_id").append("<option value='" + id + "'>" + name + "</option>");
+    }
+
+    function setImage(id, name, url_thumb, url_small) {
+      if (gallerySender.attr("rel") == "icon") {
+        $("content_image_id").val(id);
+        if ($("#icon-preview").length > 0) {
+          $("#icon-preview").attr("src", url_thumb);
+          $("#icon-preview").attr("alt", name);
+        } else {
+          $("#content_image_id").after("<img id='icon-preview' src='" + url_thumb + "' alt='" + name + "' />");
+        }
+      }
+    }
   </script>
 <% end -%>
 
@@ -60,8 +78,9 @@
     </div>
     <div class="field" style="clear: both;">
       <%= f.label :image %><br/>
-      <%= f.collection_select :image_id, @images, :id, :url_alias %>
-      <%= image_tag(@content.image.url :thumb) unless @content.image.nil? %>
+      <%= f.hidden_field :image_id %>
+      <%= image_tag(@content.image.url :thumb, :id => 'icon-preview') unless @content.image.nil? %>
+      <%= link_to t(:browse), :images, :remote => true, :id => "icon-browse-link", :rel => 'icon' %>
     </div>
     <div class="field">
       <%= f.label :tags %><br />
@@ -116,10 +135,5 @@
     <%= f.submit %>
   </div>
 <% end %>
-<div style="display: none">
-  <div id="add-category" title="<%= t(:category_new) %>">
-    <% @category = Category.new %>
-    <div id="category-errors"></div>
-    <%= render :partial => 'categories/form' %>
-  </div>
-</div>
+<%= render :partial => 'categories/jsform', :locals => { :category => Category.new } %>
+<%= render :partial => 'images/jsform' %>

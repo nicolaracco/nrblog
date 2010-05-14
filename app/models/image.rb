@@ -2,7 +2,7 @@ class Image < ActiveRecord::Base
   include Paperclip
 
   translatable_columns :title
-  has_attached_file :content, :styles => { :thumb => ['64x64>'] }
+  has_attached_file :content, :styles => { :small => ['128x128>'], :thumb => ['64x64>'] }
 
   validates_presence_of :title_en, :title_it, :url_alias
   validates_attachment_presence :content
