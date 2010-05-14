@@ -14,25 +14,26 @@
         rand_id = Math.random().toString().split('.')[1];
         $('#add-attach').before('<input id="attachment_toadd_' + rand_id + '" name="content[attachments_toadd[file]]" type="file" />');
       });
-      $("#icon-browse-link").click(function() { gallerySender = $(this); });
+      $(".gallery-browse").click(function() { gallerySender = $(this).attr("rel"); });
     });
 
     function addCategory(id, name, alias) {
       $("#content_category_id").append("<option value='" + id + "'>" + name + "</option>");
     }
 
-    function setImage(id, name, url_thumb, url_small) {
+    function setImage(id, name, url_thumb, url_small, url) {
       if ($("#gallery").parents(".ui-dialog").is(":visible"))
         $("#gallery").dialog('close');
-      if (gallerySender.attr("rel") == "icon") {
-        $("content_image_id").val(id);
+      if (gallerySender == "icon") {
+        $("#content_image_id").val(id);
         if ($("#icon-preview").length > 0) {
           $("#icon-preview").attr("src", url_thumb);
           $("#icon-preview").attr("alt", name);
         } else {
           $("#content_image_id").after("<img id='icon-preview' src='" + url_thumb + "' alt='" + name + "' />");
         }
-      }
+      } else if (gallerySender == "markitup")
+        $.markItUp({ replaceWith: '!' + url + '(' + name + ')!'});
     }
   </script>
 <% end -%>
@@ -82,7 +83,7 @@
       <%= f.label :image %><br/>
       <%= f.hidden_field :image_id %>
       <%= image_tag(@content.image.url :thumb, :id => 'icon-preview') unless @content.image.nil? %>
-      <%= link_to t(:browse), :images, :remote => true, :id => "icon-browse-link", :rel => 'icon' %>
+      <%= link_to t(:browse), :images, :remote => true, :id => "icon-browse-link", :class => "gallery-browse", :rel => 'icon' %>
     </div>
     <div class="field">
       <%= f.label :tags %><br />
@@ -107,6 +108,7 @@
       <div class="field">
         <%= f.label :content_it %><br />
         <%= f.text_area :content_it %>
+        <%= link_to t(:image_add), :images, :remote => true, :id => "content_it-browse-link", :class => "gallery-browse", :rel => 'content_it' %>
       </div>
     </div>
     <div id="en">
@@ -121,6 +123,7 @@
       <div class="field">
         <%= f.label :content_en %><br />
         <%= f.text_area :content_en %>
+        <%= link_to t(:image_add), :images, :remote => true, :id => "content_en-browse-link", :class => "gallery-browse", :rel => 'content_en' %>
       </div>
     </div>
   </div>

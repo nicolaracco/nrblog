@@ -1,7 +1,7 @@
 $("#gallery .list").empty();
 <% @images.each do |image| %>
   $("#gallery .list").append('<div id="gallery-item_<%= image.id %>" class="gallery-item"><a href=""><%= image_tag(image.url(:small)) %></a><a href="" class="item-title"><%= image.title %></a></div>');
-  $("#gallery-item_<%= image.id %> a").click(function() { setImage('<%= image.id %>', '<%= image.title %>', '<%= image.url(:thumb) %>', '<%= image.url(:small) %>'); $("#gallery").dialog('close'); return false; });
+  $("#gallery-item_<%= image.id %> a").click(function() { setImage('<%= image.id %>', '<%= image.title %>', '<%= image.url(:thumb) %>', '<%= image.url(:small) %>', '<%= image.url %>'); $("#gallery").dialog('close'); return false; });
 <% end -%>
 
 $("#gallery .nav").empty();
@@ -16,7 +16,6 @@ if (!$("#gallery").parents(".ui-dialog").is(":visible"))
     height: Math.min(600, 0.8 * $(window).height()),
     buttons: {
       '<%= t(:image_new) %>': function() {
-        //$(this).dialog('close');
         $.ajax({ type: 'GET', url: '<%= new_image_path %>', dataType: 'script' });
       }
     }
