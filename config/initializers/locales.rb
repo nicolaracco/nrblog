@@ -1,4 +1,4 @@
-LOCALES_DIRECTORY = "#{RAILS_ROOT}/config/locales/"
+LOCALES_DIRECTORY = "#{Rails.root}/config/locales/"
 AVAILABLE_LOCALES =
   Dir.new(LOCALES_DIRECTORY).entries.collect do |x|
     x =~ /\.yml/ ? x.sub(/\.yml/,'') : nil
