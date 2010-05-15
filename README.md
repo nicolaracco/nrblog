@@ -10,6 +10,20 @@ This blog is, at the moment, a work made in the last weekend. In fact I tried to
 
 #To install
 
+##Fetch a copy
+        git clone git://github.com/nicolaracco/nrblog.git ./nrblog
+        cd nrblog
+        git submodule init # => These two commands download for you the latest JQuery-UJS version available
+        git submodule update 
+
+##Plugins and libraries
+You need to have installed only the bundler gem. If you don't have it:
+        gem install bundler
+Then, update your bundle:
+        bundle install
+
+##Configuration
+
 Admin user:
 Copy 'dist/seeds.rb' to 'db/seeds.rb' and edit it to change the author fields. So, for example, the line:
         Author.create(:username => 'admin', :email => 'admin@mysite.com', :password => 'adminPass').save
