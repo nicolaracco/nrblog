@@ -55,7 +55,7 @@ class ContentsController < ApplicationController
       if @content.save
         format.html do
           flash[:notice] = t(:content_created) 
-          show_content_path(@content.category.url_alias, @content.url_alias)
+          redirect_to show_content_path(@content.category.url_alias, @content.url_alias)
         end
         format.xml  { render :xml => @content, :status => :created, :location => @content }
       else

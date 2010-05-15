@@ -82,7 +82,7 @@
     <div class="field" style="clear: both;">
       <%= f.label :image %><br/>
       <%= f.hidden_field :image_id %>
-      <%= image_tag(@content.image.url :thumb, :id => 'icon-preview') unless @content.image.nil? %>
+      <%= image_tag(@content.image.url(:thumb), :id => 'icon-preview') unless @content.image.nil? %>
       <%= link_to t(:browse), :images, :remote => true, :id => "icon-browse-link", :class => "gallery-browse", :rel => 'icon' %>
     </div>
     <div class="field">
