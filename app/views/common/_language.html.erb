@@ -1,0 +1,7 @@
+<ul id="language-selector" class="links">
+  <% AVAILABLE_LOCALES.each do |lcode, lname| %>
+    <li class="language <%= lcode -%><%= ' active' if lcode == I18n.locale.to_s -%>">
+      <a href="<%= localized_uri lcode -%>"><%= lname -%></a>
+    </li>
+  <% end -%>
+</ul>

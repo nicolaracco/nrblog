@@ -8,92 +8,78 @@
   <%= yield :head %>
 </head>
 <body>
-  <div id="header">
-    <div id="logo-title">
-      <%= link_to image_tag('/_images_/logo.png', :class => 'top'), :root %>
-      <%= link_to image_tag('/_images_/logo-title.png', :alt => 'Logo'), :root %>
-    </div>
-    <div class="elements">
-      <div id="hetop" class="top">&nbsp;
-        <p id="site-slogan"><%= t :slogan %></p>
-      </div>
-      <div id="hebottom" class="bottom">
-        <ul id="top-horiz-menu" class="links">
-          <% enabled_top_horizontal_menu_items.each do |menu| -%>
-            <li class="menuitem"><%= link_to menu.title, menu.url %></li>
-          <% end -%>
-        </ul>
-      </div>
-    </div>
-    <div class="elements right">
-      <ul id="language-selector" class="links">
-        <% AVAILABLE_LOCALES.each do |lcode, lname| -%>
-          <li class="language <%= lcode -%><%= ' active' if lcode == I18n.locale.to_s -%>">
-            <a href="<%= localized_uri lcode -%>"><%= lname -%></a>
-          </li>
-        <% end -%>
-      </ul>
-      <p id="followme" class="bottom">
-        <a class="follow" href="http://www.facebook.com/nicola.racco">
-          <img alt="Facebook" src="/_images_/follow_icons/facebook.ico" />
-        </a>
-        <a class="follow" href="/rss.xml">
-          <img alt="RSS" src="/_images_/follow_icons/feed.ico" />
-        </a>
-        <a class="follow" href="http://www.linkedin.com/in/nicolaracco">
-          <img alt="LinkedIn" src="/_images_/follow_icons/linkedin.ico" />
-        </a>
-        <a class="follow" href="http://twitter.com/nicolaracco">
-          <img alt="Twit me" src="/_images_/follow_icons/twitter.ico" />
-        </a>
-        <a class="follow" href="http://github.com/nicolaracco">
-          <img alt="My Repositories" src="/_images_/follow_icons/github.png" />
-        </a>
-        <a class="follow" href="http://steamcommunity.com/id/nicolaracco">
-          <img alt="Steam" src="/_images_/follow_icons/steam.png" />
-        </a>
-      </p>
-    </div>
-  </div>
   <div id="page">
-    <div id="sidebar-left">
-      <% available_left_side_blocks.each do |block| %>
-        <%= render :partial => 'blocks/show', :locals => {:block => block} %>
+    <div id="header">
+      <div class="inner clear-block">
+        <div id="logo-title" class="fleft">
+          <%= link_to image_tag('/_images_/logo.png', :class => 'fnone'), :root %>
+          <%= link_to image_tag('/_images_/logo-title.png', :alt => 'Logo'), :root %>
+        </div>
+        <div class="elements">
+          <div class="top">
+            <div class="fright">
+              <%= render :partial => 'common/language' %>
+            </div>
+            <div class="branding">
+              <p id="site-slogan"><%= t :slogan %></p>
+            </div>
+          </div>
+          <div class="bottom">
+            <div id="followme" class="fright">
+              <%= render :partial => 'common/followme' %>
+            </div>
+            <ul id="top-horiz-menu" class="links">
+              <% enabled_top_horizontal_menu_items.each do |menu| %>
+                <li class="menuitem"><%= link_to menu.title, menu.url %></li>
+              <% end -%>
+            </ul>
+          </div>
+        </div>
+      </div>
+  </div>
+  <div id="main">
+    <div class="inner">
+      <div id="content" class="fleft">
+        <div id="content-inner">
+          <div id="content-area">
+            <% flash.each do |name, msg| -%>
+              <%= content_tag :p, raw(msg), :class => name %>
+            <% end -%>
+  
+            <% if show_title? -%>
+              <h1><%=h yield :title %></h1>
+            <% end -%>
+  
+            <%= yield %>
+          </div>
+        </div>
+      </div>
+      <div id="sidebar-left" class="fleft">
+        <% available_left_side_blocks.each do |block| %>
+          <%= render :partial => 'blocks/show', :locals => {:block => block} %>
+        <% end -%>
+      </div>
+      <% if author_signed_in? %>
+        <div id="sidebar-right" class="fright">
+          <h3 class="title"><%= current_author %></h3>
+          <ul class="menu">
+            <li class="menuitem"><%= link_to t(:content_new), :new_content %></li>
+            <li class="menuitem">
+              <%= t(:section_admin) %>
+              <ul class="submenu">
+                <li class="menuitem"><%= link_to t(:content_mgr), :contents %></li>
+                <li class="menuitem"><%= link_to t(:category_mgr), :categories %></li>
+                <li class="menuitem"><%= link_to t(:menuitem_mgr), :menu_items %></li>
+                <li class="menuitem"><%= link_to t(:image_mgr), :images %></li>
+                <li class="menuitem"><%= link_to t(:block_mgr), :blocks %></li>
+                <li class="menuitem"><%= link_to t(:tag_mgr), :tags %></li>
+              </ul>
+            </li>
+            <li class="menu"><%= link_to t(:logout), :destroy_author_session %></li>
+          </ul>
+        </div>
       <% end -%>
     </div>
-    <div id="content">
-      <div id="content-inner">
-        <% flash.each do |name, msg| -%>
-          <%= content_tag :p, raw(msg), :class => name %>
-        <% end -%>
-
-        <% if show_title? -%>
-          <h1><%=h yield :title %></h1>
-        <% end -%>
-
-        <%= yield %>
-      </div>
-    </div>
-    <% if author_signed_in? %>
-      <div id="sidebar-right">
-        <h3 class="title"><%= current_author %></h3>
-        <ul class="menu">
-          <li class="menuitem"><%= link_to t(:content_new), :new_content %></li>
-          <li class="menuitem">
-            <%= t(:section_admin) %>
-            <ul class="submenu">
-              <li class="menuitem"><%= link_to t(:content_mgr), :contents %></li>
-              <li class="menuitem"><%= link_to t(:category_mgr), :categories %></li>
-              <li class="menuitem"><%= link_to t(:menuitem_mgr), :menu_items %></li>
-              <li class="menuitem"><%= link_to t(:image_mgr), :images %></li>
-              <li class="menuitem"><%= link_to t(:block_mgr), :blocks %></li>
-              <li class="menuitem"><%= link_to t(:tag_mgr), :tags %></li>
-            </ul>
-          </li>
-          <li class="menu"><%= link_to t(:logout), :destroy_author_session %></li>
-        </ul>
-      </div>
-    <% end -%>
   </div>
   <div id="footer">
     <div id="footer-inner">
@@ -102,5 +88,6 @@
       </a>
     </div>
   </div>
+</div>
 </body>
 </html>
