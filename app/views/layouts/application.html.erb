@@ -58,6 +58,11 @@
         <% available_left_side_blocks.each do |block| %>
           <%= render :partial => 'blocks/show', :locals => {:block => block} %>
         <% end -%>
+        <div id="tag-cloud">
+          <% tag_cloud @tags, %w(tc1 tc2 tc3 tc4 tc5) do |label, css_class| %>
+            <%= link_to label, show_tag_path(label), :class => css_class %>
+          <% end -%>
+        </div>
       </div>
       <% if author_signed_in? %>
         <div id="sidebar-right" class="fright">

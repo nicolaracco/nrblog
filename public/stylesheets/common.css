@@ -137,3 +137,21 @@ td {
 }
 
 .status-widget { margin: 15px 0; }
+
+/* TAGS */
+
+#tag-cloud { margin-top: 40px; }
+
+#tag-cloud a { text-decoration: none; }
+
+.tc1 { font-size: 22px; }
+
+.tc1, .tc2 { font-weight: bold; }
+
+.tc2 { font-size: 20px; }
+
+.tc3 { font-size: 18px; }
+
+.tc4 { font-size: 16px; }
+
+.tc5 { font-size: 14px; }

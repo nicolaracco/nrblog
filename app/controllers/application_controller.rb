@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   helper :all
   protect_from_forgery
   layout 'application'
-  before_filter :set_locale
+  before_filter :set_locale, :get_tags
 
   def set_locale
     I18n.locale = extract_locale_from_tld
@@ -22,5 +22,9 @@ class ApplicationController < ActionController::Base
     parsed_locale = request.host.split('.').last
     parsed_locale = 'en' if parsed_locale == 'com'
     (available_locales.include? parsed_locale) ? parsed_locale : nil
+  end
+
+  def get_tags
+    @tags = Tag.find(:all, :limit => 20, :order => "label_#{I18n.locale} desc")
   end
 end
