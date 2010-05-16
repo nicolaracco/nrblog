@@ -1,13 +1,22 @@
-.right {
-  float: right;
-  margin-right: 1em;
-}
+.post_item { padding: 0 0 60px; }
 
-.bio img.thumb {
-  width: 64px;
-  height: 69px;
-}
+.comment_item { padding: 0 0 20px; }
 
-.bio {
+.comment-list { padding: 20px 0 0; }
+
+.submitted {
   font-size: x-small;
+  color: #777;
+}
+
+.taglist ul li a { font-style: italic; font-weight: normal; }
+
+.taglist { font-size: x-small; }
+
+#add-comment { padding: 0.4em; }
+
+#add-comment h3 {
+  margin: 0;
+  padding: 0.4em;
+  text-align: center;
 }

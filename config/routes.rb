@@ -27,10 +27,9 @@ Nrblog::Application.routes.draw do |map|
     end
   end
   controller :contents do
-    scope '/content' do
-      get '/:category_alias/:url_alias' => :show, :as => :show_content
-      post '/:category_alias/:url_alias/comments/add' => :add_comment, :as => :content_add_comment
-      delete '/:category_alias/:url_alias/comments/:id' => :destroy_comment, :as => :content_destroy_comment
+    scope '/content/:category_alias/:url_alias' do
+      get '/' => :show, :as => :show_content
+      resources :comments
     end
   end
   controller :images do
@@ -40,9 +39,9 @@ Nrblog::Application.routes.draw do |map|
   end
 
   controller :contact do
-    scope '/contact' do
-      get '/:author' => :index
-      post '/:author' => :send_mail
+    scope '/contact/:author' do
+      get '/' => :index
+      post '/' => :send_mail
     end
   end
 

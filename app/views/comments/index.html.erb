@@ -1,0 +1,13 @@
+<% title "#{@content.title} - #{t(:comment_mgr)}" %>
+
+<div class="comment-list">
+  <% if @comments.empty? %>
+    <p><%= t :comments_empty %></p>
+  <% else %>
+    <% @comments.each do |comment| %>
+      <%= render :partial => 'item', :locals => { :comment => comment } %>
+    <% end -%>
+    <%= will_paginate @comments %>
+  <% end -%>
+</div>
+<%= link_to t(:comment_add), :new_comment %>

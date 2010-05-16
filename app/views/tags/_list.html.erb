@@ -1,9 +1,9 @@
 <% unless tags.empty? %>
-  <div class="taglist">
+  <div class="taglist clear-inline">
     <%= t :field_in_tags %>
-    <ul class="links inline">
+    <ul class="links clear-inline">
       <% tags.each do |t| %>
-        <li class="tag"><%= link_to t.label, show_tag_path(t.url_alias) %></li>
+        <li class="tag"><%= link_to t.label, show_tag_path(t.url_alias), :rel => 'tag' %></li>
       <% end -%>
     </ul>
   </div>

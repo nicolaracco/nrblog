@@ -5,18 +5,51 @@
   <h1><%= image_tag(@content.image.url(:thumb), :id => 'icontitle', :class => 'contenticon') %> <%= @content.title %></h1>
 <% end -%>
 
+<% content_for :head do %>
+  <%= javascript_include_tag :jquery_ui %>
+  <%= stylesheet_link_tag :jquery_ui %>
+  <% if @content.has_comments %>
+    <script type="text/javascript">
+      $(document).ready(function() {
+        <% if @content.comments.empty? %>
+          $("#comment-list-link").hide();
+        <% else %>
+          $("#comment-add-link").hide();
+          $("#comment-list-link").click(function() { $("#comment-list-link").hide(); $("#comment-add-link").show(); });
+        <% end -%>
+        $("#comments").attr("style", "");
+        $("#add-comment").attr("style", "");
+        $("#comments").hide();
+        $("#add-comment").hide();
+        $("#comment-add-link").click(function() {
+          $("#comment-add-link").hide();
+          $("#new_comment").clearForm();
+          $("#add-comment").show('blind', {}, 500);
+          return false;
+        });
+
+        $("#new_comment").attr("data-remote", "true");
+        $("#comment_submit").click(function() {
+          $("#comment-add-link").show('blind', {}, 500);
+          $("#add-comment").hide();
+        });
+      });
+    </script>
+  <% end -%>
+<% end -%>
+
 <div class="post_show <%='unpublished' if !@content.published -%>">
   <div class="meta">
-    <p class="submitted">
+    <div class="submitted">
       <%= t :field_created_at %> <%= l @content.created_at, :format => :medium %>
       <% unless @content.created_at == @content.updated_at -%>
         - <%= t :field_updated_at %> <%= l @content.updated_at, :format => :medium %>
       <% end -%>
-    </p>
+    </div>
     <%= render :partial => 'tags/list', :locals => { :tags => @content.tags } %>
   </div>
   <% unless @content.summary.nil? || @content.summary.empty? %>
-    <div class="summary"><%= raw @content.summary %></div>
+    <div class="summary"><p><%= raw @content.summary %></p></div>
   <% end -%>
   <div class="content"><%= raw TextileUtil.to_html(@content.content) %></div>
   <% unless @content.attachments.empty? %>
@@ -29,40 +62,23 @@
     </div>
   <% end -%>
   <% if @content.has_comments %>
-    <div class="comments">
-      <h3><%= t(:comment_mgr) %></h3>
-      <div class="comments-view">
-        <% @content.comments.each do |comment| %>
-          <div class="comment-item">
-            <h4 class="comment-owner">
-              <% if author_signed_in? %>
-                <%= link_to comment.user_name, 'mailto:' + comment.user_email %>
-                (<%= link_to t(:link_destroy), content_destroy_comment_path(@content.category.url_alias, @content.url_alias, comment.id), :method => :delete %>)
-              <% else %>
-                <%= comment.user_name %>
-              <% end -%>
-            </h4>
-            <p class="comment-when"><%= l comment.created_at, :format => :medium %></p>
-            <p class="comment-text"><%= comment.body %></p>
-          </div>
-        <% end -%>
+    <div id="add-comment" class="ui-widget-content ui-corner-all" style="display: none">
+      <h3 class="ui-widget-header ui-corner-all"><%= t :comment_add %></h3>
+      <%= render :partial => 'comments/form' %>
+    </div>
+    <%= link_to t(:comment_add), new_comment_path(@content.category.url_alias, @content.url_alias), :id => 'comment-add-link', :remote => true %>
+    <%= link_to "#{@content.comments.length} #{t :comment_mgr}", :comments, :id => 'comment-list-link', :remote => true %>
+    <div id="comments" style="display: none">
+      <h3><%= t :comment_mgr %></h3>
+      <div id="comment-list">
       </div>
-      <%= form_for :comment, Comment.new, :url => :content_add_comment do |f| %>
-        <fieldset>
-          <legend><%= t :comment_add %></legend>
-          <p><%= f.label :user_name %><br/>
-          <%= f.text_field :user_name %></p>
-          <p><%= f.label :user_email %><br/>
-          <%= f.text_field :user_email %></p>
-          <p><%= f.label :body %><br/>
-          <%= f.text_area :body, :cols => 60, :rows => 3 %></p>
-          <%= f.submit %>
-      <% end -%>
     </div>
   <% end -%>
 </div>
 
 <% if author_signed_in? %>
-  <%= link_to t(:link_edit), edit_content_path(@content) %> 
-  <%= link_to t(:back), contents_path %>
+  <div id="content-actions">
+    <%= link_to t(:link_edit), edit_content_path(@content) %> 
+    <%= link_to t(:back), contents_path %>
+  </div>
 <% end -%>

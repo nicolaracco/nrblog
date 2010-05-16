@@ -1,4 +1,4 @@
-<% content_for :head do -%>
+<% content_for :head do %>
   <%= javascript_include_tag :jquery_ui %>
   <%= javascript_include_tag :mark_it_up %>
   <%= stylesheet_link_tag :jquery_ui %>
@@ -15,6 +15,7 @@
         $('#add-attach').before('<input id="attachment_toadd_' + rand_id + '" name="content[attachments_toadd[file]]" type="file" />');
       });
       $(".gallery-browse").click(function() { gallerySender = $(this).attr("rel"); });
+      $("#icon-remove-link").click(function() { $("#content_image_id").val(""); $("#icon-preview").remove(); $("#icon-remove-link").attr("style", "display: none"); return false; });
     });
 
     function addCategory(id, name, alias) {
@@ -26,6 +27,7 @@
         $("#gallery").dialog('close');
       if (gallerySender == "icon") {
         $("#content_image_id").val(id);
+        $("#icon-remove-link").attr("style", "");
         if ($("#icon-preview").length > 0) {
           $("#icon-preview").attr("src", url_thumb);
           $("#icon-preview").attr("alt", name);
@@ -54,7 +56,7 @@
     <legend><%= t(:section_general) %></legend>
     <div class="field">
       <%= f.label :author %><br />
-      <%= @content.author.nil? ? current_author : @content.author %>
+      <%= f.text_field :author, :disabled => 'true' %>
     </div>
     <div class="field">
       <%= f.label :category %><br />
@@ -84,6 +86,7 @@
       <%= f.hidden_field :image_id %>
       <%= image_tag(@content.image.url(:thumb), :id => 'icon-preview') unless @content.image.nil? %>
       <%= link_to t(:browse), :images, :remote => true, :id => "icon-browse-link", :class => "gallery-browse", :rel => 'icon' %>
+      <%= link_to t(:remove), '#', :id => "icon-remove-link", :style => (@content.image.nil? ? "display: none;" : "") %>
     </div>
     <div class="field">
       <%= f.label :tags %><br />

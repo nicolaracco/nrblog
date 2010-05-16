@@ -35,6 +35,7 @@ it:
   category_empty: "Questa categoria &egrave; vuota"
   tag_empty: "Questo tag &egrave; vuoto"
 
+  comment_add: "Aggiungi un commento"
   tag_new: "Nuovo tag"
   block_new: "Nuovo blocco"
   image_new: "Nuova immagine"
@@ -55,6 +56,7 @@ it:
   category_created: "Categoria creata."
   content_created: "Contenuto creato."
   menu_item_created: "Voce di men&ugrave; creata."
+  comment_created: "Commento aggiunto"
 
   tag_updated: "Tag aggiornato."
   block_updated: "Blocco aggiornato."
@@ -65,6 +67,7 @@ it:
   back: "Indietro"
   search: "Cerca"
   browse: "Sfoglia ..."
+  remove: "Rimuovi"
   logout: "Logout"
   attachments: "Allegati"
   attachment_add: "Aggiungi allegato"

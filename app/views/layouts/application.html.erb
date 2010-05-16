@@ -7,7 +7,7 @@
   <%= csrf_meta_tag %>
   <%= yield :head %>
 </head>
-<body>
+<body class="left-sidebar <%= author_signed_in? ? 'right-sidebar' : '' %>">
   <div id="page">
     <div id="header">
       <div class="inner clear-block">

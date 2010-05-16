@@ -3,7 +3,7 @@
 if ActionView::Helpers::AssetTagHelper.const_defined?(:JAVASCRIPT_DEFAULT_SOURCES)
   ActionView::Helpers::AssetTagHelper.send(:remove_const, "JAVASCRIPT_DEFAULT_SOURCES")
 end
-ActionView::Helpers::AssetTagHelper::JAVASCRIPT_DEFAULT_SOURCES = ['jquery-1.4.2', 'jquery.efn', 'jquery-ujs/src/rails', 'jquery.form-2.43.js']
+ActionView::Helpers::AssetTagHelper::JAVASCRIPT_DEFAULT_SOURCES = ['jquery-1.4.2.min', 'jquery.efn', 'jquery-ujs/src/rails', 'jquery.form-2.43.js']
 ActionView::Helpers::AssetTagHelper::reset_javascript_include_default
 
 ActionView::Helpers::AssetTagHelper.register_javascript_expansion :jquery_ui => ['jquery-ui-1.8.1.custom.min.js']

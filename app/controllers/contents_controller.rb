@@ -4,6 +4,7 @@ class ContentsController < ApplicationController
 
   before_filter :authenticate_author!, :except => :show
   before_filter :get_content_by_id, :only => [:update, :destroy, :edit, :destroy_attachment]
+  before_filter :get_content_by_alias, :only => [:show]
 
   respond_to :html, :xml, :js
 
@@ -16,23 +17,16 @@ class ContentsController < ApplicationController
   # GET /contents/1
   # GET /contents/1.xml
   def show
-    category = Category.find :first, :conditions => ['url_alias = ?', params[:category_alias]]
-    unless category.nil?
-      @content = Content.find :first, :conditions => ['url_alias = ? AND category_id = ?', params[:url_alias], category.id]
-      unless @content.nil?
-        respond_with @content
-        return
-      end
-    end
-    error 404
+    @comment = Comment.new
+    respond_with @content
   end
 
   # GET /contents/new
   # GET /contents/new.xml
   def new
     @content = Content.new
+    @content.author = current_author
     @categories = Category.all
-    @images = Image.all
   end
 
   def new_attachment
@@ -42,7 +36,6 @@ class ContentsController < ApplicationController
   # GET /contents/1/edit
   def edit
     @categories = Category.all
-    @images = Image.all
   end
 
   # POST /contents
@@ -106,40 +99,6 @@ class ContentsController < ApplicationController
     end
   end
 
-  def add_comment
-    category = Category.find :first, :conditions => ['url_alias = ?', params[:category_alias]]
-    unless category.nil?
-      @content = Content.find :first, :conditions => ['url_alias = ? AND category_id = ?', params[:url_alias], category.id]
-      unless @content.nil?
-        @comment = Comment.new params[:comment]
-        @comment.content_id = @content.id
-        if @comment.save
-          Mailer.comment_notify(@comment, @content.author.email).deliver
-          flash[:notice] = t(:comment_created)
-        else
-          flash[:alert] = t(:comment_errors)
-        end
-        redirect_to show_content_path(@content.category.url_alias, @content.url_alias)
-        return
-      end
-    end
-    error 404
-  end
-
-  def destroy_comment
-    category = Category.find :first, :conditions => ['url_alias = ?', params[:category_alias]]
-    unless category.nil?
-      @content = Content.find :first, :conditions => ['url_alias = ? AND category_id = ?', params[:url_alias], category.id]
-      unless @content.nil?
-        @comment = Comment.find params[:id]
-        @comment.destroy
-        redirect_to show_content_path(@content.category.url_alias, @content.url_alias)
-        return
-      end
-    end
-    error 404
-  end
-
   def preview_content
     render :text => TextileUtil.to_html(params[:data])
   end
@@ -147,5 +106,11 @@ class ContentsController < ApplicationController
   private
   def get_content_by_id
     @content = Content.find params[:id]
+  end
+
+  def get_content_by_alias
+    category = Category.find :first, :conditions => ['url_alias = ?', params[:category_alias]]
+    @content = Content.find :first, :conditions => ['url_alias = ? AND category_id = ?', params[:url_alias], category.id] unless category.nil?
+    error 404 if @content.nil?
   end
 end

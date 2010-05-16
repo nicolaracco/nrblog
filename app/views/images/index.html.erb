@@ -3,7 +3,7 @@
 <div id="gallery">
   <div class="list">
     <% @images.each do |image| %>
-      <div class="gallery-item">
+      <div class="gallery-item clear-inline">
         <div class="thumbnail">
           <%= link_to image_tag(image.url(:small)), image %>
         </div>

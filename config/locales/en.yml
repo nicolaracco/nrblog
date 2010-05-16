@@ -30,10 +30,12 @@ en:
   content_mgr: "Contents"
   block_mgr: "Blocks"
   attachment_mgr: "Attachments"
+  comment_mgr: "Comments"
 
   category_empty: "This category is empty"
   tag_empty: "This tag is empty"
 
+  comment_add: "Add new comment"
   tag_new: "New tag"
   block_new: "New block"
   image_new: "New image"
@@ -42,6 +44,7 @@ en:
   content_new: "New content"
   block_edit: "Edit block"
 
+  comment_edit: "Edit comment"
   tag_edit: "Edit tag"
   image_edit: "Edit image"
   category_edit: "Edit category"
@@ -54,6 +57,7 @@ en:
   category_created: "Category was successfully created"
   content_created: "Content was successfully created"
   menu_item_created: "Menu item was successfully created"
+  comment_created: "Comment added"
   
   tag_updated: "Tag was successfully updated"
   block_updated: "Block was successfully updated"
@@ -61,9 +65,12 @@ en:
   category_updated: "Category was successfully updated"
   content_updated: "Content was successfully updated"
   menu_item_updated: "Menu item was successfully updated"
+  comment_updated: "Comment updated"
+
   back: "Back"
   search: "Search"
   browse: "Browse ..."
+  remove: "Remove"
   logout: "Logout"
   attachments: "Attachments"
   attachment_add: "Add attachment"

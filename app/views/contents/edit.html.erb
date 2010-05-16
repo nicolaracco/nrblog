@@ -2,5 +2,5 @@
 
 <%= render 'form' %>
 
-<%= link_to t(:link_show), @content %> |
+<%= link_to t(:link_show), show_content_path(@content.category.url_alias, @content.url_alias) %> |
 <%= link_to t(:back), contents_path %>

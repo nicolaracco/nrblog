@@ -1,0 +1,19 @@
+<div class="comment_item">
+  <div class="title-box">
+    <h4 class="title">
+      <% if author_signed_in? %>
+        <%= link_to comment.user_name, 'mailto:' + comment.user_email %>
+      <% else %>
+        <%= comment.user_name %>
+      <% end -%>
+    </h4>
+  </div>
+  <div class="meta">
+    <div class="submitted"><%= t :field_created_at %> <%= l comment.created_at, :format => :medium %></div>
+  </div>
+  <div class="content"><%= comment.body %></div>
+  <% if author_signed_in? %>
+    <%= link_to t(:link_edit), edit_comment_path(@content.category.url_alias, @content.url_alias, comment.id) %>
+    <%= link_to t(:link_destroy), comment_path(@content.category.url_alias, @content.url_alias, comment.id), :method => :delete %>
+  <% end -%>
+</div>

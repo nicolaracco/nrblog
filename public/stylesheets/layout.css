@@ -14,6 +14,9 @@ body {
   min-width: 960px;
 }
 
+.left-sidebar #content-inner { padding-left: 250px; }
+
+.right-sidebar #content-innter { padding-right: 250px; }
 
 /* CONTENT */
 #main {
@@ -42,6 +45,9 @@ body {
   margin: 0 0 0 1em;
 }
 
+#content-actions {
+  padding: 20px 0 0;
+}
 
 /* HEADER */
 #header, #content, #sidebar-left, #sidebar-right {
@@ -138,6 +144,11 @@ body {
 .clear-block {
   display: block;
 }
+
+.clear-inline {
+  display: inline;
+}
+
 
 /* -FOLLOWME- */
 #followme {
