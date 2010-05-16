@@ -1,3 +1,4 @@
+showStatus(60, 'Rendering ...');
 $("#comment-list").empty();
 <% @comments.each do |comment| %>
   <% item = '<div class="comment_item"><div class="title-box"><h4 class="title">' + (author_signed_in? ? "<a href=\"mailto:#{comment.user_email}\">#{comment.user_name}</a>" : comment.user_name) + '</h4></div><div class="meta"><div class="submitted">' + (t :field_created_at) + ' ' + (l comment.created_at, :format => :medium) + '</div></div><div class="content">' + comment.body.gsub("'", "\\'") + '</div>' %>
@@ -9,3 +10,4 @@ $("#comment-list").empty();
 $("#comment-list").append('<%= will_paginate @comments %>');
 $("#comment-list .pagination a").attr("data-remote", "true");
 $("#comments").show("blind", {}, 500);
+hideStatus();

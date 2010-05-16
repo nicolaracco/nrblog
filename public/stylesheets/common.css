@@ -135,3 +135,5 @@ td {
 .gallery-item p.item-title {
   background-color: white;
 }
+
+.status-widget { margin: 15px 0; }

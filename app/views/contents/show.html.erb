@@ -10,12 +10,20 @@
   <%= stylesheet_link_tag :jquery_ui %>
   <% if @content.has_comments %>
     <script type="text/javascript">
+      function showStatus(val, stat) {
+        $("#comment-progress").progressbar({ value: val });
+        $("#comment-status .status").text(stat);
+        $("#comment-status").show();
+      }
+
+      function hideStatus() { $("#comment-status").hide(); }
+
       $(document).ready(function() {
         <% if @content.comments.empty? %>
           $("#comment-list-link").hide();
         <% else %>
           $("#comment-add-link").hide();
-          $("#comment-list-link").click(function() { $("#comment-list-link").hide(); $("#comment-add-link").show(); });
+          $("#comment-list-link").click(function() { showStatus(30, 'Loading comments ...'); $("#comment-list-link").hide(); $("#comment-add-link").show(); });
         <% end -%>
         $("#comments").attr("style", "");
         $("#add-comment").attr("style", "");
@@ -29,10 +37,14 @@
         });
 
         $("#new_comment").attr("data-remote", "true");
+        $("#new_comment").submit(function() { showStatus(30, 'Sending comment ...'); });
         $("#comment_submit").click(function() {
           $("#comment-add-link").show('blind', {}, 500);
-          $("#add-comment").hide();
+          $("#add-comment").toggle('blind', {}, 500);
         });
+
+        $("#comment-progress").progressbar();
+        $("#comment-status").hide();
       });
     </script>
   <% end -%>
@@ -62,6 +74,10 @@
     </div>
   <% end -%>
   <% if @content.has_comments %>
+    <div id="comment-status" class="status-widget">
+      <div id="comment-progress"></div>
+      <div class="status"></div>
+    </div>
     <div id="add-comment" class="ui-widget-content ui-corner-all" style="display: none">
       <h3 class="ui-widget-header ui-corner-all"><%= t :comment_add %></h3>
       <%= render :partial => 'comments/form' %>
