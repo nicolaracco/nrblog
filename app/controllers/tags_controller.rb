@@ -1,5 +1,5 @@
 class TagsController < ApplicationController
-  before_filter :authenticate_author!
+  before_filter :authenticate_author!, :except => [:show]
   before_filter :get_tag, :only => [:edit, :update, :destroy]
 
   respond_to :html
