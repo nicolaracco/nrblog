@@ -76,8 +76,7 @@ td {
 
 .content img.left {
   float: left;
-  margin-right: 5px;
-  margin-top: 10px;
+  margin-right: 1em;
 }
 
 .content p.clear {
