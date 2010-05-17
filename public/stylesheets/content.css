@@ -26,3 +26,18 @@
   display: block;
   height: 5px;
 }
+
+.attachments ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.attachments ul li {
+  background: transparent url(images/attachment.png) no-repeat 0px 50%;
+  padding-left: 16px;
+}
+
+.attachments {
+  margin-bottom: 40px;
+}

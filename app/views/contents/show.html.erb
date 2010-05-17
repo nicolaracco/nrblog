@@ -56,6 +56,7 @@
   <div class="content-separator">&nbsp;</div>
   <% unless @content.attachments.empty? %>
     <div class="attachments">
+      <h4><%= t :attachment_mgr %></h4>
       <ul>
       <% @content.attachments.each do |a| %>
         <li><%= link_to a.file_file_name, a.file.url %></li>
