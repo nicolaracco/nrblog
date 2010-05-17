@@ -1,11 +1,10 @@
-# coding: utf-8
-
 require 'rubygems'
 require 'coderay'
 require 'RedCloth'
 
 class TextileUtil
   def TextileUtil.to_html content
+    content.force_encoding("UTF-8")
     RedCloth.new(highlight content).to_html
   end
 
