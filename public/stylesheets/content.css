@@ -20,3 +20,9 @@
   padding: 0.4em;
   text-align: center;
 }
+
+#content-separator {
+  clear: both;
+  display: block;
+  height: 5px;
+}

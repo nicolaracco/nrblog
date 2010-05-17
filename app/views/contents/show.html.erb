@@ -53,6 +53,7 @@
     <div class="summary"><p><%= raw @content.summary %></p></div>
   <% end -%>
   <div class="content"><%= raw TextileUtil.to_html(@content.content) %></div>
+  <div class="content-separator">&nbsp;</div>
   <% unless @content.attachments.empty? %>
     <div class="attachments">
       <ul>
