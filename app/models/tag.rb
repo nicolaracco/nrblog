@@ -11,7 +11,7 @@ class Tag < ActiveRecord::Base
     if tag.nil?
       tag = Tag.new
       tag.label_it = tag.label_en = label
-      tag.url_alias = label.gsub(/ /,'').downcase
+      tag.url_alias = label.gsub(/ /,'').gsub(/\./,'').downcase
       tag.save
     end
     return tag

@@ -20,7 +20,7 @@ module ApplicationHelper
 
     divisor = ((max - min) / classes.size) + 1
 
-    tags.each { |t| yield t.label, classes[(t.contents.length - min) / divisor] }
+    tags.each { |t| yield t.label, t.url_alias, classes[(t.contents.length - min) / divisor] }
   end
 
   def localized_uri(lang_code)
