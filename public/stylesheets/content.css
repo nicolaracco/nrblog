@@ -21,7 +21,7 @@
   text-align: center;
 }
 
-#content-separator {
+.content-separator {
   clear: both;
   display: block;
   height: 5px;
