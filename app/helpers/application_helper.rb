@@ -1,4 +1,8 @@
 module ApplicationHelper
+  def refresh_link
+    link_to t(:refresh_layout), 'javascript:location.reload(true);'
+  end
+
   def remove_icon
     image_tag '/_images_/remove-icon.png', :alt => t(:link_destroy), :title => t(:link_destroy)
   end
