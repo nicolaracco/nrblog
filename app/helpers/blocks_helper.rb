@@ -8,6 +8,6 @@ module BlocksHelper
   end
 
   def available_left_side_blocks
-    Block.find(:all, :conditions => 'block_type = \'left_side\'', :order => 'block_order')
+    Block.find(:all, :conditions => 'block_type = \'left_side\'', :order => 'block_order ASC')
   end
 end
