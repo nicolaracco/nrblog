@@ -1,27 +1,75 @@
 <% title t(:blocks) %>
 
-<table>
-  <tr>
-    <th><%= t :field_type %></th>
-    <th><%= t :field_title %></th>
-    <th><%= t :field_content %></th>
-    <th><%= t :field_order %></th>
-    <th></th>
-    <th></th>
-  </tr>
+<% content_for :head do %>
+  <%= stylesheet_link_tag :jquery_ui %>
+  <%= javascript_include_tag :jquery_ui %>
+  <style type="text/css">
+    .connectedSortable li { margin: 0 5px 5px 5px; padding: 5px; width: 160px; }
+    .connectedSortable li img { float: right; }
+  </style>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $(".connectedSortable").sortable({
+        update: function(event, ui) {
+          showStatus(50, 'Sending data ...');
+          $.ajax({
+            type: 'POST',
+            url: '<%= blocks_change_order_path %>',
+            data: { id: ui.item.attr("id").substring(1), new_pos: $(ui.item).parent().children().index($(ui.item)) },
+            success: function() {
+              hideStatus();
+            }
+          });
+        }
+      }).disableSelection();
 
-<% @blocks.each do |block| %>
-  <tr>
-    <td><%= block.block_type %></td>
-    <td><%= block.title %></td>
-    <td><%= block.content.title %></td>
-    <td><%= block.block_order %></td>
-    <td><%= link_to t(:link_edit), edit_block_path(block) %></td>
-    <td><%= link_to t(:link_destroy), block, :confirm => t(:confirm_sure), :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
+      var $tabs = $("#block-tabs").tabs();
+
+      var $tab_items = $("ul:first li", $tabs).droppable({
+        accept: ".connectedSortable li",
+        hoverClass: "ui-state-hover",
+        drop: function(ev, ui) {
+          var $item = $(this);
+          var $list = $($item.find('a').attr('href')).find('.connectedSortable');
+
+          ui.draggable.hide('slow', function() {
+            $tabs.tabs('select', $tab_items.index($item));
+            $(this).appendTo($list).show('slow');
+            showStatus(50, 'Sending data ...');
+            $.ajax({
+              type: 'POST',
+              url: '<%= blocks_change_type_path %>',
+              data: { id: $(this).attr("id").substring(1), new_type: $($list).attr("id") },
+              success: function() {
+                hideStatus();
+              }
+            });
+          });
+        }
+      });
+    });
+  </script>
+<% end -%>
+
+<%= render :partial => 'common/progress' %>
+
+<div id="block-tabs">
+  <ul>
+    <% available_block_types.each do |type| %>
+      <li class="tab"><a href="#tab-<%= type %>"><%= type %></a></li>
+    <% end -%>
+  </ul>
+  <% available_block_types.each do |type| %>
+    <div id="tab-<%= type %>">
+      <ul id="<%= type %>" class="connectedSortable ui-helper-reset">
+        <% @blocks[type].each do |item| %>
+           <li class="ui-state-default" id="m<%= item.id %>"><%= item.title %> <%= link_to remove_icon, item, :confirm => t(:confirm_sure), :method => :delete %> <%= link_to edit_icon, edit_menu_item_path(item) %></li>
+        <% end unless @blocks[type].nil? -%>
+      </ul>
+    </div>
+  <% end -%>
+</div>
 
 <br />
 
-<%= link_to t(:block_new), new_block_path %>
+<%= link_to t(:block_new), new_block_path %> | <a href="#"><%= t(:refresh_layout) %></a>

@@ -69,6 +69,7 @@ it:
   browse: "Sfoglia ..."
   remove: "Rimuovi"
   logout: "Logout"
+  refresh_layout: "Aggiorna layout"
   attachments: "Allegati"
   attachment_add: "Aggiungi allegato"
   

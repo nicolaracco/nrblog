@@ -1,4 +1,12 @@
 module ApplicationHelper
+  def remove_icon
+    image_tag '/_images_/remove-icon.png', :alt => t(:link_destroy), :title => t(:link_destroy)
+  end
+
+  def edit_icon
+    image_tag '/_images_/edit-icon.png', :alt => t(:link_edit), :title => t(:link_edit)
+  end
+
   def tag_cloud(tags, classes)
     max, min = 0, 0
     tags.each do |t|

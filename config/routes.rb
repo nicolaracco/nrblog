@@ -5,9 +5,15 @@ Nrblog::Application.routes.draw do |map|
   
   scope '/admin' do
     resources :categories, :except => :show
-    resources :menu_items, :except => :show
+    resources :menu_items, :except => :show do
+      post '/change_order' => :change_order, :as => :change_order, :on => :collection
+      post '/change_type' => :change_type, :as => :change_type, :on => :collection
+    end
     resources :images
-    resources :blocks, :except => :show
+    resources :blocks, :except => :show do
+      post '/change_order' => :change_order, :as => :change_order, :on => :collection
+      post '/change_type' => :change_type, :as => :change_type, :on => :collection
+    end
     resources :tags, :except => :show
     resources :contents, :except => :show do
       delete '/:aid' => :destroy_attachment, :as => :destroy_attachment, :on => :member

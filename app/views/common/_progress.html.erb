@@ -1,0 +1,16 @@
+<% content_for :head do %>
+  <script type="text/javascript">
+    function showStatus(val, stat) {
+      $("#status-progress").progressbar({ value: val });
+      $("#status-widget .status").text(stat);
+      $("#status-widget").show();
+    }
+    function hideStatus() { $("#status-widget").hide(); }
+    $(document).ready(function() { $("#status-progress").progressbar(); $("#status-widget").hide(); });
+  </script>
+<% end -%>
+
+<div id="status-widget">
+  <div id="status-progress"></div>
+  <div class="status"></div>
+</div>

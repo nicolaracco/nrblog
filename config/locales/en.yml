@@ -72,6 +72,7 @@ en:
   browse: "Browse ..."
   remove: "Remove"
   logout: "Logout"
+  refresh_layout: "Refresh layout"
   attachments: "Attachments"
   attachment_add: "Add attachment"
   
