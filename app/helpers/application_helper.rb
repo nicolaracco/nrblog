@@ -24,10 +24,12 @@ module ApplicationHelper
   end
 
   def localized_uri(lang_code)
-    if lang_code == 'en'
-      lang_code = 'com'
+    dms = request.fullpath.split('/').delete_if { |l| l.blank? }
+    if @available_locales.keys.include? dms[0]
+      dms[0] = lang_code
+    else
+      dms = [lang_code] + dms
     end
-    dms = request.host.split '.'
-    'http://' + (dms[0, dms.length - 1] << lang_code).join('.') + request.fullpath
+    'http://' + request.host + '/' + dms.join('/')
   end
 end

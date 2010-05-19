@@ -14,8 +14,8 @@
     <div id="header">
       <div class="inner clear-block">
         <div id="logo-title" class="fleft">
-          <%= link_to image_tag('/_images_/logo.png', :class => 'fnone'), :root %>
-          <%= link_to image_tag('/_images_/logo-title.png', :alt => 'Logo'), :root %>
+          <%= link_to image_tag('/_images_/logo.png', :class => 'fnone'), :index %>
+          <%= link_to image_tag('/_images_/logo-title.png', :alt => 'Logo'), :index %>
         </div>
         <div class="elements">
           <div class="top">
@@ -62,7 +62,7 @@
         <% end -%>
         <div id="tag-cloud">
           <% tag_cloud @tags, %w(tc1 tc2 tc3 tc4 tc5) do |label, url_alias, css_class| %>
-            <%= link_to label, show_tag_path(url_alias), :class => css_class %>
+            <%= link_to label, show_tag_path({:tag => url_alias}), :class => css_class %>
           <% end -%>
         </div>
       </div>

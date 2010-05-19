@@ -1,3 +1,5 @@
+require 'http_accept_language'
+
 LOCALES_DIRECTORY = "#{Rails.root}/config/locales/"
 AVAILABLE_LOCALES =
   Dir.new(LOCALES_DIRECTORY).entries.collect do |x|

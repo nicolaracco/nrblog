@@ -19,7 +19,7 @@
     <td><%= content.category %></td>
     <td><%= content.published %></td>
     <td><%= content.in_home %></td>
-    <td><%= link_to t(:link_show), show_content_path(content.category.url_alias, content.url_alias) %></td>
+    <td><%= link_to t(:link_show), show_content_path({:category_alias => content.category.url_alias, :url_alias => content.url_alias}) %></td>
     <td><%= link_to t(:link_edit), edit_content_path(content) %></td>
     <td><%= link_to t(:link_destroy), content, :confirm => t(:confirm_sure), :method => :delete %></td>
   </tr>

@@ -2,7 +2,7 @@
   <% posts.each do |p| %>
     <div class="post_item">
       <%= image_tag(p.image.url(:thumb), :class => 'contenticon') unless p.image.nil? %>
-      <div class="title-box"><h2 class="title"><%= link_to p.title, show_content_path(p.category.url_alias, p.url_alias) %></h2></div>
+      <div class="title-box"><h2 class="title"><%= link_to p.title, show_content_path({:category_alias => p.category.url_alias, :url_alias => p.url_alias}) %></h2></div>
       <div class="meta">
         <div class="submitted">
           <%= t :field_created_at %> <%= l p.created_at, :format => :medium %>

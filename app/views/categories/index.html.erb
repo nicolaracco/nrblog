@@ -11,7 +11,7 @@
 <% @categories.each do |category| %>
   <tr>
     <td><%= category.label %></td>
-    <td><%= link_to show_category_path(category.url_alias), show_category_path(category.url_alias) %>/</td>
+    <td><%= link_to show_category_path({:locale => nil, :url_alias => category.url_alias}), show_category_path({:url_alias => category.url_alias}) %>/</td>
     <td><%= link_to t(:link_edit), edit_category_path(category) %></td>
     <td><%= link_to t(:link_destroy), category, :confirm => t(:confirm_sure), :method => :delete %></td>
   </tr>

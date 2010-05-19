@@ -11,6 +11,7 @@ gem 'will_paginate', :git => 'http://github.com/mislav/will_paginate.git', :bran
 gem 'paperclip', :git => 'http://github.com/thoughtbot/paperclip.git', :branch => 'rails3'
 gem 'RedCloth'
 gem 'coderay'
+gem 'http_accept_language', :git => 'http://github.com/gcrofils/http_accept_language.git'
 
 # Use unicorn as the web server
 # gem 'unicorn'

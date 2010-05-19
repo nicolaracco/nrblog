@@ -31,7 +31,6 @@ class TextileUtil
       last_index = found_index + to_replace.length
     end
 
-    puts content
     return content
   end
 

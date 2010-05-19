@@ -1,55 +1,61 @@
 Nrblog::Application.routes.draw do |map|
-  root :to => 'home#index'
-
   devise_for :authors, :path_names => { :sign_in => 'login', :sign_out => 'logout' }
+
+  scope '(/:locale)' do
+    controller :home do
+      get '/' => :index, :as => :index
+    end
+
+    scope '/admin' do
+      resources :categories, :except => :show
+      resources :menu_items, :except => :show do
+        post '/change_order' => :change_order, :as => :change_order, :on => :collection
+        post '/change_type' => :change_type, :as => :change_type, :on => :collection
+      end
+      resources :images
+      resources :blocks, :except => :show do
+        post '/change_order' => :change_order, :as => :change_order, :on => :collection
+        post '/change_type' => :change_type, :as => :change_type, :on => :collection
+      end
+      resources :tags, :except => :show
+      resources :contents, :except => :show do
+        delete '/:aid' => :destroy_attachment, :as => :destroy_attachment, :on => :member
+        get '/add_attachment' => :add_attachment, :as => :add_attachment, :on => :collection
+        post '/preview' => :preview_content, :as => :preview_content, :on => :collection
+      end
+    end
+
+    controller :categories do
+      scope '/content' do
+        get '/:url_alias' => :show, :as => :show_category
+      end
+    end
+    controller :tags do
+      scope '/tags' do
+        get '/:tag' => :show, :as => :show_tag
+      end
+    end
+    controller :contents do
+      scope '/content/:category_alias/:url_alias' do
+        get '/' => :show, :as => :show_content
+        resources :comments
+      end
+    end
+    controller :images do
+      scope '/images' do
+        get '/:image' => :view
+      end
+    end
   
-  scope '/admin' do
-    resources :categories, :except => :show
-    resources :menu_items, :except => :show do
-      post '/change_order' => :change_order, :as => :change_order, :on => :collection
-      post '/change_type' => :change_type, :as => :change_type, :on => :collection
-    end
-    resources :images
-    resources :blocks, :except => :show do
-      post '/change_order' => :change_order, :as => :change_order, :on => :collection
-      post '/change_type' => :change_type, :as => :change_type, :on => :collection
-    end
-    resources :tags, :except => :show
-    resources :contents, :except => :show do
-      delete '/:aid' => :destroy_attachment, :as => :destroy_attachment, :on => :member
-      get '/add_attachment' => :add_attachment, :as => :add_attachment, :on => :collection
-      post '/preview' => :preview_content, :as => :preview_content, :on => :collection
+    controller :contact do
+      scope '/contact/:author' do
+        get '/' => :index
+        post '/' => :send_mail
+      end
     end
   end
 
-  controller :categories do
-    scope '/content' do
-      get '/:url_alias' => :show, :as => :show_category
-    end
-  end
-  controller :tags do
-    scope '/tags' do
-      get '/:tag' => :show, :as => :show_tag
-    end
-  end
-  controller :contents do
-    scope '/content/:category_alias/:url_alias' do
-      get '/' => :show, :as => :show_content
-      resources :comments
-    end
-  end
-  controller :images do
-    scope '/images' do
-      get '/:image' => :view
-    end
-  end
-
-  controller :contact do
-    scope '/contact/:author' do
-      get '/' => :index
-      post '/' => :send_mail
-    end
-  end
+  root :to => 'home#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
