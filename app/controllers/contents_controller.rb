@@ -48,7 +48,7 @@ class ContentsController < ApplicationController
       if @content.save
         format.html do
           flash[:notice] = t(:notice, :scope => [:contents, :create]) 
-          redirect_to show_content_path(@content.category.url_alias, @content.url_alias)
+          redirect_to show_content_path(:category_alias => @content.category.url_alias, :url_alias => @content.url_alias)
         end
         format.xml  { render :xml => @content, :status => :created, :location => @content }
       else
@@ -67,7 +67,7 @@ class ContentsController < ApplicationController
       if @content.update_attributes(params[:content])
         format.html do
           flash[:notice] = t(:notice, :scope => [:contents, :update])
-          redirect_to(show_content_path @content.category.url_alias, @content.url_alias)
+          redirect_to(show_content_path :category_alias => @content.category.url_alias, :url_alias => @content.url_alias)
         end
         format.xml  { head :ok }
       else

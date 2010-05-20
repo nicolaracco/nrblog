@@ -67,7 +67,7 @@
   <% if @content.has_comments %>
     <%= render :partial => 'common/progress' %>
     <div id="add-comment" class="ui-widget-content ui-corner-all" style="display: none">
-      <h3 class="ui-widget-header ui-corner-all"><%= t :comment_add %></h3>
+      <h3 class="ui-widget-header ui-corner-all"><%= t '.title', :scope => [:comments, :new] %></h3>
       <%= render :partial => 'comments/form' %>
     </div>
     <%= link_to t(:title, :scope => [:comments, :new]), new_comment_path(@content.category.url_alias, @content.url_alias), :id => 'comment-add-link', :remote => true %>
