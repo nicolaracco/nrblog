@@ -59,7 +59,7 @@
       <%= f.text_field :author, :disabled => 'true' %>
     </div>
     <div class="field">
-      <%= f.label :category %><br />
+      <%= f.label :category, Category.human_name %><br />
       <%= f.collection_select :category_id, @categories, :id, :label %>
       <%= link_to t(:title, :scope => [:categories, :new]), new_category_path, :remote => true %>
     </div>
