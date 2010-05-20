@@ -14,7 +14,7 @@ if (!$("#gallery").parents(".ui-dialog").is(":visible"))
     width: Math.min(820, 0.8 * $(window).width()),
     height: Math.min(600, 0.8 * $(window).height()),
     buttons: {
-      '<%= t(:image_new) %>': function() {
+      '<%= t(:title, :scope => [:images, :new]) %>': function() {
         $.ajax({ type: 'GET', url: '<%= new_image_path %>', dataType: 'script' });
       }
     }
