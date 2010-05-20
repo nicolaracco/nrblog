@@ -4,7 +4,7 @@ class Image < ActiveRecord::Base
   translatable_columns :title
   has_attached_file :content, :styles => { :small => ['128x128>'], :thumb => ['64x64>'] }
 
-  validates_presence_of :title_en, :title_it, :url_alias
+  validates_presence_of :title_en, :title_it
   validates_attachment_presence :content
   validates_attachment_content_type :content, :content_type => ['image/jpeg', 'image/png', 'image/gif', 'image/ico']
   before_validation :fill_empty_i18n, :strip_fields

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100512080938) do
+ActiveRecord::Schema.define(:version => 20100520091955) do
 
   create_table "attachments", :force => true do |t|
     t.integer  "content_id"
@@ -111,7 +111,6 @@ ActiveRecord::Schema.define(:version => 20100512080938) do
     t.datetime "content_updated_at"
     t.string   "title_en"
     t.string   "title_it"
-    t.string   "url_alias"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

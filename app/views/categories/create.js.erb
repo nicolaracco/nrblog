@@ -1,2 +1,2 @@
-addCategory('<%= @category.id %>', '<%= @category.label %>', '<%= show_category_path(@category.url_alias) %>');
+addCategory('<%= @category.id %>', '<%= @category.label.gsub("'", "\\'") %>', '<%= show_category_path(@category.url_alias) %>');
 $("#add-category").dialog('close');

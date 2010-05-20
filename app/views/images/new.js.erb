@@ -4,7 +4,7 @@ $("#add-image").dialog({
   modal: true,
   width: 400,
   buttons: {
-    '<%= t(:image_new) %>': function() {
+    '<%= t(:title, :scope => [:images, :new]) %>': function() {
       $("#new_image").ajaxSubmit({ 
         success: function(data) { 
           eval($('<div/>').html(data).text()); 
