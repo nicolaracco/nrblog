@@ -1,4 +1,4 @@
-<% title t(:images) %>
+<% title t('.title') %>
 
 <div id="gallery">
   <div class="list">
@@ -17,4 +17,4 @@
   </div>
 </div>
 <br />
-<%= link_to t(:image_new), new_image_path %>
+<%= link_to t(:title, :scope => [:images, :new]), new_image_path %>

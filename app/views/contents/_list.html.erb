@@ -5,9 +5,9 @@
       <div class="title-box"><h2 class="title"><%= link_to p.title, show_content_path({:category_alias => p.category.url_alias, :url_alias => p.url_alias}) %></h2></div>
       <div class="meta">
         <div class="submitted">
-          <%= t :field_created_at %> <%= l p.created_at, :format => :medium %>
+          <%= t :created_at, :scope => :attributes %> <%= l p.created_at, :format => :medium %>
           <% unless p.created_at == p.updated_at %>
-            - <%= t :field_updated_at %> <%= l p.updated_at, :format => :medium %>
+            - <%= t :updated_at, :scope => :attributes %> <%= l p.updated_at, :format => :medium %>
           <% end -%>
         </div>
         <%= render :partial => 'tags/list', :locals => {:tags => p.tags} %>

@@ -1,4 +1,4 @@
-<% title t(:menu_items) %>
+<% title t('.title') %>
 
 <% content_for :head do %>
   <%= stylesheet_link_tag :jquery_ui %>
@@ -72,4 +72,4 @@
 
 <br />
 
-<%= link_to t(:menu_item_new), new_menu_item_path %> | <%= refresh_link %>
+<%= link_to t(:title, :scope => [:menu_items, :new]), new_menu_item_path %> | <%= refresh_link %>

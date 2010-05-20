@@ -61,7 +61,7 @@
     <div class="field">
       <%= f.label :category %><br />
       <%= f.collection_select :category_id, @categories, :id, :label %>
-      <%= link_to t(:category_new), new_category_path, :remote => true %>
+      <%= link_to t(:title, :scope => [:categories, :new]), new_category_path, :remote => true %>
     </div>
     <div class="field">
       <%= f.label :url_alias %><br />
@@ -96,34 +96,34 @@
 
   <div id="tabs">
     <ul>
-      <li class="tab"><a href="#it"><span><%= t :language_it %></span></a></li>
-      <li class="tab"><a href="#en"><span><%= t :language_en %></span></a></li>
+      <li class="tab"><a href="#it"><span><%= t :it, :scope => :languages %></span></a></li>
+      <li class="tab"><a href="#en"><span><%= t :en, :scope => :languages %></span></a></li>
     </ul>
     <div id="it">
       <div class="field">
-        <%= f.label :title_it %><br />
+        <%= f.label :title_it, t(:title, :scope => :attributes) %><br />
         <%= f.text_field :title_it %>
       </div>
       <div class="field">
-        <%= f.label :summary_it %><br />
+        <%= f.label :summary_it, t(:summary, :scope => :attributes) %><br />
         <%= f.text_area :summary_it, :cols => 80, :rows => 2 %>
       </div>
       <div class="field">
-        <%= f.label :content_it %><br />
+        <%= f.label :content_it, t(:content, :scope => :attributes) %><br />
         <%= f.text_area :content_it %>
       </div>
     </div>
     <div id="en">
       <div class="field">
-        <%= f.label :title_en %><br />
+        <%= f.label :title_en, t(:title, :scope => :attributes) %><br />
         <%= f.text_field :title_en %>
       </div>
       <div class="field">
-        <%= f.label :summary_en %><br />
+        <%= f.label :summary_en, t(:summary, :scope => :attributes) %><br />
         <%= f.text_area :summary_en, :cols => 80, :rows => 2 %>
       </div>
       <div class="field">
-        <%= f.label :content_en %><br />
+        <%= f.label :content_en, t(:content, :scope => :attributes) %><br />
         <%= f.text_area :content_en %>
       </div>
     </div>
@@ -132,7 +132,7 @@
     <legend><%= t(:attachment_mgr) %></legend>
     <ul>
       <% @content.attachments.each do |a| %>
-        <li id="attachment_<%= a.id %>"><%= a.file_file_name %> (<%= link_to t(:link_destroy), content_destroy_attachment_path(@content.id, a.id), :method => :delete, :remote => true %>)</li>
+        <li id="attachment_<%= a.id %>"><%= a.file_file_name %> (<%= link_to t(:link_destroy), content_destroy_attachment_path(:id => @content.id, :aid => a.id), :method => :delete, :remote => true %>)</li>
       <% end -%>
     </ul>
     <%= link_to t(:attachment_add), contents_add_attachment_path, :remote => true, :id => 'add_attachment' %>

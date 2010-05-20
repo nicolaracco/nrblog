@@ -1,4 +1,4 @@
-<% title "#{@content.title} - #{t(:comment_mgr)}" %>
+<% title "#{@content.title} - #{t '.title'}" %>
 
 <div class="comment-list">
   <% if @comments.empty? %>
@@ -10,4 +10,4 @@
     <%= will_paginate @comments %>
   <% end -%>
 </div>
-<%= link_to t(:comment_add), :new_comment %>
+<%= link_to t(:title, :scope => [:comments, :new]), :new_comment %>

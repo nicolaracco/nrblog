@@ -7,15 +7,6 @@ it:
   sitename: "Nicola Racco's Blog"
   slogan: "I looked under a Python and I caught a Ruby"
   
-  language_it: "Italiano"
-  language_en: "English"
- 
-  tags: "Elenco tag"
-  blocks: "Elenco blocchi" 
-  images: "Elenco immagini"
-  categories: "Elenco categorie"
-  contents: "Elenco contenuti"
-  menu_items: "Elenco voci di men&ugrave;"
   section_general: "Generale"
   section_admin: "Amministra"
   
@@ -30,103 +21,169 @@ it:
   content_mgr: "Contenuti"
   category_mgr: "Categorie"
   attachment_mgr: "Allegati"
-  comment_mgr: "Commenti"
+  comment_mgr:
+    one: "1 commento"
+    other: "{{count}} commenti"
 
-  category_empty: "Questa categoria &egrave; vuota"
-  tag_empty: "Questo tag &egrave; vuoto"
-
-  comment_add: "Aggiungi un commento"
-  tag_new: "Nuovo tag"
-  block_new: "Nuovo blocco"
-  image_new: "Nuova immagine"
-  menu_item_new: "Nuova voce di men&ugrave;"
-  category_new: "Nuova categoria"
-  content_new: "Nuovo contenuto"
-
-  tag_edit: "Modifica tag"
-  block_edit: "Modifica blocco"
-  image_edit: "Modifica immagine"
-  category_edit: "Modifica categoria"
-  content_edit: "Modifica contenuto"
-  menu_item_edit: "Modifica voce di men&ugrave;"
-
-  tag_created: "Tag creato."
-  block_created: "Blocco creato."
-  image_created: "Immagine creata."
-  category_created: "Categoria creata."
-  content_created: "Contenuto creato."
-  menu_item_created: "Voce di men&ugrave; creata."
-  comment_created: "Commento aggiunto"
-
-  tag_updated: "Tag aggiornato."
-  block_updated: "Blocco aggiornato."
-  image_updated: "Immagine aggiornata."
-  category_updated: "Categoria aggiornata."
-  content_updated: "Contenuto aggiornato."
-  menu_item_updated: "Voce di men&ugrave; aggiornata."
   back: "Indietro"
   search: "Cerca"
   browse: "Sfoglia ..."
   remove: "Rimuovi"
   logout: "Logout"
   refresh_layout: "Aggiorna layout"
-  attachments: "Allegati"
   attachment_add: "Aggiungi allegato"
-  
-  field_name: "Nome"
-  field_label: "Etichetta"
-  field_author: "Autore"
-  field_title: "Titolo"
-  field_category: "Categoria"
-  field_published: "Pubblicato"
-  field_in_home: "Visibile in home"
-  field_created_at: "il"
-  field_updated_at: "aggiornato il"
-  field_in_tags: "in"
-  field_type: "Tipo"
-  field_url: "URL"
-  field_order: "Posizione"
-  field_content: "Contenuto"
   
   confirm_sure: "Sei sicuro ?"
 
-  contactme: "Contattami"
-  contactme_name: "Nome"
-  contactme_email: "Email"
-  contactme_subject: "Soggetto"
-  contactme_body: "Corpo del Messaggio"
-  contactme_submit: "Invia"
-  contactme_wrote: "ti ha scritto un'email"
-  contactme_sent: "L'email &egrave; stata inviata."
-  contactme_needed: "I campi con (*) sono obbligatori!"
-  comment_notify_wrote_on: "ha commentato"
-  
   helpers:
     submit:
-      create: "Crea un {{model}}"
+      create: "Crea {{model}}"
       update: "Conferma modifica a {{model}}"
   
   time:
     formats:
       medium: "%d/%m/%Y %H:%M"
-  
+ 
+  activerecord:
+    models:
+      content: "Contenuto"
+      image: "Immagine"
+      block: "Blocco"
+      menu_item: "Voce di Menu"
+      category: "Categoria"
+ 
   attributes:
     name: "Nome"
-    label_it: "Etichetta"
-    label_en: "Etichetta"
-    url_alias: "Alias url"
-    content_it: "Contenuto"
-    content_en: "Contenuto"
-    summary_it: "Sommario"
-    summary_en: "Sommario"
-    title_it: "Titolo"
-    title_en: "Titolo"
-    tags: "Tags"
-    menu_type: "Tipo"
-    url: "Url"
-    content: "Contenuto"
+    label: "Etichetta"
+    url_alias: "Percorso"
+    author: "Autore"
+    title: "Titolo"
     published: "Pubblicato"
+    in_home: "Visibile in HomePage"
+    created_at: "scritto il"
+    updated_at: "aggiornato il"
+    type: "Tipo"
+    order: "Posizione"
+    content: "Contenuto"
+    summary: "Sommario"
+    tags: "Tags"
+    url: "URL"
     has_comments: "Commenti abilitati"
-    in_home: "Visibile in home"
-    content_file_name: "Contenuto"
+
+    content_file_name: "Nome file"
     content_content_type: "Tipo Contenuto"
+    content_file_size: "Dimensione"
+
+  languages:
+    en: "Inglese"
+    it: "Italiano"
+
+  blocks:
+    index:
+      title: "Elenco blocchi"
+    edit:
+      title: "Modifica blocco"
+    new:
+      title: "Nuovo blocco"
+    create:
+      notice: "Blocco creato"
+    update:
+      notice: "Blocco aggiornato"
+
+  categories:
+    index:
+      title: "Elenco categorie"
+    edit:
+      title: "Modifica categoria"
+    new:
+      title: "Nuova categoria"
+    create:
+      notice: "Categoria creata"
+    update:
+      notice: "Categoria aggiornata"
+    show:
+      empty: "Non ci sono contenuti per questa categoria."
+
+  comments:
+    index:
+      title: "Elenco commenti"
+    edit:
+      title: "Modifica commento"
+    new:
+      title: "Aggiungi un commento"
+    create:
+      notice: "Commento aggiunto"
+    update:
+      notice: "Commento modificato"
+
+  contact:
+    index:
+      title: "Form di contatto"
+      fields:
+        name: "Nome"
+        email: "Email"
+        subject: "Soggetto"
+        body: "Corpo del messaggio"
+      submit: "Invia"
+    send_mail:
+      needed: "I campi con (*) sono obbligatori!"
+      notice: "Email inviata"
+
+  contents:
+    index:
+      title: "Elenco contenuti"
+    edit:
+      title: "Modifica contenuto"
+    new:
+      title: "Nuovo contenuto"
+    update:
+      notice: "Contenuto aggiornato"
+    create:
+      notice: "Contenuto creato"
+
+  images:
+    index:
+      title: "Elenco immagini"
+    edit:
+      title: "Modifica immagine"
+    new:
+      title: "Nuova immagine"
+    update:
+      notice: "Immagine aggiornata"
+    create:
+      notice: "Immagine creata"
+
+  mailer:
+    comment_notify:
+      subject: "Nuovo commento per: {{content}}"
+      wrote: "{{user}} <{{email}}> ha commentato: {{content}} ({{url}})"
+    question:
+      wrote: "{{user}} <{{email}}> ti ha scritto un'email"
+
+  menu_items:
+    index:
+      title: "Elenco voci di menu"
+    new:
+      title: "Nuova voce di menu"
+    edit:
+      title: "Modifica voce di menu"
+    update:
+      notice: "Voce di menu aggiornata"
+    create:
+      notice: "Voce di menu creata"
+
+  tags:
+    index:
+      title: "Elenco tag"
+    new:
+      title: "Nuovo tag"
+    edit:
+      title: "Modifica tag"
+    update:
+      notice: "Tag aggiornato"
+    create:
+      notice: "Tag creato"
+    show:
+      empty: "Non ci sono contenuti associati a questo tag."
+    list:
+      in: "in"

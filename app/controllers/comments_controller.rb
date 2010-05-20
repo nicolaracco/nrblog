@@ -25,8 +25,9 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
+        Mailer.comment_notify(@comment, @content.author.email, "http://#{request.host}#{show_content_path(:category_alias => @content.category.url_alias, :url_alias => @content.url_alias)}").deliver
         format.html do
-          flash[:notice] = t(:comment_created)
+          flash[:notice] = t(:notice, :scope => [:comments, :create])
           redirect_to :action => :index
         end
         format.js do 
@@ -48,7 +49,7 @@ class CommentsController < ApplicationController
     respond_to do |format|
       if @comment.update_attributes(params[:comment])
         format.html do
-          flash[:notice] = t(:comment_updated)
+          flash[:notice] = t(:notice, :scope => [:comments, :update])
           redirect_to :action => :index
         end
       else

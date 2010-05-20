@@ -1,5 +1,5 @@
 class ImagesController < ApplicationController
-  before_filter :authenticate_author!, :except => :view
+  before_filter :authenticate_author!
 
   respond_to :html, :js
 
@@ -7,11 +7,6 @@ class ImagesController < ApplicationController
   # GET /images.xml
   def index
     respond_with @images = Image.paginate(:per_page => 20, :page => params[:page])
-  end
-
-  def view
-    @image = Image.find(:first, :conditions => ['url_alias = ?', params[:image]])
-    redirect_to @image.content.url
   end
 
   # GET /images/1
@@ -43,7 +38,7 @@ class ImagesController < ApplicationController
 
     respond_to do |format|
       if @image.save
-        format.html { redirect_to(@image, :notice => t(:image_created)) }
+        format.html { redirect_to(@image, :notice => t(:notice, :scope => [:images, :create])) }
         format.js { render 'create' }
       else
         format.html { render :action => "new" }
@@ -56,11 +51,11 @@ class ImagesController < ApplicationController
   # PUT /images/1.xml
   def update
     @image = Image.find(params[:id])
-    params[:image][:content] = @image.content if params[:image][:content].nil?
+    params[:image].delete :content if params[:image][:content].nil?
 
     respond_to do |format|
       if @image.update_attributes(params[:image])
-        format.html { redirect_to(@image, :notice => t(:image_updated)) }
+        format.html { redirect_to(@image, :notice => t(:notice, :scope => [:images, :update])) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

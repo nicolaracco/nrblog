@@ -37,7 +37,7 @@ class BlocksController < ApplicationController
     @block.block_order = fb.nil? ? 0 : fb.block_order + 1
 
     if @block.save
-      flash[:notice] = t(:block_created)
+      flash[:notice] = t(:notice, :scope => [:blocks, :create])
       redirect_to :action => :index
     else
       render :action => :new
@@ -47,7 +47,12 @@ class BlocksController < ApplicationController
   # PUT /blocks/1
   # PUT /blocks/1.xml
   def update
-    respond_with @block, :notice => t(:block_updated)
+    if @block.update_attributes params[:block]
+      flash[:notice] = t(:notice, :scope => [:blocks, :update])
+      redirect_to :action => :index
+    else
+      render :action => :edit
+    end
   end
 
   # DELETE /blocks/1

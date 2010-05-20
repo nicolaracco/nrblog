@@ -7,15 +7,6 @@ en:
   sitename: "Nicola Racco's Blog"
   slogan: "I looked under a Python and I caught a Ruby"
   
-  language_it: "Italiano"
-  language_en: "English"
-
-  tags: "Listing tags"
-  blocks: "Listing blocks"  
-  images: "Listing images"
-  categories: "Listing categories"
-  contents: "Listing contents"
-  menu_items: "Listing menu items"
   section_general: "General"
   section_admin: "Admin"
   
@@ -30,42 +21,9 @@ en:
   content_mgr: "Contents"
   block_mgr: "Blocks"
   attachment_mgr: "Attachments"
-  comment_mgr: "Comments"
-
-  category_empty: "This category is empty"
-  tag_empty: "This tag is empty"
-
-  comment_add: "Add new comment"
-  tag_new: "New tag"
-  block_new: "New block"
-  image_new: "New image"
-  menu_item_new: "New menu item"
-  category_new: "New category"
-  content_new: "New content"
-  block_edit: "Edit block"
-
-  comment_edit: "Edit comment"
-  tag_edit: "Edit tag"
-  image_edit: "Edit image"
-  category_edit: "Edit category"
-  content_edit: "Edit content"
-  menu_item_edit: "Edit menu item"
- 
-  tag_created: "Tag was successfully created"
-  block_created: "Block was successfully created"
-  image_created: "Image was successfully created"
-  category_created: "Category was successfully created"
-  content_created: "Content was successfully created"
-  menu_item_created: "Menu item was successfully created"
-  comment_created: "Comment added"
-  
-  tag_updated: "Tag was successfully updated"
-  block_updated: "Block was successfully updated"
-  image_updated: "Image was successfully updated"
-  category_updated: "Category was successfully updated"
-  content_updated: "Content was successfully updated"
-  menu_item_updated: "Menu item was successfully updated"
-  comment_updated: "Comment updated"
+  comment_mgr:
+    one: "1 comment"
+    other: "{{count}} comments"
 
   back: "Back"
   search: "Search"
@@ -73,37 +31,10 @@ en:
   remove: "Remove"
   logout: "Logout"
   refresh_layout: "Refresh layout"
-  attachments: "Attachments"
   attachment_add: "Add attachment"
   
-  field_name: "Name"
-  field_label: "Label"
-  field_author: "Author"
-  field_title: "Title"
-  field_category: "Category"
-  field_published: "Published"
-  field_in_home: "Home visible"
-  field_created_at: "on"
-  field_updated_at: "updated on"
-  field_in_tags: "in"
-  field_type: "Type"
-  field_url: "URL"
-  field_order: "Position"
-  field_content: "Content"
-    
   confirm_sure: "Are you sure ?"
 
-  contactme: "Contact me"
-  contactme_name: "Name"
-  contactme_email: "Email"
-  contactme_subject: "Subject"
-  contactme_body: "Message Body"
-  contactme_submit: "Send"
-  contactme_wrote: "wrote you an email"
-  contactme_sent: "Email was successfully sent"
-  contactme_needed: "Field with (*) are needed!"
-  comment_notify_wrote_on: "commented"
-  
   helpers:
     submit:
       create: "Create a {{model}}"
@@ -115,21 +46,135 @@ en:
   
   attributes:
     name: "Name"
-    label_it: "Label"
-    label_en: "Label"
-    url_alias: "Url alias"
-    content_it: "Content"
-    content_en: "Content"
-    summary_it: "Summary"
-    summary_en: "Summary"
-    title_it: "Title"
-    title_en: "Title"
-    tags: "Tags"
-    menu_type: "Type"
-    url: "Url"
-    content: "Content"
+    label: "Label"
+    author: "Author"
+    title: "Title"
     published: "Published"
+    in_home: "Visible in HomePage"
+    created_at: "created on"
+    updated_at: "updated on"
+    type: "Type"
+    url_alias: "Relative Path"
+    order: "Position"
+    content: "Content"
+    tags: "Tags"
+    url: "URL"
     has_comments: "Has comments"
-    in_home: "In home"
-    content_file_name: "Content"
+
+    content_file_name: "File name"
     content_content_type: "Content Type"
+    content_file_size: "Size"
+
+  languages:
+    en: "English"
+    it: "Italian"
+
+  blocks:
+    index:
+      title: "Listing blocks"
+    edit:
+      title: "Edit block"
+    new:
+      title: "New block"
+    create:
+      notice: "Block successfully created"
+    update:
+      update: "Block successfully updated"
+
+  categories:
+    index:
+      title: "Listing categories"
+    edit:
+      title: "Edit category"
+    new:
+      title: "New category"
+    create:
+      notice: "Category created"
+    update:
+      notice: "Category updated"
+    show:
+      empty: "This category is empty"
+
+  comments:
+    index:
+      title: "Listing comments"
+    edit:
+      title: "Edit comment"
+    new:
+      title: "Add new comment"
+    create:
+      notice: "Comment added"
+    update:
+      notice: "Comment updated"
+
+  contact:
+    index:
+      title: "Contact form"
+      fields:
+        name: "Name"
+        email: "Email"
+        subject: "Subject"
+        body: "Message body"
+      submit: "Send"
+    send_mail:
+      needed: "Fields with (*) are needed!"
+      notice: "Email successfully sent"
+
+  contents:
+    index:
+      title: "Listing contents"
+    edit:
+      title: "Edit content"
+    new:
+      title: "New content"
+    update:
+      notice: "Content successfully updated"
+    create:
+      notice: "Content successfully created"
+
+  images:
+    index:
+      title: "Listing images"
+    new:
+      title: "New image"
+    edit:
+      title: "Edit image"
+    update:
+      notice: "Image successfully updated"
+    create:
+      notice: "Image successfully created"
+
+  mailer:
+    comment_notify:
+      subject: "New comment for: {{content}} ({{url}})"
+      wrote: "{{user}} <{{email}}> wrote a comment for: {{content}} ({{url}})"
+    question:
+      wrote: "{{user}} <{{email}}> wrote you an email"
+
+  menu_items:
+    index:
+      title: "Listing menu items"
+    new:
+      title: "New menu item"
+    edit:
+      title: "Edit menu item"
+    update:
+      notice: "Menu item successfully updated"
+    create:
+      notice: "Menu item successfully created"
+
+  tags:
+    index:
+      title: "Listing tags"
+    new:
+      title: "New tag"
+    edit:
+      title: "Edit tag"
+    update:
+      notice: "Tag successfully updated"
+    create:
+      notice: "Tag successfully created"
+    show:
+      empty: "This tag is empty."
+    list:
+      in: "in"

@@ -1,4 +1,4 @@
-<%= @sender_name %> <<%= @sender_email %>> <%= t(:contactme_wrote) %>:
+<%= t('.wrote', :user => @sender_name, :email => @sender_email) %>:
 
 ---
 <%= @message %>

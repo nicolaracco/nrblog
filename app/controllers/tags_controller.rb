@@ -13,9 +13,7 @@ class TagsController < ApplicationController
   def show
     @tag = Tag.find :first, :conditions => ['url_alias = ?', params[:tag]]
     unless @tag.nil?
-      unless check_empty_tag
-        @posts = Content.paginate :per_page => 5, :page => params[:page], :conditions => ['published = 1 AND id IN (SELECT content_id FROM contents_tags WHERE tag_id = ?)', @tag.id], :order => 'created_at DESC'
-      end
+      @posts = Content.paginate :per_page => 5, :page => params[:page], :conditions => ['published = 1 AND id IN (SELECT content_id FROM contents_tags WHERE tag_id = ?)', @tag.id], :order => 'created_at DESC'
     else
       error 404
     end
@@ -37,7 +35,7 @@ class TagsController < ApplicationController
     @tag = Tag.new(params[:tag])
 
     if @tag.save
-      flash[:notice] = t(:tag_created)
+      flash[:notice] = t :notice, :scope => [:tags, :create]
       redirect_to :action => :index
     else
       render :action => :new
@@ -48,7 +46,7 @@ class TagsController < ApplicationController
   # PUT /tags/1.xml
   def update
     if @tag.update_attributes(params[:tag])
-      flash[:notice] = t(:tag_updated)
+      flash[:notice] = t :notice, :scope => [:tags, :update]
       redirect_to :action => :index
     else
       render :action => :edit
@@ -63,11 +61,6 @@ class TagsController < ApplicationController
   end
 
   private
-  def check_empty_tag
-    flash[:alert] = t(:tag_empty) if @tag.contents.empty?
-    return @tag.contents.empty?
-  end
-
   def get_tag
     @tag = Tag.find params[:id]
   end

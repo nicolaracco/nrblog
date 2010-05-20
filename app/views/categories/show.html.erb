@@ -2,4 +2,7 @@
 
 <% unless @category.contents.empty? %>
   <%= render :partial => 'contents/list', :locals => { :posts => @posts } %>
+  <%= will_paginate @posts %>
+<% else %>
+  <%= t('.empty') %>
 <% end -%>

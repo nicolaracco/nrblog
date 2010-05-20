@@ -1,8 +1,9 @@
-<% title t(:tags) %>
+<% title t('.title') %>
 
 <table>
   <tr>
-    <th><%= t :field_label %></th>
+    <th><%= t :label, :scope => :attributes %></th>
+    <th><%= t :url_alias, :scope => :attributes %></th>
     <th></th>
     <th></th>
   </tr>
@@ -10,6 +11,7 @@
 <% @tags.each do |tag| %>
   <tr>
     <td><%= tag.label %></td>
+    <td><%= link_to show_tag_path(:tag => tag.url_alias, :locale => nil), show_tag_path(:tag => tag.url_alias) %></td>
     <td><%= link_to t(:link_edit), edit_tag_path(tag) %></td>
     <td><%= link_to t(:link_destroy), tag, :confirm => t(:confirm_sure), :method => :delete %></td>
   </tr>
@@ -18,4 +20,4 @@
 
 <br />
 
-<%= link_to t(:tag_new), new_tag_path %>
+<%= link_to t(:title, :scope => [:tags, :new]), new_tag_path %>

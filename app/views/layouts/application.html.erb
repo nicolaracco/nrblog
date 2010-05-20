@@ -79,7 +79,7 @@
             <div id="nav-author">
               <h3 class="title"><%= current_author %></h3>
               <ul class="menu">
-                <li class="menuitem"><%= link_to t(:content_new), :new_content %></li>
+                <li class="menuitem"><%= link_to t(:title, :scope => [:contents, :new]), :new_content %></li>
                 <li class="menuitem">
                   <%= t(:section_admin) %>
                   <ul class="submenu">

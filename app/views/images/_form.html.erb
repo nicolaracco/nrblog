@@ -20,25 +20,21 @@
     <%= f.label :content %><br/>
     <%= f.file_field :content %>
   </div>
-  <div class="field">
-    <%= f.label :url_alias %><br />
-    <%= f.text_field :url_alias %>
-  </div>
 
   <div id="image-tabs">
     <ul>
-      <li class="tab"><a href="#image-it"><span><%= t :language_it %></span></a></li>
-      <li class="tab"><a href="#image-en"><span><%= t :language_en %></span></a></li>
+      <li class="tab"><a href="#image-it"><span><%= t :it, :scope => :languages %></span></a></li>
+      <li class="tab"><a href="#image-en"><span><%= t :en, :scope => :languages %></span></a></li>
     </ul>
     <div id="image-it">
       <div class="field">
-        <%= f.label :title_it %><br />
+        <%= f.label :title_it, t(:title, :scope => :attributes) %><br />
         <%= f.text_field :title_it %>
       </div>
     </div>
     <div id="image-en">
       <div class="field">
-        <%= f.label :title_en %><br />
+        <%= f.label :title_en, t(:title, :scope => :attributes) %><br />
         <%= f.text_field :title_en %>
       </div>
     </div>

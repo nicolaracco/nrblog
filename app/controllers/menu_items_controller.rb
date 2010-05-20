@@ -40,7 +40,7 @@ class MenuItemsController < ApplicationController
     @menu_item.menu_order = fb.nil? ? 0 : fb.menu_order + 1
     
     if @menu_item.save
-      flash[:notice] = t :menu_item_created
+      flash[:notice] = t :notice, :scope => [:menu_items, :create]
       redirect_to menu_items_url
     else
       render :action => :new
@@ -51,7 +51,7 @@ class MenuItemsController < ApplicationController
   # PUT /menu_items/1.xml
   def update
     if @menu_item.update_attributes(params[:menu_item])
-      flash[:notice] = t :menu_item_updated
+      flash[:notice] = t :notice, :scope => [:menu_items, :update]
       redirect_to menu_items_url
     else
       render :action => :edit

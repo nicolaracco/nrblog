@@ -1,35 +1,27 @@
+<% title @image.title %>
+
 <p>
   <%= image_tag @image.url %>
 </p>
 
 <p>
-  <b>Content file name:</b>
+  <b><%= t :content_file_name, :scope => :attributes %>:</b>
   <%= @image.content_file_name %>
 </p>
 
 <p>
-  <b>Content content type:</b>
+  <b><%= t :content_content_type, :scope => :attributes %>:</b>
   <%= @image.content_content_type %>
 </p>
 
 <p>
-  <b>Content file size:</b>
+  <b><%= t :content_file_size, :scope => :attributes %>:</b>
   <%= @image.content_file_size %>
 </p>
 
 <p>
-  <b>Content updated at:</b>
-  <%= @image.content_updated_at %>
-</p>
-
-<p>
-  <b><%= t(:field_title) %></b>
+  <b><%= t :title, :scope => :attributes %></b>
   <%= @image.title %>
-</p>
-
-<p>
-  <b>Url alias:</b>
-  <%= @image.url_alias %>
 </p>
 
 <%= link_to t(:link_edit), edit_image_path(@image) %> |

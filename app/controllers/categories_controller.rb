@@ -15,9 +15,7 @@ class CategoriesController < ApplicationController
   def show
     @category = Category.find :first, :conditions => ['url_alias = ?', params[:url_alias]]
     unless @category.nil?
-      unless check_empty_category
-        @posts = Content.paginate :page => params[:page], :conditions => ['published = 1 AND category_id = ?', @category.id], :order => 'created_at DESC'
-      end
+      @posts = Content.paginate :page => params[:page], :conditions => ['published = 1 AND category_id = ?', @category.id], :order => 'created_at DESC'
       render :show
     else
       error 404
@@ -42,7 +40,7 @@ class CategoriesController < ApplicationController
 
     respond_to do |format|
       if @category.save
-        format.html { flash[:notice] = t(:category_created); redirect_to :action => :index; }
+        format.html { flash[:notice] = t(:notice, :scope => [:categories, :create]); redirect_to :action => :index; }
         format.js { render 'create' }
       else
         format.html { render :action => :new }
@@ -55,7 +53,7 @@ class CategoriesController < ApplicationController
   # PUT /categories/1.xml
   def update
     @category.update_attributes params[:category]
-    respond_with @category, :notice => t(:category_updated)
+    respond_with @category, :notice => t(:notice, :scope => [:categories, :update])
   end
 
   # DELETE /categories/1
@@ -69,10 +67,5 @@ class CategoriesController < ApplicationController
   private
   def get_category
     @category = Category.find params[:id]
-  end
-
-  def check_empty_category
-    flash[:alert] = t(:category_empty) if @category.contents.empty?
-    return @category.contents.empty?
   end
 end

@@ -1,4 +1,4 @@
-<%= @sender_name %> <<%= @sender_email %>> <%= t(:comment_notify_wrote_on) %> <%= @content.title %> ( <%= show_content_path(@content.category.url_alias, @content.url_alias) %> ):
+<%= t('.wrote', :user => @sender_name, :email => @sender_email, :content => @content.title, :url => @content_url) %>:
 
 ---
 <%= @message %>

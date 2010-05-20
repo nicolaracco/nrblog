@@ -6,11 +6,11 @@ class ContactController < ApplicationController
 
   def send_mail
     if params[:email][:name].empty? || params[:email][:address].empty? || params[:email][:body].empty?
-      flash[:alert] = t(:contactme_needed)
+      flash[:alert] = t(:needed, :scope => [:contact, :send_mail])
       render :index
     else
       Mailer.question(params[:email], @author.email).deliver
-      flash[:notice] = t(:contactme_sent)
+      flash[:notice] = t(:notice, :scope => [:contact, :send_mail])
       redirect_to :root
     end
   end

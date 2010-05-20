@@ -1,4 +1,4 @@
-<% title t(:blocks) %>
+<% title t('.title') %>
 
 <% content_for :head do %>
   <%= stylesheet_link_tag :jquery_ui %>
@@ -63,7 +63,7 @@
     <div id="tab-<%= type %>">
       <ul id="<%= type %>" class="connectedSortable ui-helper-reset">
         <% @blocks[type].each do |item| %>
-           <li class="ui-state-default" id="m<%= item.id %>"><%= item.title %> <%= link_to remove_icon, item, :confirm => t(:confirm_sure), :method => :delete %> <%= link_to edit_icon, edit_menu_item_path(item) %></li>
+           <li class="ui-state-default" id="m<%= item.id %>"><%= item.title %> <%= link_to remove_icon, item, :confirm => t(:confirm_sure), :method => :delete %> <%= link_to edit_icon, edit_block_path(item) %></li>
         <% end unless @blocks[type].nil? -%>
       </ul>
     </div>
@@ -72,4 +72,4 @@
 
 <br />
 
-<%= link_to t(:block_new), new_block_path %> | <%= refresh_link %>
+<%= link_to t(:title, :scope => [:blocks, :new]), new_block_path %> | <%= refresh_link %>

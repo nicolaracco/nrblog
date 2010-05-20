@@ -7,7 +7,6 @@ class Image < ActiveRecord::Base
   validates_presence_of :title_en, :title_it, :url_alias
   validates_attachment_presence :content
   validates_attachment_content_type :content, :content_type => ['image/jpeg', 'image/png', 'image/gif', 'image/ico']
-  validates_uniqueness_of :url_alias
   before_validation :fill_empty_i18n, :strip_fields
 
   def url type=nil

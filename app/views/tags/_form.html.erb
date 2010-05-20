@@ -27,18 +27,18 @@
 
   <div id="tabs">
     <ul>
-      <li class="tab"><a href="#it"><span><%= t :language_it %></span></a></li>
-      <li class="tab"><a href="#en"><span><%= t :language_en %></span></a></li>
+      <li class="tab"><a href="#it"><span><%= t :it, :scope => :languages %></span></a></li>
+      <li class="tab"><a href="#en"><span><%= t :en, :scope => :languages %></span></a></li>
     </ul>
     <div id="it">
       <div class="field">
-        <%= f.label :label_it %><br />
+        <%= f.label :label_it, t(:label, :scope => :attributes) %><br />
         <%= f.text_field :label_it %>
       </div>
     </div>
     <div id="en">
       <div class="field">
-        <%= f.label :label_en %><br />
+        <%= f.label :label_en, t(:label, :scope => :attributes) %><br />
         <%= f.text_field :label_en %>
       </div>
     </div>

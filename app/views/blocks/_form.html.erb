@@ -21,7 +21,7 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :block_type %><br />
+    <%= f.label :block_type, t(:type, :scope => :attributes) %><br />
     <%= f.select :block_type, options_for_select(available_block_types) %>
   </div>
   <div class="field">
@@ -34,18 +34,18 @@
   </div>
   <div id="tabs">
     <ul>
-      <li class="tab"><a href="#it"><span><%= t :language_it %></span></a></li>
-      <li class="tab"><a href="#en"><span><%= t :language_en %></span></a></li>
+      <li class="tab"><a href="#it"><span><%= t :it, :scope => :languages %></span></a></li>
+      <li class="tab"><a href="#en"><span><%= t :en, :scope => :languages %></span></a></li>
     </ul>
     <div id="it">
       <div class="field">
-        <%= f.label :title_it %><br />
+        <%= f.label :title_it, t(:title, :scope => :attributes) %><br />
         <%= f.text_field :title_it %>
       </div>
     </div>
     <div id="en">
       <div class="field">
-        <%= f.label :title_en %><br />
+        <%= f.label :title_en, t(:title, :scope => :attributes) %><br />
         <%= f.text_field :title_en %>
       </div>
     </div>

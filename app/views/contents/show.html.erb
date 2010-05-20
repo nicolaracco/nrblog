@@ -42,9 +42,9 @@
 <div class="post_show <%='unpublished' if !@content.published -%>">
   <div class="meta">
     <div class="submitted">
-      <%= t :field_created_at %> <%= l @content.created_at, :format => :medium %>
+      <%= t :created_at, :scope => :attributes %> <%= l @content.created_at, :format => :medium %>
       <% unless @content.created_at == @content.updated_at -%>
-        - <%= t :field_updated_at %> <%= l @content.updated_at, :format => :medium %>
+        - <%= t :updated_at, :scope => :attributes %> <%= l @content.updated_at, :format => :medium %>
       <% end -%>
     </div>
     <%= render :partial => 'tags/list', :locals => { :tags => @content.tags } %>
@@ -70,10 +70,10 @@
       <h3 class="ui-widget-header ui-corner-all"><%= t :comment_add %></h3>
       <%= render :partial => 'comments/form' %>
     </div>
-    <%= link_to t(:comment_add), new_comment_path(@content.category.url_alias, @content.url_alias), :id => 'comment-add-link', :remote => true %>
-    <%= link_to "#{@content.comments.length} #{t :comment_mgr}", :comments, :id => 'comment-list-link', :remote => true %>
+    <%= link_to t(:title, :scope => [:comments, :new]), new_comment_path(@content.category.url_alias, @content.url_alias), :id => 'comment-add-link', :remote => true %>
+    <%= link_to t(:comment_mgr, :count => @content.comments.length), :comments, :id => 'comment-list-link', :remote => true %>
     <div id="comments" style="display: none">
-      <h3><%= t :comment_mgr %></h3>
+      <h3><%= t :title, :scope => [:comments, :index] %></h3>
       <div id="comment-list">
       </div>
     </div>

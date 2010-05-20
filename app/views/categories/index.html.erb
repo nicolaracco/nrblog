@@ -1,9 +1,9 @@
-<% title t(:categories) %>
+<% title t('.title') %>
 
 <table id="categories-list">
   <tr>
-    <th><%= t(:field_label) %></th>
-    <th><%= t(:field_url) %></th>
+    <th><%= t :label, :scope => :attributes %></th>
+    <th><%= t :url_alias, :scope => :attributes %></th>
     <th></th>
     <th></th>
   </tr>
@@ -20,4 +20,4 @@
 
 <br />
 
-<%= link_to t(:category_new), new_category_path %>
+<%= link_to t(:title, :scope => [:categories, :new]), new_category_path %>

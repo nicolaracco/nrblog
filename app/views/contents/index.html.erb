@@ -1,12 +1,12 @@
-<% title t(:contents) %>
+<% title t('.title') %>
 
 <table>
   <tr>
-    <th><%= t(:field_title) %></th>
-    <th><%= t(:field_author) %></th>
-    <th><%= t(:field_category) %></th>
-    <th><%= t(:field_published) %></th>
-    <th><%= t(:field_in_home) %></th>
+    <th><%= t :title, :scope => :attributes %></th>
+    <th><%= t :author, :scope => :attributes %></th>
+    <th><%= Category.human_name %></th>
+    <th><%= t :published, :scope => :attributes %></th>
+    <th><%= t :in_home, :scope => :attributes %></th>
     <th></th>
     <th></th>
     <th></th>
@@ -28,4 +28,4 @@
 
 <br />
 
-<%= link_to t(:content_new), new_content_path %>
+<%= link_to t(:title, :scope => [:contents, :new]), new_content_path %>

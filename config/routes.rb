@@ -41,11 +41,6 @@ Nrblog::Application.routes.draw do |map|
         resources :comments
       end
     end
-    controller :images do
-      scope '/images' do
-        get '/:image' => :view
-      end
-    end
   
     controller :contact do
       scope '/contact/:author' do
