@@ -1,0 +1,10 @@
+xml.instruct!
+
+xml.urlset 'xmlns' => 'http://www.sitemaps.org/schemas/sitemap/0.9' do
+  @posts.each do |post|
+    xml.url do
+      xml.loc show_content_path(:category_alias => post.category.url_alias, :url_alias => post.url_alias, :only_path => false)
+      xml.lastmod post.updated_at.to_date
+    end
+  end
+end

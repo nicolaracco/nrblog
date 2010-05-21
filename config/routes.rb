@@ -6,6 +6,10 @@ Nrblog::Application.routes.draw do |map|
       get '/' => :index, :as => :index
     end
 
+    controller :sitemap do
+      get '/sitemap.xml' => :index, :as => :sitemap
+    end
+
     scope '/admin' do
       resources :categories, :except => :show
       resources :menu_items, :except => :show do

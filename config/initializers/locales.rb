@@ -10,7 +10,7 @@ AVAILABLE_LOCALES =
     rescue
     end
   end.freeze
-RAILS_DEFAULT_LOGGER.debug "* Loaded locales #{AVAILABLE_LOCALES.inspect}"
+Rails.logger.debug "* Loaded locales #{AVAILABLE_LOCALES.inspect}"
 
 Dir.glob("#{LOCALES_DIRECTORY}*.yml").each do |file|
   I18n.load_path << file
