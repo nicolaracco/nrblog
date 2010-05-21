@@ -26,6 +26,6 @@ class ApplicationController < ActionController::Base
 
   private
   def get_tags
-    @tags = Tag.find(:all, :limit => 20, :order => "label_#{I18n.locale} desc")
+    @tags = Tag.find(:all, :limit => 20, :order => "label_#{I18n.locale} asc")
   end
 end

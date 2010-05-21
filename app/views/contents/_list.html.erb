@@ -10,7 +10,7 @@
             - <%= t :updated_at, :scope => :attributes %> <%= l p.updated_at, :format => :medium %>
           <% end -%>
         </div>
-        <%= render :partial => 'tags/list', :locals => {:tags => p.tags} %>
+        <%= render :partial => 'tags/list', :locals => {:tags => p.tags.order("label_#{I18n.locale}")} %>
       </div>
       <div class="summary"><p><%= raw p.summary %></p></div>
     </div>

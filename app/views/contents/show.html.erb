@@ -47,7 +47,7 @@
         - <%= t :updated_at, :scope => :attributes %> <%= l @content.updated_at, :format => :medium %>
       <% end -%>
     </div>
-    <%= render :partial => 'tags/list', :locals => { :tags => @content.tags } %>
+    <%= render :partial => 'tags/list', :locals => { :tags => @content.tags.order("label_#{I18n.locale}") } %>
   </div>
   <% unless @content.summary.nil? || @content.summary.empty? %>
     <div class="summary"><p><%= raw @content.summary %></p></div>
