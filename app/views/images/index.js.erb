@@ -1,6 +1,6 @@
 $("#gallery .list").empty();
 <% @images.each do |image| %>
-  <% rit = image.title.gsub("'", "\\'") %>
+  <% rit = image.title.gsub "'", %q{\\\'} %>
   $("#gallery .list").append('<div id="gallery-item_<%= image.id %>" class="gallery-item clear-inline"><a href=""><%= image_tag(image.url(:small)) %></a><a href="" class="item-title"><%= rit %></a></div>');
   $("#gallery-item_<%= image.id %> a").click(function() { setImage('<%= image.id %>', '<%= rit %>', '<%= image.url(:thumb) %>', '<%= image.url(:small) %>', '<%= image.url %>'); $("#gallery").dialog('close'); return false; });
 <% end -%>
