@@ -1,4 +1,5 @@
-This is the blog I want to use for my personal website (http://www.nicolaracco.com). It's intended to be a multilanguage blog with simple content management. Actually I'm hosting it on http://dev.nicolaracco.com.
+This is the blog I'm developing to use for my personal website (http://www.nicolaracco.com). It's intended to be a multilanguage blog with simple content management. Actually I'm hosting it on http://dev.nicolaracco.com.
+It's licensed under GPL v2.0, and I'm hosting it here because I think it could be a good starting point for newbies who want to learn RoR.
 It's built around the model Content (and its 'brothers': Image and Attachment), used for both static and dynamic contents. Each content belongs to a category used as group and to create SEO-friendly urls.
 At the moment it's far to be complete. It still lacks a bit of AJAX, and it lacks RSS feeds, Search engine. There are Tags (and a Tag Cloud feature) and Sitemap. A content can be written using Textile, and a little hack allows to integrate RedCloth with CodeRay to provide syntax highlighting functionalities for the code written in a content.
 This blog is, at the moment, a work made in the last weeks. In fact I tried to accomplish this work using my free time and I couldn't find a bit of time to write test classes, and I think I'll regret in future :).
