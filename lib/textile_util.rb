@@ -23,9 +23,9 @@ class TextileUtil
       
       end_body = mybody.index(/^\s*$/, start_body)
       end_body ||= mybody.length
-      mybody = mybody.gsub /^\s*\\\s*$/, ' '
+      to_highlight = mybody[start_body, end_body - start_body].strip().gsub /^\s*\\\s*$/, ' '
 
-      to_replace = do_coderay code_type, mybody[start_body, end_body - start_body].strip()
+      to_replace = do_coderay code_type, to_highlight
       content[found_index, end_body] = "\n" + to_replace + "\n"
 
       last_index = found_index + to_replace.length
