@@ -30,9 +30,13 @@ class Content < ActiveRecord::Base
   end
 
   def tags_list= list
-    self.tags.destroy_all
+    #self.tags.destroy_all
     array = list.split ','
-    array.each { |x| self.tags << Tag.find_or_create(x.strip) }
+    nt = []
+    array.each do |x| 
+      nt << Tag.find_or_create(x.strip).id
+    end
+    self.tag_ids = nt
   end
 
   private
