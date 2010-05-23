@@ -5,6 +5,7 @@ class ContentsController < ApplicationController
   before_filter :authenticate_author!, :except => :show
   before_filter :get_content_by_id, :only => [:update, :destroy, :edit, :destroy_attachment]
   before_filter :get_content_by_alias, :only => [:show]
+  before_filter :force_encoding, :only => [:create, :update]
 
   respond_to :html, :xml, :js
 
@@ -112,5 +113,10 @@ class ContentsController < ApplicationController
     category = Category.find :first, :conditions => ['url_alias = ?', params[:category_alias]]
     @content = Content.find :first, :conditions => ['url_alias = ? AND category_id = ?', params[:url_alias], category.id] unless category.nil?
     error 404 if @content.nil?
+  end
+
+  def force_encoding
+    params[:content][:content_it] = params[:content][:content_it].force_encoding('UTF-8')
+    params[:content][:content_en] = params[:content][:content_en].force_encoding('UTF-8')
   end
 end
