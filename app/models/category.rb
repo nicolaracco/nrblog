@@ -3,7 +3,7 @@ class Category < ActiveRecord::Base
   validates_presence_of :label_en, :label_it, :url_alias
   validates_uniqueness_of :url_alias
   before_validation :fill_empty_i18n, :strip_fields
-  validates_length_of :url_alias, :minimum => 3, :maximum => 25
+  validates_length_of :url_alias, :minimum => 3, :maximum => 50
 
   has_many :contents
 

@@ -2,7 +2,7 @@ class Content < ActiveRecord::Base
   include Paperclip
   validates_uniqueness_of :url_alias
   validates_presence_of :url_alias, :title_it, :title_en, :content_it, :content_en, :author_id, :category_id
-  validates_length_of :url_alias, :minimum => 3, :maximum => 25
+  validates_length_of :url_alias, :minimum => 3, :maximum => 50
   before_validation :strip_fields
 
   belongs_to :author
