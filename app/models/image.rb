@@ -6,8 +6,9 @@ class Image < ActiveRecord::Base
 
   validates_presence_of :title_en, :title_it
   validates_attachment_presence :content
-  validates_attachment_content_type :content, :content_type => ['image/jpeg', 'image/png', 'image/gif', 'image/ico']
+  validates_attachment_content_type :content, :content_type => ['image/jpeg', 'image/png', 'image/gif', 'image/ico', 'application/x-shockwave-flash']
   before_validation :fill_empty_i18n, :strip_fields
+  before_post_process :is_image?
 
   def url type=nil
     self.content.url type
@@ -25,5 +26,9 @@ class Image < ActiveRecord::Base
   def strip_fields
     self.title_it = self.title_it.strip unless self.title_it.nil?
     self.title_en = self.title_en.strip unless self.title_en.nil?
+  end
+
+  def is_image?
+    !(content_content_type =~ /^image/).nil?
   end
 end
