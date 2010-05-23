@@ -3,9 +3,9 @@ class ContentsController < ApplicationController
   helper_method :content_to_html
 
   before_filter :authenticate_author!, :except => :show
+  before_filter :force_encoding, :only => [:create, :update]
   before_filter :get_content_by_id, :only => [:update, :destroy, :edit, :destroy_attachment]
   before_filter :get_content_by_alias, :only => [:show]
-  before_filter :force_encoding, :only => [:create, :update]
 
   respond_to :html, :xml, :js
 

@@ -25,14 +25,14 @@ class Content < ActiveRecord::Base
 
   def tags_list
     ret = []
-    tags.each { |x| ret << x.label }
+    self.tags.each { |x| ret << x.label }
     ret.join ', '
   end
 
   def tags_list= list
-    tags.destroy_all
+    self.tags.destroy_all
     array = list.split ','
-    array.each { |x| tags << Tag.find_or_create(x.strip) }
+    array.each { |x| self.tags << Tag.find_or_create(x.strip) }
   end
 
   private
