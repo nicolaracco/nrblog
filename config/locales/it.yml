@@ -43,6 +43,11 @@ it:
   time:
     formats:
       medium: "%d/%m/%Y %H:%M"
+
+  errors:
+    messages:
+      blank: "&egrave; obbligatorio"
+      invalid: "non &egrave; valido"
  
   activerecord:
     models:
@@ -51,6 +56,17 @@ it:
       block: "Blocco"
       menu_item: "Voce di Menu"
       category: "Categoria"
+      comment: "Commento"
+    errors:
+      models:
+        category:
+          attributes:
+            url_alias:
+              too_short: "deve contenere almeno 3 caratteri"
+        content:
+          attributes:
+            url_alias:
+              too_short: "deve contenere almeno 3 caratteri"
  
   attributes:
     name: "Nome"
@@ -69,6 +85,10 @@ it:
     tags: "Tags"
     url: "URL"
     has_comments: "Commenti abilitati"
+    user_name: "Nome utente"
+    user_email: "Email"
+    body: "Messaggio"
+    subject: "Soggetto"
 
     content_file_name: "Nome file"
     content_content_type: "Tipo Contenuto"
@@ -119,14 +139,8 @@ it:
   contact:
     index:
       title: "Form di contatto"
-      fields:
-        name: "Nome"
-        email: "Email"
-        subject: "Soggetto"
-        body: "Corpo del messaggio"
       submit: "Invia"
     send_mail:
-      needed: "I campi con (*) sono obbligatori!"
       notice: "Email inviata"
 
   contents:

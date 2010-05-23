@@ -14,7 +14,7 @@
     <h2><%= pluralize(@block.errors.count, "error") %> prohibited this block from being saved:</h2>
     <ul>
     <% @block.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
+      <li><%= raw msg %></li>
     <% end %>
     </ul>
   </div>

@@ -14,7 +14,7 @@
     <h2><%= pluralize(@menu_item.errors.count, "error") %> prohibited this menu_item from being saved:</h2>
     <ul>
     <% @menu_item.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
+      <li><%= raw msg %></li>
     <% end %>
     </ul>
   </div>

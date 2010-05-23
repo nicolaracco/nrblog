@@ -2,3 +2,4 @@ $("#comment-errors").empty();
 <% @comment.errors.each do |field, msg| %>
   $("#comment-errors").append("<p class='alert'><%= t("attributes.#{field}") %>: <%= raw(msg) %></p>");
 <% end -%>
+hideStatus();

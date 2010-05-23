@@ -6,7 +6,7 @@
     <h2><%= pluralize(@category.errors.count, "error") %> prohibited this category from being saved:</h2>
     <ul>
     <% @category.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
+      <li><%= raw msg %></li>
     <% end %>
     </ul>
   </div>
@@ -14,7 +14,7 @@
 
   <div class="field">
     <%= f.label :url_alias %><br />
-    <%= f.text_field :url_alias %>
+    <%= f.text_field :url_alias, :maxlength => 25 %>
   </div>
 
   <div id="category-tabs">

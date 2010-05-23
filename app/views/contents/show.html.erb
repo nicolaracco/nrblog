@@ -32,11 +32,12 @@
 
         $("#new_comment").attr("data-remote", "true");
         $("#new_comment").submit(function() { showStatus(30, 'Sending comment ...'); });
-        $("#comment_submit").click(function() {
-          $("#comment-add-link").show('blind', {}, 500);
-          $("#add-comment").toggle('blind', {}, 500);
-        });
       });
+
+      function commentCreated() {
+        $("#comment-add-link").show('blind', {}, 500);
+        $("#add-comment").toggle('blind', {}, 500);
+      }
     </script>
   <% end -%>
 <% end -%>

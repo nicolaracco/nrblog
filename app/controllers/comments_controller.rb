@@ -32,6 +32,7 @@ class CommentsController < ApplicationController
         end
         format.js do 
           @comments = Comment.paginate(:page => params[:page], :order => 'created_at DESC', :conditions => ['content_id = ?', @content.id])
+          @commentCreated = true
           render :index
         end
       else

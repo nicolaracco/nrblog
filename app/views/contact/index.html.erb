@@ -1,23 +1,35 @@
 <% title t('.title') %>
 
-<% form_tag :action => :send_mail do %>
+<% form_for :contact, @contact, :send_mail do |f| %>
+  <div id="contact-errors">
+    <% if @contact.errors.any? %>
+      <div id="errorExplanation">
+        <h2><%= pluralize(@contact.errors.count, "error") %> prohibited this content from being saved:</h2>
+        <ul>
+          <% @contact.errors.full_messages.each do |msg| %>
+            <li><%= raw msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  </div>
   <p>
-  <%= label :email, :name, t('.fields.name') + '*'%><br />
-  <%= text_field :email, :name %>
+  <%= f.label :user_name %><br />
+  <%= f.text_field :user_name %>
   </p>
   <p>
-  <%= label :email, :address, t('.fields.email') + '*'%><br/>
-  <%= text_field :email, :address %>
+  <%= f.label :user_email %><br/>
+  <%= f.text_field :user_email %>
   </p>
   <p>
-  <%= label :email, :subject, t('.fields.subject') %><br/>
-  <%= text_field :email, :subject %>
+  <%= f.label :subject %><br/>
+  <%= f.text_field :subject %>
   <p/>
   <p>
-  <%= label :email, :body, t('.fields.body') + '*'%><br/>
-  <%= text_area :email, :body, :cols => 80, :rows => 8 %>
+  <%= f.label :body %><br/>
+  <%= f.text_area :body, :cols => 80, :rows => 8 %>
   </p>
   <p>
-  <%= submit_tag t('.submit') %>
+  <%= f.submit t('.submit') %>
   </p>
 <% end -%>

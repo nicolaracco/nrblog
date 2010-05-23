@@ -1,11 +1,11 @@
 class Mailer < ActionMailer::Base
   default :from => 'noreply@nicolaracco.com'
 
-  def question(email_params, recipient)
-    @sender_name = email_params[:name]
-    @sender_email = email_params[:address]
-    @message = email_params[:body]
-    mail :to => recipient, :subject => "[#{t :sitename}] #{email_params[:subject]}"
+  def question(contact, recipient)
+    @sender_name = contact.user_name
+    @sender_email = contact.user_email
+    @message = contact.body
+    mail :to => recipient, :subject => "[#{t :sitename}] #{contact.subject}"
   end
 
   def comment_notify(comment, recipient, content_url)

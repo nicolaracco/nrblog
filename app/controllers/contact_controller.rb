@@ -2,16 +2,17 @@ class ContactController < ApplicationController
   before_filter :check_author
 
   def index
+    @contact = Contact.new
   end
 
   def send_mail
-    if params[:email][:name].empty? || params[:email][:address].empty? || params[:email][:body].empty?
-      flash[:alert] = t(:needed, :scope => [:contact, :send_mail])
-      render :index
-    else
-      Mailer.question(params[:email], @author.email).deliver
+    @contact = Contact.new params[:contact]
+    if @contact.valid?
+      Mailer.question(@contact, @author.email).deliver
       flash[:notice] = t(:notice, :scope => [:contact, :send_mail])
       redirect_to :root
+    else
+      render :index
     end
   end
 

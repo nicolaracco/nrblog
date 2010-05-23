@@ -1,3 +1,6 @@
+<% if @commentCreated %>
+  commentCreated();
+<% end -%>
 showStatus(60, 'Rendering ...');
 $("#comment-list").empty();
 <% @comments.each do |comment| %>

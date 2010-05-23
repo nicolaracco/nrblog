@@ -4,7 +4,7 @@
     <h2><%= pluralize(@image.errors.count, "error") %> prohibited this image from being saved:</h2>
     <ul>
     <% @image.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
+      <li><%= raw msg %></li>
     <% end %>
     </ul>
   </div>

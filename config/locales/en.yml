@@ -60,6 +60,10 @@ en:
     tags: "Tags"
     url: "URL"
     has_comments: "Has comments"
+    user_name: "User name"
+    user_email: "User email"
+    body: "Body"
+    subject: "Subject"
 
     content_file_name: "File name"
     content_content_type: "Content Type"
@@ -110,14 +114,8 @@ en:
   contact:
     index:
       title: "Contact form"
-      fields:
-        name: "Name"
-        email: "Email"
-        subject: "Subject"
-        body: "Message body"
       submit: "Send"
     send_mail:
-      needed: "Fields with (*) are needed!"
       notice: "Email successfully sent"
 
   contents:
