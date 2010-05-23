@@ -116,6 +116,8 @@ class ContentsController < ApplicationController
   end
 
   def force_encoding
+    params[:content][:summary_it] = params[:content][:summary_it].force_encoding('UTF-8')
+    params[:content][:summary_en] = params[:content][:summary_en].force_encoding('UTF-8')
     params[:content][:content_it] = params[:content][:content_it].force_encoding('UTF-8')
     params[:content][:content_en] = params[:content][:content_en].force_encoding('UTF-8')
   end
