@@ -68,18 +68,7 @@
     </div>
   <% end -%>
   <% if @content.has_comments %>
-    <%= render :partial => 'common/progress' %>
-    <div id="add-comment" class="ui-widget-content ui-corner-all" style="display: none">
-      <h3 class="ui-widget-header ui-corner-all"><%= t :title, :scope => [:comments, :new] %></h3>
-      <%= render :partial => 'comments/form' %>
-    </div>
-    <%= link_to t(:title, :scope => [:comments, :new]), new_comment_path(@content.category.url_alias, @content.url_alias), :id => 'comment-add-link', :remote => true %>
-    <%= link_to t(:comment_mgr, :count => @content.comments.length), :comments, :id => 'comment-list-link', :remote => true %>
-    <div id="comments" style="display: none">
-      <h3><%= t :title, :scope => [:comments, :index] %></h3>
-      <div id="comment-list">
-      </div>
-    </div>
+    <%= id_comments_link post %>
   <% end -%>
 </div>
 
