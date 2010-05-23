@@ -64,7 +64,7 @@
           <%= render :partial => 'blocks/show', :locals => {:block => block} %>
         <% end -%>
         <div id="tag-cloud">
-          <% tag_cloud @tags, %w(tc1 tc2 tc3 tc4 tc5) do |label, url_alias, css_class| %>
+          <% tag_cloud @tags, %w(tc5 tc4 tc3 tc2 tc1) do |label, url_alias, css_class| %>
             <%= link_to label, show_tag_path({:tag => url_alias}), :class => css_class %>
           <% end -%>
         </div>
