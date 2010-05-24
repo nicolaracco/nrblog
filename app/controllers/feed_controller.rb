@@ -14,7 +14,7 @@ class FeedController < ApplicationController
   end
 
   def home
-    @posts = Content.find :all, :order => 'created_at DESC', :conditions => 'published = 1', :limit => 10
+    @posts = Content.find :all, :order => 'created_at DESC', :conditions => 'published = 1 AND in_home = 1', :limit => 10
     @title = t(:slogan)
     @controller = 'home'
     @url = index_path :only_path => false
