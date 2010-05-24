@@ -1,5 +1,9 @@
 <% title @category.label %>
 
+<div class="fright">
+  <%= feed_icon show_category_path({:url_alias => @category.url_alias}) %>
+</div>
+
 <% unless @category.contents.empty? %>
   <%= render :partial => 'contents/list', :locals => { :posts => @posts } %>
   <%= will_paginate @posts %>

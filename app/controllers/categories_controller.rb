@@ -2,7 +2,7 @@ class CategoriesController < ApplicationController
   before_filter :authenticate_author!, :except => :show
   before_filter :get_category, :only => [:edit, :update, :destroy]
 
-  respond_to :html, :js
+  respond_to :html, :js, :xml
 
   # GET /categories
   # GET /categories.xml

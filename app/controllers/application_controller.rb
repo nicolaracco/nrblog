@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
     @available_locales = available_locales
     locale = params[:locale]
     locale ||= request.preferred_language_from(@available_locales.keys)
-    I18n.locale = locale
+    I18n.locale = locale if @available_locales.has_key? locale
   end
 
   def available_locales

@@ -30,7 +30,7 @@ Nrblog::Application.routes.draw do |map|
     end
 
     controller :categories do
-      scope '/content' do
+      scope '/content/' do
         get '/:url_alias' => :show, :as => :show_category
       end
     end
@@ -42,6 +42,13 @@ Nrblog::Application.routes.draw do |map|
     controller :contents do
       scope '/content/:category_alias/:url_alias' do
         get '/' => :show, :as => :show_content
+      end
+    end
+    controller :feed do
+      scope '/' do
+        get '/feed.xml' => :home, :as => :feed_home
+        get '/tags/:tag/feed.xml' => :tag, :as => :feed_tag
+        get '/:url_alias/feed.xml' => :category, :as => :feed_category
       end
     end
   

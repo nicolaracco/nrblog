@@ -111,7 +111,7 @@ class ContentsController < ApplicationController
   def get_content_by_alias
     category = Category.find :first, :conditions => ['url_alias = ?', params[:category_alias]]
     @content = Content.find :first, :conditions => ['url_alias = ? AND category_id = ?', params[:url_alias], category.id] unless category.nil?
-    error 404 if @content.nil?
+    error 404 if @content.nil? || !@content.published
   end
 
   def force_encoding

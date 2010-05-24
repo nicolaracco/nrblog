@@ -1,5 +1,9 @@
 <% title @tag.label %>
 
+<div class="fright">
+  <%= feed_icon feed_tag_path({:tag => @tag.url_alias}) %>
+</div>
+
 <% unless @tag.contents.empty? %>
   <%= render :partial => 'contents/list', :locals => { :posts => @posts } %>
   <%= will_paginate @posts %>
