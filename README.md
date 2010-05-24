@@ -4,6 +4,10 @@ It's built around the model Content (and its 'brothers': Image and Attachment), 
 At the moment it's far to be complete. It still lacks a bit of AJAX, and it lacks RSS feeds, Search engine. There are Tags (and a Tag Cloud feature) and Sitemap. A content can be written using Textile, and a little hack allows to integrate RedCloth with CodeRay to provide syntax highlighting functionalities for the code written in a content.
 This blog is, at the moment, a work made in the last weeks. In fact I tried to accomplish this work using my free time and I couldn't find a bit of time to write test classes, and I think I'll regret in future :).
 
+##Last Changes
+
+I removed my own commenting system in favor of IntenseDebate
+
 #Requirements
 - Ruby 1.9
 - Rails 3.0.0.beta3
@@ -36,6 +40,8 @@ Devise: Copy 'dist/devise.rb' to 'config/initializers/devise.rb' and edit it to 
 Database: Create 'config/database.yml' and set it properly
 
 Mail Setup: Copy 'dist/mail_setup.rb' to 'config/initializers/mail_setup.rb' and edit it to set how ActionMailer should send emails
+
+Intense Debate: Copy 'dist/intense_debate.rb' to 'config/initializers/intense_debate.rb' end edit it filling your IntenseDebate IDs.
 
 Finally, setup the environment with:
         bundle install

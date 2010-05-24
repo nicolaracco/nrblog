@@ -16,7 +16,7 @@
       <div class="post-actions">
         <%= link_to t(:read_all), show_content_path({:category_alias => p.category.url_alias, :url_alias => p.url_alias}) %>
         <% if p.has_comments %>
-          <%= id_comments_link p, :url => show_content_path({:category_alias => p.category.url_alias, :url_alias => p.url_alias}) %>
+          <%= id_comments_link p, :url => show_content_path({:category_alias => p.category.url_alias, :url_alias => p.url_alias}), :acct_no => ID_ACCT_NO_I18N.has_key?(I18n.locale) ? ID_ACCT_NO_I18N[I18n.locale] : ID_ACCT_NO %>
         <% end -%>
       </div>
     </div>
