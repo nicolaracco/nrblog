@@ -39,6 +39,12 @@ Nrblog::Application.routes.draw do |map|
         get '/:tag' => :show, :as => :show_tag
       end
     end
+    controller :contact do
+      scope '/contact/:author' do
+        get '/' => :index
+        post '/' => :send_mail
+      end
+    end
     controller :contents do
       scope '/:category_alias/:url_alias' do
         get '/' => :show, :as => :show_content
@@ -49,13 +55,6 @@ Nrblog::Application.routes.draw do |map|
         get '/feed.xml' => :home, :as => :feed_home
         get '/tags/:tag/feed.xml' => :tag, :as => :feed_tag
         get '/:url_alias/feed.xml' => :category, :as => :feed_category
-      end
-    end
-  
-    controller :contact do
-      scope '/contact/:author' do
-        get '/' => :index
-        post '/' => :send_mail
       end
     end
   end
