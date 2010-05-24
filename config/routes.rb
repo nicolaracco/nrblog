@@ -1,7 +1,7 @@
 Nrblog::Application.routes.draw do |map|
   devise_for :authors, :path_names => { :sign_in => 'login', :sign_out => 'logout' }
 
-  scope '(/:locale)' do
+  scope '(/:locale)', :constraints => { :locale => /\w{2}/ } do
     controller :home do
       get '/' => :index, :as => :index
     end
@@ -30,7 +30,7 @@ Nrblog::Application.routes.draw do |map|
     end
 
     controller :categories do
-      scope '/content/' do
+      scope '/' do
         get '/:url_alias' => :show, :as => :show_category
       end
     end
@@ -40,7 +40,7 @@ Nrblog::Application.routes.draw do |map|
       end
     end
     controller :contents do
-      scope '/content/:category_alias/:url_alias' do
+      scope '/:category_alias/:url_alias' do
         get '/' => :show, :as => :show_content
       end
     end
@@ -61,6 +61,8 @@ Nrblog::Application.routes.draw do |map|
   end
 
   root :to => 'home#index'
+
+  match '*path' => 'home#notfound'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
