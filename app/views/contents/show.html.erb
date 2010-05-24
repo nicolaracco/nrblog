@@ -7,41 +7,6 @@
 
 <% meta_description(@content.summary) unless @content.summary.blank? %>
 
-<% content_for :head do %>
-  <%= javascript_include_tag :jquery_ui %>
-  <%= stylesheet_link_tag :jquery_ui %>
-  <% if @content.has_comments %>
-    <script type="text/javascript">
-      $(document).ready(function() {
-        <% if @content.comments.empty? %>
-          $("#comment-list-link").hide();
-        <% else %>
-          $("#comment-add-link").hide();
-          $("#comment-list-link").click(function() { showStatus(30, 'Loading comments ...'); $("#comment-list-link").hide(); $("#comment-add-link").show(); });
-        <% end -%>
-        $("#comments").attr("style", "");
-        $("#add-comment").attr("style", "");
-        $("#comments").hide();
-        $("#add-comment").hide();
-        $("#comment-add-link").click(function() {
-          $("#comment-add-link").hide();
-          $("#new_comment").clearForm();
-          $("#add-comment").show('blind', {}, 500);
-          return false;
-        });
-
-        $("#new_comment").attr("data-remote", "true");
-        $("#new_comment").submit(function() { showStatus(30, 'Sending comment ...'); });
-      });
-
-      function commentCreated() {
-        $("#comment-add-link").show('blind', {}, 500);
-        $("#add-comment").toggle('blind', {}, 500);
-      }
-    </script>
-  <% end -%>
-<% end -%>
-
 <div class="post_show <%='unpublished' if !@content.published -%>">
   <div class="meta">
     <div class="submitted">
@@ -68,7 +33,7 @@
     </div>
   <% end -%>
   <% if @content.has_comments %>
-    <%= raw(id_comments_link @content) %>
+    <%= id_comments @content, :title => @content.title %>
   <% end -%>
 </div>
 

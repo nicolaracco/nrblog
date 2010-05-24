@@ -30,6 +30,7 @@ it:
   browse: "Sfoglia ..."
   remove: "Rimuovi"
   logout: "Logout"
+  read_all: "Leggi tutto"
   refresh_layout: "Aggiorna layout"
   attachment_add: "Aggiungi allegato"
   

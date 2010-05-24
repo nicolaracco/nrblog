@@ -18,7 +18,6 @@ class ContentsController < ApplicationController
   # GET /contents/1
   # GET /contents/1.xml
   def show
-    @comment = Comment.new
     respond_with @content
   end
 

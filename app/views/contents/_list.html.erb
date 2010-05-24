@@ -13,6 +13,12 @@
         <%= render :partial => 'tags/list', :locals => {:tags => p.tags.order("label_#{I18n.locale}")} %>
       </div>
       <div class="summary"><p><%= raw p.summary %></p></div>
+      <div class="post-actions">
+        <%= link_to t(:read_all), show_content_path({:category_alias => p.category.url_alias, :url_alias => p.url_alias}) %>
+        <% if p.has_comments %>
+          <%= id_comments_link p, :url => show_content_path({:category_alias => p.category.url_alias, :url_alias => p.url_alias}) %>
+        <% end -%>
+      </div>
     </div>
   <% end -%>
   <%= will_paginate posts %>

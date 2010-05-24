@@ -30,6 +30,7 @@ en:
   browse: "Browse ..."
   remove: "Remove"
   logout: "Logout"
+  read_all: "Read all"
   refresh_layout: "Refresh layout"
   attachment_add: "Add attachment"
   

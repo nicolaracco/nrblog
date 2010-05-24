@@ -42,7 +42,6 @@ Nrblog::Application.routes.draw do |map|
     controller :contents do
       scope '/content/:category_alias/:url_alias' do
         get '/' => :show, :as => :show_content
-        resources :comments
       end
     end
   
