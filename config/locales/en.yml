@@ -6,6 +6,7 @@ en:
 
   sitename: "Nicola Racco's Blog"
   slogan: "I looked under a Python and I caught a Ruby"
+  footer: "This Blog is a personal work of Nicola Racco, all contents published in this blog are released under CC license. The Blog code source is available on a <a href=\"http://github.com/nicolaracco/nrblog\">GitHub<a/> repository and it's released under GPL-v2 license."
   
   section_general: "General"
   section_admin: "Admin"
