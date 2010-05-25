@@ -159,3 +159,107 @@ td {
 .tc4 { font-size: 16px; }
 
 .tc5 { font-size: 14px; }
+
+/* LINKS */
+a {
+  color: #007D8E;
+}
+
+.links a {
+  text-decoration: none;
+}
+
+.links .active a {
+  color: #000;
+}
+
+ul.links li {
+  display: inline;
+  padding: 0 15px;
+  list-style-type: none;
+  font-weight: bold;
+}
+
+
+/* TOP HORIZONTAL MENU */
+#top-horiz-menu {
+  margin-top: 0;
+  padding-top: 8px;
+}
+
+#top-horiz-menu li {
+  line-height: 22px;
+}
+
+#top-horiz-menu li a {
+  background: transparent url(images/bg-nav-item.jpg) no-repeat scroll 50% 0;
+  padding: 0.9em 0;
+}
+
+#top-horiz-menu li a:hover {
+  background: transparent url(images/bg-nav-item-hover.jpg) no-repeat scroll 50% 0;
+}
+
+
+/* LANGUAGE SELECTOR */
+#language-selector {
+  float: right;
+}
+
+#language-selector li {
+  padding: 0 0 0 30px;
+  margin-left: 10px;
+}
+
+#language-selector li.language.en {
+  background: transparent url(images/flags/en.png) no-repeat 0 50%;
+}
+
+#language-selector li.language.it {
+  background: transparent url(images/flags/it.png) no-repeat 0 50%;
+}
+.post_item { padding: 0 0 40px; }
+
+.comment_item { padding: 0 0 20px; }
+
+.comment-list { padding: 20px 0 0; }
+
+.submitted {
+  font-size: x-small;
+  color: #777;
+}
+
+.taglist ul li a { font-style: italic; font-weight: normal; }
+
+.taglist { font-size: x-small; }
+
+#add-comment { padding: 0.4em; }
+
+#add-comment h3 {
+  margin: 0;
+  padding: 0.4em;
+  text-align: center;
+}
+
+.content-separator {
+  clear: both;
+  display: block;
+  height: 5px;
+}
+
+.attachments ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.attachments ul li {
+  background: transparent url(images/attachment.png) no-repeat 0px 50%;
+  padding-left: 16px;
+}
+
+.attachments {
+  margin-bottom: 40px;
+}
+
+.CodeRay { display: block; }
