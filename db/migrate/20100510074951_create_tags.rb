@@ -9,8 +9,8 @@ class CreateTags < ActiveRecord::Migration
     add_index :tags, :label_en, :unique => true
 
     create_table :contents_tags, :id => false do |t|
-      t.integer :tag_id, :null => false
-      t.integer :content_id, :null => false
+      t.references :tag, :null => false
+      t.references :content, :null => false
     end
     add_index :contents_tags, [:tag_id, :content_id], :unique => true
   end

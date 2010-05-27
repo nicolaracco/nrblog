@@ -4,7 +4,7 @@ class CreateBlocks < ActiveRecord::Migration
       t.string :block_type
       t.string :title_en
       t.string :title_it
-      t.integer :content_id
+      t.references :content
       t.boolean :show_title
       t.integer :block_order
 
