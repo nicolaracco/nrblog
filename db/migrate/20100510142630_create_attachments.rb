@@ -10,7 +10,6 @@ class CreateAttachments < ActiveRecord::Migration
 
       t.timestamps
     end
-    add_index :attachments, :content_id
   end
 
   def self.down

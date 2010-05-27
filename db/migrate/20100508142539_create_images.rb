@@ -7,7 +7,6 @@ class CreateImages < ActiveRecord::Migration
       t.datetime :content_updated_at
       t.string :title_en
       t.string :title_it
-      t.string :url_alias, :unique => true
 
       t.timestamps
     end

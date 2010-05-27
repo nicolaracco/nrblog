@@ -14,15 +14,10 @@ class CreateContents < ActiveRecord::Migration
       t.boolean :has_comments
       t.boolean :in_home
 
-      t.string :icon_file_name
-      t.string :icon_content_type
-      t.integer :icon_content_size
-      t.datetime :icon_updated_at
+      t.integer :image_id
 
       t.timestamps
     end
-    add_index :contents, :category_id
-    add_index :contents, :author_id
     add_index :contents, :url_alias, :unique => true
   end
 
