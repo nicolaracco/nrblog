@@ -60,15 +60,26 @@ it:
       category: "Categoria"
       comment: "Commento"
     errors:
+      messages:
+        taken: "deve avere un valore univoco"
       models:
         category:
           attributes:
             url_alias:
               too_short: "deve contenere almeno 3 caratteri"
+              exclusion: "contiene un valore riservato"
         content:
           attributes:
             url_alias:
               too_short: "deve contenere almeno 3 caratteri"
+        block:
+          attributes:
+            block_type:
+              inclusion: "non &egrave; un valore riconosciuto"
+        menu_item:
+          attributes:
+            menu_type:
+              inclusion: "non &egrave; un valore riconosciuto"
  
   attributes:
     name: "Nome"

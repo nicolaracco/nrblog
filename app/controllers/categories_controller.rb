@@ -52,8 +52,13 @@ class CategoriesController < ApplicationController
   # PUT /categories/1
   # PUT /categories/1.xml
   def update
-    @category.update_attributes params[:category]
-    respond_with @category, :notice => t(:notice, :scope => [:categories, :update])
+    respond_to do |format|
+      if @category.update_attributes params[:category]
+        format.html { flash[:notice] = t(:notice, :scope => [:categories, :update]); redirect_to :action => :index; }
+      else
+        format.html { render :action => :edit }
+      end
+    end
   end
 
   # DELETE /categories/1

@@ -3,6 +3,7 @@ class Content < ActiveRecord::Base
   validates_uniqueness_of :url_alias
   validates_presence_of :url_alias, :title_it, :title_en, :content_it, :content_en, :author_id, :category_id
   validates_length_of :url_alias, :minimum => 3, :maximum => 50
+  validates_format_of :url_alias, :with => /\A[a-zA-Z_\-0-9]*\z/
   before_validation :strip_fields
 
   belongs_to :author

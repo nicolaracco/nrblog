@@ -33,8 +33,6 @@ class BlocksController < ApplicationController
   # POST /blocks.xml
   def create
     @block = Block.new(params[:block])
-    fb = Block.find(:first, :conditions => ['block_type = ?', @block.block_type], :order => 'block_order DESC')
-    @block.block_order = fb.nil? ? 0 : fb.block_order + 1
 
     if @block.save
       flash[:notice] = t(:notice, :scope => [:blocks, :create])

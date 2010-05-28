@@ -1,7 +1,7 @@
 class Tag < ActiveRecord::Base
   translatable_columns :label
-  validates :label_it, :presence => true, :uniqueness => true, :tag_name => true
-  validates :label_en, :presence => true, :uniqueness => true, :tag_name => true
+  validates :label_it, :presence => true, :uniqueness => true
+  validates :label_en, :presence => true, :uniqueness => true
   validates :url_alias, :presence => true, :uniqueness => true
   has_and_belongs_to_many :contents
   before_validation :fill_empty_i18n, :strip_fields

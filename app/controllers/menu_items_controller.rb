@@ -36,8 +36,6 @@ class MenuItemsController < ApplicationController
   # POST /menu_items.xml
   def create
     @menu_item = MenuItem.new(params[:menu_item])
-    fb = MenuItem.find(:first, :conditions => ['menu_type = ?', @menu_item.menu_type], :order => 'menu_order DESC')
-    @menu_item.menu_order = fb.nil? ? 0 : fb.menu_order + 1
     
     if @menu_item.save
       flash[:notice] = t :notice, :scope => [:menu_items, :create]
