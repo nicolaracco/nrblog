@@ -100,7 +100,7 @@ class ContentsController < ApplicationController
   end
 
   def preview_content
-    render :text => TextileUtil.to_html(params[:data])
+    render :text => RedCloth.new(params[:data]).to_html
   end
 
   private

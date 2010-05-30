@@ -1,4 +1,4 @@
 <div id="block_<%= block.content.url_alias %>" class="sideblock">
   <%= image_tag(block.content.image.url(:thumb), :class => 'contenticon') unless block.content.image.nil? %>
-  <%= raw TextileUtil.to_html(block.content.content) %>
+  <%= raw RedCloth.new(block.content.content).to_html %>
 </div>

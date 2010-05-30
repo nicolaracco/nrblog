@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
   end
 
   def error(code)
-    render :file => "#{RAILS_ROOT}/public/#{code.to_s}.html", :status => code
+    render :file => "#{Rails.root}/public/#{code.to_s}.html", :status => code
   end
 
   private
