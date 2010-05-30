@@ -38,7 +38,7 @@ module RedCloth::Formatters::HTML
       scanned = CodeRay.scan(s_code, code_type.to_sym)
       lines_count = 0
       s_code.each_line { |line| lines_count += 1 }
-      @isblock ? scanned.div(:line_numbers => lines_count > 1 ? :table : :inline, :css => :class) : scanned.span(:css => :class)
+      @isblock ? scanned.div(:line_numbers => lines_count > 1 ? :table : nil, :css => :class) : scanned.span(:css => :class)
     end
   end
 end
