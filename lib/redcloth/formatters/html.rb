@@ -39,7 +39,9 @@ module RedCloth::Formatters::HTML
 
       s_code = s_code.gsub /^\s*\\\s*$/, '' #Remove blank line markers
       scanned = CodeRay.scan(s_code, code_type.to_sym)
-      return @isblock ? scanned.div(:line_numbers => :table) : scanned.span
+      lines_count = 0
+      s_code.each_line { |line| lines_count += 1 }
+      @isblock ? scanned.div(:line_numbers => lines_count > 1 ? :table : :inline, :css => :class) : scanned.span(:css => :class)
     end
   end
 end

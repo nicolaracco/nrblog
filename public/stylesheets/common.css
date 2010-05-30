@@ -45,6 +45,11 @@ img {
   border: 0 none;
 }
 
+pre {
+  background-color: #eee;
+  padding: 5px;
+}
+
 .flaglist .field {
   float: left;
   padding: 0 5px;
@@ -262,4 +267,3 @@ ul.links li {
   margin-bottom: 40px;
 }
 
-.CodeRay { display: block; }
