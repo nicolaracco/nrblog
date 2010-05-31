@@ -8,36 +8,36 @@
   margin: 12px 0;
 }
 
-span.CodeRay { padding: 0; margin: 0; }
+span.CodeRay, .CodeRay pre { margin: 0; padding: 0; }
 
-.CodeRay pre {
-  margin: 0px;
-  padding: 0px;
-}
+ol.CodeRay { margin: 0; padding: 10px 0 10px 40px; }
 
 .CodeRay .line_numbers { padding-right: 10px; }
 
 .CodeRay .an { color:#007d8e }                      /* html attribute */
 .CodeRay .c  { color:#708c90; font-style: italic; } /* comment */
 .CodeRay .ch { color:#509E4F }                      /* escaped character */
-.CodeRay .cl { color:#007d8e; font-weight: bold; }                         /* class */
+.CodeRay .cl { color:#007d8e; }                         /* class */
 .CodeRay .co { color:#007d8e }                         /* constant */
 .CodeRay .fl { color:#A4C260 }                      /* float */
-.CodeRay .fu { color:#04c7d5; font-weight: bold; }                      /* function */
+/*.CodeRay .fu { color:#04c7d5; }                      /* function */
 .CodeRay .gv { color:#007d8e }                      /* global variable */
-.CodeRay .i  { color: black; }                      /* integer */
+/*.CodeRay .i  { color: black; }                      /* integer */
 .CodeRay .idl { color: #007d8e; }
-.CodeRay .iv { color:#708c90 }                      /* instance variable */
+.CodeRay .iv { color:#35afc0 }                      /* instance variable */
 .CodeRay .pp { color:#6c9cbd }                      /* doctype */
-.CodeRay .r  { color:#c000c0 }                      /* keyword */
+.CodeRay .r  { color:#0000ff }                      /* keyword */
 .CodeRay .rx { color:#A4C260 }                      /* regex */
 .CodeRay .s  { color:#c0000d }                      /* string */
 .CodeRay .sy { color:#c0000d }                      /* symbol */
 .CodeRay .ta { color:#0000ff }                      /* html tag */
-.CodeRay .pc { color:#6C9CBD }                      /* boolean */
+/*.CodeRay .pc { color:#6C9CBD }                      /* boolean */
+.CodeRay .pc { color: #0000ff; }
 .CodeRay .v { color: #0000ff; }
+.CodeRay .il { color: #58585a; }
 
 .CodeRay .di, .CodeRay .ty, .CodeRay .kw { color: #0000ff; }
 .CodeRay .pt, .CodeRay .ex { color: #007d8e; }
 
-.CodeRay .ke { color: #6c9cbd; }
+.CodeRay .ke { color: #007d8e; }
+.CodeRay .cv { color: #0000ff; }
