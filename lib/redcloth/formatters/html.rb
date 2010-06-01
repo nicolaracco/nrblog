@@ -35,23 +35,26 @@ module RedCloth::Formatters::HTML
     else
       s_code = CGI.unescapeHTML(opts[:text]).gsub /^\s*\\\s*$/, '' #Remove blank line markers
       scanned = CodeRay.scan(s_code, code_type.to_sym)
-      classes = opts[:class] ? opts[:class].split(' ') : []
-      if classes.include? 'ln'
-        lines_count = 0
-        s_code.each_line { |line| lines_count += 1 }
-        show_lines = lines_count > 1
+      if @isblock
+        classes = opts[:class] ? opts[:class].split(' ') : []
+        if classes.include? 'ln'
+          lines_count = 0
+          s_code.each_line { |line| lines_count += 1 }
+          show_lines = lines_count > 1
 
-        if show_lines
-          highlighted = []
-          classes.each do |cl|
-            cl.sub(/\Ah(\d+)_(\d+)\z/) { |block| (Integer($1)..Integer($2)).each { |index| highlighted << index } }
-            cl.sub(/\Ah(\d+)\z/) { |block| highlighted << $1.to_i }
+          if show_lines
+            highlighted = []
+            classes.each do |cl|
+              cl.sub(/\Ah(\d+)_(\d+)\z/) { |block| (Integer($1)..Integer($2)).each { |index| highlighted << index } }
+              cl.sub(/\Ah(\d+)\z/) { |block| highlighted << $1.to_i }
+            end
+            highlighted = nil if highlighted.empty? # else will disable bolding
           end
-          puts ">>>> #{highlighted}"
-          highlighted = nil if highlighted.empty? # else will disable bolding
         end
+        return scanned.div(:line_numbers => show_lines ? :table : nil, :css => :class, :highlight_lines => highlighted)
+      else 
+        return scanned.span(:css => :class)
       end
-      @isblock ? scanned.div(:line_numbers => show_lines ? :table : nil, :css => :class, :highlight_lines => highlighted) : scanned.span(:css => :class)
     end
   end
 end
