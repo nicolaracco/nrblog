@@ -33,7 +33,7 @@ module RedCloth::Formatters::HTML
     if (code_type == 'none')
       super
     else
-      s_code = CGI.unescapeHTML(opts[:text]).gsub /^\\\s*$/, '' #Remove blank line markers
+      s_code = CGI.unescapeHTML(opts[:text]).gsub(/^\s*\\\s*$/, '').gsub(/^\s*\\\\\s*$/, "\\") #Remove blank line markers
       scanned = CodeRay.scan(s_code, code_type.to_sym)
       if @isblock
         classes = opts[:class] ? opts[:class].split(' ') : []
