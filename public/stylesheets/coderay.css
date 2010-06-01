@@ -12,6 +12,8 @@ span.CodeRay, .CodeRay pre { margin: 0; padding: 0; }
 
 ol.CodeRay { margin: 0; padding: 10px 0 10px 40px; }
 
+table.CodeRay { display: block; }
+
 .CodeRay .line_numbers { padding-right: 10px; }
 
 .CodeRay .an { color:#007d8e }                      /* html attribute */
