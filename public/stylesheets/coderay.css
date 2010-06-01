@@ -20,18 +20,15 @@ ol.CodeRay { margin: 0; padding: 10px 0 10px 40px; }
 .CodeRay .cl { color:#007d8e; }                         /* class */
 .CodeRay .co { color:#007d8e }                         /* constant */
 .CodeRay .fl { color:#A4C260 }                      /* float */
-/*.CodeRay .fu { color:#04c7d5; }                      /* function */
 .CodeRay .gv { color:#007d8e }                      /* global variable */
-/*.CodeRay .i  { color: black; }                      /* integer */
 .CodeRay .idl { color: #007d8e; }
 .CodeRay .iv { color:#35afc0 }                      /* instance variable */
 .CodeRay .pp { color:#6c9cbd }                      /* doctype */
 .CodeRay .r  { color:#0000ff }                      /* keyword */
-.CodeRay .rx { color:#A4C260 }                      /* regex */
+.CodeRay .rx { color:#007d8e }                      /* regex */
 .CodeRay .s  { color:#c0000d }                      /* string */
 .CodeRay .sy { color:#c0000d }                      /* symbol */
 .CodeRay .ta { color:#0000ff }                      /* html tag */
-/*.CodeRay .pc { color:#6C9CBD }                      /* boolean */
 .CodeRay .pc { color: #0000ff; }
 .CodeRay .v { color: #0000ff; }
 .CodeRay .il { color: #58585a; }
