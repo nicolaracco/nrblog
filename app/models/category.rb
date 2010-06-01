@@ -7,7 +7,7 @@ class Category < ActiveRecord::Base
   validates_format_of :url_alias, :with => /\A[a-zA-Z_\-0-9]*\z/
   validates_exclusion_of :url_alias, :in => %w(404.html 422.html 500.html favicon.ico _images_ javascripts _markitup_ robots.txt stylesheets system)
 
-  has_many :contents
+  has_many :contents, :dependent => :destroy
 
   def to_s
     self.label

@@ -10,8 +10,7 @@ class Content < ActiveRecord::Base
   belongs_to :category
   belongs_to :image
   has_and_belongs_to_many :tags
-  has_many :attachments
-  has_many :comments
+  has_many :attachments, :dependent => :destroy
 
   translatable_columns :title, :content, :summary
 
