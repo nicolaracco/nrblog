@@ -51,10 +51,12 @@ module RedCloth::Formatters::HTML
             highlighted = nil if highlighted.empty? # else will disable bolding
           end
         end
-        return scanned.div(:line_numbers => show_lines ? :table : nil, :css => :class, :highlight_lines => highlighted)
-      else 
-        return scanned.span(:css => :class)
+        text_to_return = scanned.div(:line_numbers => show_lines ? :table : nil, :css => :class, :highlight_lines => highlighted)
+      else
+        text_to_return = scanned.span(:css => :class)
       end
+      text_to_return.insert(text_to_return.index('>'), "id=\"#{opts[:id]}\"") unless opts[:id].nil?
+      return text_to_return
     end
   end
 end
