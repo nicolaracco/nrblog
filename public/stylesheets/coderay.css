@@ -16,7 +16,7 @@ ol.CodeRay { margin: 0; padding: 10px 0 10px 40px; }
 
 .CodeRay .an { color:#007d8e }                      /* html attribute */
 .CodeRay .c  { color:#708c90; font-style: italic; } /* comment */
-.CodeRay .ch { color:#509E4F }                      /* escaped character */
+.CodeRay .ch { color:#d2222e }                      /* escaped character */
 .CodeRay .cl { color:#007d8e; }                         /* class */
 .CodeRay .co { color:#007d8e }                         /* constant */
 .CodeRay .fl { color:#A4C260 }                      /* float */
