@@ -25,7 +25,7 @@ ol.CodeRay { margin: 0; padding: 10px 0 10px 40px; }
 .CodeRay .iv { color:#35afc0 }                      /* instance variable */
 .CodeRay .pp { color:#6c9cbd }                      /* doctype */
 .CodeRay .r  { color:#0000ff }                      /* keyword */
-.CodeRay .rx { color:#007d8e }                      /* regex */
+.CodeRay .rx { color:#c0000d }                      /* regex */
 .CodeRay .s  { color:#c0000d }                      /* string */
 .CodeRay .sy { color:#c0000d }                      /* symbol */
 .CodeRay .ta { color:#0000ff }                      /* html tag */
