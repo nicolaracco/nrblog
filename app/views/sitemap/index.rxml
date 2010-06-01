@@ -7,4 +7,26 @@ xml.urlset 'xmlns' => 'http://www.sitemaps.org/schemas/sitemap/0.9' do
       xml.lastmod post.updated_at.to_date
     end
   end
+  @categories.each do |category|
+    unless category.contents.blank?
+      xml.url do
+        xml.loc feed_category_path(:url_alias => category.url_alias, :only_path => false)
+        xml.lastmod category.contents.order("updated_at DESC")[0].updated_at.to_date
+      end
+    end
+  end
+  @tags.each do |tag|
+    unless tag.contents.blank?
+      xml.url do
+        xml.loc feed_tag_path(:tag => tag.url_alias, :only_path => false)
+        xml.lastmod tag.contents.order("updated_at DESC")[0].updated_at.to_date
+      end
+    end
+  end
+  unless @posts.blank?
+    xml.url do
+      xml.loc feed_home_path
+      xml.lastmod @posts[0].updated_at.to_date
+    end
+  end
 end
