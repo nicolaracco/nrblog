@@ -50,6 +50,7 @@ it:
     messages:
       blank: "&egrave; obbligatorio"
       invalid: "non &egrave; valido"
+      unique_label_between_locales: "deve avere un valore univoco tra le traduzioni"
  
   activerecord:
     models:

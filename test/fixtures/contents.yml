@@ -1,25 +1,25 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-one:
-  title_en: MyString
-  title_it: MyString
-  author_id: 1
-  url_alias: MyString
-  content_it: MyString
-  content_en: MyString
-  category_id: 1
-  published: false
-  has_comments: false
-  in_home: false
+#one:
+#  title_en: MyString
+#  title_it: MyString
+#  author_id: 1
+#  url_alias: MyString
+#  content_it: MyString
+#  content_en: MyString
+#  category_id: 1
+#  published: false
+#  has_comments: false
+#  in_home: false
 
-two:
-  title_en: MyString
-  title_it: MyString
-  author_id: 1
-  url_alias: MyString
-  content_it: MyString
-  content_en: MyString
-  category_id: 1
-  published: false
-  has_comments: false
-  in_home: false
+#two:
+#  title_en: MyString
+#  title_it: MyString
+#  author_id: 1
+#  url_alias: MyString
+#  content_it: MyString
+#  content_en: MyString
+#  category_id: 1
+#  published: false
+#  has_comments: false
+#  in_home: false

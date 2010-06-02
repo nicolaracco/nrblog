@@ -45,6 +45,10 @@ en:
   time:
     formats:
       medium: "%a %m/%d/%Y %H:%M"
+
+  errors:
+    messages:
+      unique_label_between_locales: "has to be unique between locales"
   
   attributes:
     name: "Name"

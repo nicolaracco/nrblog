@@ -1,11 +1,11 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  name: MyString
-  label_it: MyString
-  label_en: MyString
+  label_it: Uno Tag
+  label_en: One Tag
+  url_alias: one_tag
 
 two:
-  name: MyString
-  label_it: MyString
-  label_en: MyString
+  label_it: Two Tag
+  label_en: Due Tag
+  url_alias: due_tag

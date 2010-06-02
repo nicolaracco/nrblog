@@ -1,17 +1,17 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-one:
-  type: MyString
-  title_en: MyString
-  title_it: MyString
-  content_id: 1
-  show_title: false
-  order: 1
+#one:
+#  type: MyString
+#  title_en: MyString
+#  title_it: MyString
+#  content_id: 1
+#  show_title: false
+#  order: 1
 
-two:
-  type: MyString
-  title_en: MyString
-  title_it: MyString
-  content_id: 1
-  show_title: false
-  order: 1
+#two:
+#  type: MyString
+#  title_en: MyString
+#  title_it: MyString
+#  content_id: 1
+#  show_title: false
+#  order: 1

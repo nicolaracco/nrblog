@@ -1,11 +1,11 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-one:
-  label_it: MyString
-  label_en: MyString
-  url_alias: MyString
+#one:
+#  label_it: MyString
+#  label_en: MyString
+#  url_alias: MyString
 
-two:
-  label_it: MyString
-  label_en: MyString
-  url_alias: MyString
+#two:
+#  label_it: MyString
+#  label_en: MyString
+#  url_alias: MyString

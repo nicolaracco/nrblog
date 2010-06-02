@@ -1,1 +1,1 @@
-require 'lib/redcloth/formatters/html'
+require "#{Rails.root}/lib/redcloth/formatters/html"
