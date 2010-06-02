@@ -19,9 +19,17 @@ class Tag < ActiveRecord::Base
 
   private
   def unique_labels_between_locales
-    tag = Tag.find :first, :conditions => ['label_it like ? AND id != ?', label_en, self.id]
+    if self.id.nil?
+      tag = Tag.find :first, :conditions => ['label_it like ?', self.label_en]
+    else
+      tag = Tag.find :first, :conditions => ['label_it like ? AND id != ?', self.label_en, self.id]
+    end
     self.errors.add(:label_en, I18n.t('errors.messages.unique_label_between_locales')) unless tag.nil?
-    tag = Tag.find :first, :conditions => ['label_en like ? AND id != ?', label_it, self.id]
+    if self.id.nil?
+      tag = Tag.find :first, :conditions => ['label_en like ?', self.label_it]
+    else
+      tag = Tag.find :first, :conditions => ['label_en like ? AND id != ?', self.label_it, self.id]
+    end
     self.errors.add(:label_it, I18n.t('errors.messages.unique_label_between_locales')) unless tag.nil?
   end
 

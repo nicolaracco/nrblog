@@ -26,6 +26,14 @@ class TagTest < ActiveSupport::TestCase
     tag.label_en, tag.url_alias = tag.label_it, 'ualias'
     assert !tag.save
     tag.label_it, tag.label_en, tag.url_alias = 'uniquetest', 'testunique', 'asalias'
-    assert !tag.save
+    otag = Tag.find(:first, :conditions => ['label_en like ?', tag.label_it])
+    assert !otag.nil? && otag.label_en == tag.label_it && !tag.save, "Problem in check_label_between_locales using #{otag} and otag.label_en(#{otag.label_en}), tag.label_it(#{tag.label_it})"
+  end
+  test "find or create tag by label" do
+    tag = Tag.find_or_create 'findlabel'
+    assert !tag.nil?
+    tag2 = Tag.find_or_create 'findlabel'
+    assert !tag2.nil?
+    assert tag.id == tag2.id
   end
 end
