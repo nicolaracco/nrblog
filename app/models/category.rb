@@ -1,7 +1,7 @@
 class Category < ActiveRecord::Base
   translatable_columns :label
   validates_presence_of :label_en, :label_it, :url_alias
-  validates_uniqueness_of :url_alias
+  validates_uniqueness_of :url_alias, :label_en, :label_it
   before_validation :fill_empty_i18n, :strip_fields
   validates_length_of :url_alias, :minimum => 3, :maximum => 50
   validates_format_of :url_alias, :with => /\A[a-zA-Z_\-0-9]*\z/
