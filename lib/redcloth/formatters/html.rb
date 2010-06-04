@@ -45,7 +45,7 @@ module RedCloth::Formatters::HTML
           if show_lines
             highlighted = []
             classes.each do |cl|
-              cl.sub(/\Ah(\d+)_(\d+)\z/) { |block| (Integer($1)..Integer($2)).each { |index| highlighted << index } }
+              cl.sub(/\Ah(\d+)_(\d+)\z/) { |block| (Integer($1)..Integer($2)).to_a }
               cl.sub(/\Ah(\d+)\z/) { |block| highlighted << $1.to_i }
             end
             highlighted = nil if highlighted.empty? # else will disable bolding
