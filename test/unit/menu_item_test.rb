@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class MenuItemTest < ActiveSupport::TestCase
-  # Replace this with your real tests.
   test "Cannot save menu_item without required fields" do
     mi = MenuItem.new
     assert !mi.save
