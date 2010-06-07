@@ -1,10 +1,11 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-#one:
-#  type: MyString
-#  title_en: MyString
-#  title_it: MyString
-#  url: MyString
+one:
+  menu_type: horizontal_top
+  menu_order: 0
+  title_en: OneMenu
+  title_it: MenuUno
+  url: address
 
 #two:
 #  type: MyString
