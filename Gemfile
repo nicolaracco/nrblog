@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.0.beta3'
+gem 'rails', '3.0.0.beta4'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -8,7 +8,7 @@ gem 'rails', '3.0.0.beta3'
 gem 'ruby-mysql'
 gem 'devise', :git => 'http://github.com/plataformatec/devise.git', :tag => 'v1.1.rc1'
 gem 'will_paginate', :git => 'http://github.com/mislav/will_paginate.git', :branch => 'rails3'
-gem 'paperclip', :git => 'http://github.com/thoughtbot/paperclip.git', :branch => 'rails3'
+gem 'paperclip', :git => 'http://github.com/thoughtbot/paperclip.git'
 gem 'RedCloth'
 gem 'coderay'
 gem 'http_accept_language', :git => 'http://github.com/gcrofils/http_accept_language.git'
