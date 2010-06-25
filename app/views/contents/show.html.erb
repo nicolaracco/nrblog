@@ -33,7 +33,7 @@
     </div>
   <% end -%>
   <% if @content.has_comments %>
-    <%= id_comments @content, :title => @content.title, :acct_no => ID_ACCT_NO_I18N.has_key?(I18n.locale) ? ID_ACCT_NO_I18N[I18n.locale] : ID_ACCT_NO %>
+    <%= id_comments @content, :title => @content.title, :url => show_content_path(:category_alias => @content.category.url_alias, :url_alias => @content.url_alias), :acct_no => ID_ACCT_NO_I18N.has_key?(I18n.locale) ? ID_ACCT_NO_I18N[I18n.locale] : ID_ACCT_NO %>
   <% end -%>
 </div>
 
