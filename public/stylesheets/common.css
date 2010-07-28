@@ -188,13 +188,15 @@ ul.links li {
 /*ACRONYMS*/
 .caps {
   color: #007D8E;
-  font-size: 1.2em;
   font-variant: small-caps;
   font-weight: bold;
   letter-spacing: 1px;
   line-height: 1%;
   padding: 0px 2px;
-  text-transform: lowercase;
+}
+
+abbr, acronym {
+  border-bottom: 1px dotted #007D8E;
 }
 
 /* TOP HORIZONTAL MENU */
