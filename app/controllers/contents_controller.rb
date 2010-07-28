@@ -100,7 +100,7 @@ class ContentsController < ApplicationController
   end
 
   def preview_content
-    render :text => RedCloth.new(params[:data]).to_html
+    render :text => RedCloth.new(params[:data].force_encoding('UTF-8')).to_html
   end
 
   private
