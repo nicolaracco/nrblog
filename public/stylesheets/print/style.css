@@ -1,0 +1,24 @@
+div.fright, div.bottom, #sidebar-left, #sidebar-right, #site-slogan, #idc-container-parent, div.post-actions, div.frtight a, div.pagination
+{
+  display: none;
+}
+
+div.print
+{
+  display: block;
+}
+
+a
+{
+  text-decoration: none;
+}
+
+.left-sidebar #content-inner
+{
+  padding-left: 0px;
+}
+
+#content-inner
+{
+  padding: 0;
+}
