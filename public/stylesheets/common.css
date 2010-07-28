@@ -186,7 +186,7 @@ ul.links li {
 }
 
 /*ACRONYMS*/
-p .caps {
+.caps {
   color: #007D8E;
   font-size: 1.2em;
   font-variant: small-caps;
