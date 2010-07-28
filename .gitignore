@@ -10,3 +10,5 @@ config/initializers/mail_setup.rb
 config/initializers/intense_debate.rb
 public/system/
 public/system/**/*
+public/stylesheets/all.css
+public/javascripts/all.js
