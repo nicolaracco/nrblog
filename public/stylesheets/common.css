@@ -186,7 +186,7 @@ ul.links li {
 }
 
 /*ACRONYMS*/
-.caps {
+acronym .caps {
   color: #007D8E;
   font-variant: small-caps;
   font-weight: bold;
@@ -195,7 +195,7 @@ ul.links li {
   padding: 0px 2px;
 }
 
-abbr, acronym {
+acronym {
   border-bottom: 1px dotted #007D8E;
 }
 
