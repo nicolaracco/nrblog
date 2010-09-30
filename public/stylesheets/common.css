@@ -153,6 +153,8 @@ td {
 
 #tag-cloud a { text-decoration: none; }
 
+#tag-cloud a:hover { text-decoration: underline; }
+
 .tc1 { font-size: 22px; }
 
 .tc1, .tc2, .tc4 { font-weight: bold; }
